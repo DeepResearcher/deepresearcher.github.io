@@ -353,3 +353,12 @@
     padding: 17px;
   }
 }
+
+/* The full-screen landing composition was removed after review. */
+.hero-minimal {
+  display: none !important;
+}
+
+.capabilities-section {
+  padding-top: 88px;
+}

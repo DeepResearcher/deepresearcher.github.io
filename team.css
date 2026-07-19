@@ -11,6 +11,13 @@
   text-align: center;
 }
 
+.team-section .section-heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.65rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
 .team-section .eyebrow {
   justify-content: center;
 }
@@ -89,6 +96,10 @@
 }
 
 @media (max-width: 680px) {
+  .team-section .section-heading h2 {
+    font-size: 1.85rem;
+  }
+
   .team-grid {
     width: min(100%, 285px);
     grid-template-columns: 1fr;

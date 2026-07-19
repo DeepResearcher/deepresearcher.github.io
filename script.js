@@ -224,6 +224,32 @@ document.querySelectorAll(".reveal").forEach((element) => {
 const yearElement = document.getElementById("year");
 if (yearElement) yearElement.textContent = new Date().getFullYear();
 
+const portfolioImageSources = {
+  "assets/portfolio/sustainable-millionaire.webp": "assets/portfolio/sustainable-millionaire-base64.txt",
+  "assets/portfolio/chrono-cogs.webp": "assets/portfolio/chrono-cogs-base64.txt",
+  "assets/portfolio/digital-learning-gallery.webp": "assets/portfolio/digital-learning-gallery-base64.txt"
+};
+
+async function repairPortfolioImages() {
+  const images = document.querySelectorAll(".portfolio-section img");
+  await Promise.all(Array.from(images).map(async (image) => {
+    const source = portfolioImageSources[image.getAttribute("src")];
+    if (!source) return;
+
+    try {
+      const response = await fetch(source, { cache: "no-store" });
+      if (!response.ok) throw new Error(`Image source failed: ${response.status}`);
+      const encodedImage = (await response.text()).trim();
+      image.src = `data:image/webp;base64,${encodedImage}`;
+      image.classList.add("is-loaded");
+    } catch (error) {
+      console.error("Portfolio image could not be loaded", error);
+    }
+  }));
+}
+
+repairPortfolioImages();
+
 let initialLanguage = "de";
 try {
   initialLanguage = localStorage.getItem("narli-language") || "de";

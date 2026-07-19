@@ -7,19 +7,20 @@
 .team-section .section-heading {
   max-width: 680px;
   margin-inline: auto;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
   text-align: center;
 }
 
 .team-section .section-heading h2 {
   margin-bottom: 0;
-  font-size: clamp(1.8rem, 3.2vw, 2.65rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .team-section .eyebrow {
   justify-content: center;
+  margin-bottom: 12px;
 }
 
 .team-section .eyebrow::before {
@@ -87,17 +88,9 @@
   line-height: 1.4;
 }
 
-#selman-title::before {
-  content: "International Project Developer";
-}
-
-#serhan-title::before {
-  content: "PhD Researcher & AI/ML Engineer";
-}
-
 @media (max-width: 680px) {
   .team-section .section-heading h2 {
-    font-size: 1.85rem;
+    font-size: 1.2rem;
   }
 
   .team-grid {

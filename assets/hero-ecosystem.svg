@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 680" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrative digital project ecosystem</title>
+  <desc id="desc">A project platform, mobile app, serious game and AI assistant connected as one digital work package.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#142945"/>
+      <stop offset="1" stop-color="#0a1628"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#e8f1f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#020914" flood-opacity=".38"/>
+    </filter>
+  </defs>
+
+  <g opacity=".45" fill="none" stroke="#4cd7c3" stroke-width="2" stroke-dasharray="8 10">
+    <path d="M197 274C292 178 364 171 444 220"/>
+    <path d="M650 209C741 229 784 293 770 369"/>
+    <path d="M448 442C400 506 319 535 235 493"/>
+    <path d="M594 442C627 505 689 527 748 486"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="220" y="105" width="500" height="355" rx="28" fill="url(#panel)" stroke="#4cd7c3" stroke-opacity=".34" stroke-width="2"/>
+    <rect x="240" y="126" width="460" height="300" rx="18" fill="url(#screen)"/>
+    <rect x="240" y="126" width="460" height="46" rx="18" fill="#ffffff"/>
+    <circle cx="266" cy="149" r="6" fill="#d1dbe7"/>
+    <circle cx="286" cy="149" r="6" fill="#d1dbe7"/>
+    <circle cx="306" cy="149" r="6" fill="#d1dbe7"/>
+    <rect x="550" y="140" width="118" height="18" rx="9" fill="#dce8ef"/>
+
+    <rect x="268" y="198" width="174" height="196" rx="17" fill="#0d1a2c"/>
+    <rect x="286" y="220" width="102" height="11" rx="5.5" fill="#4cd7c3"/>
+    <rect x="286" y="246" width="126" height="8" rx="4" fill="#52657b"/>
+    <rect x="286" y="264" width="112" height="8" rx="4" fill="#52657b"/>
+    <rect x="286" y="301" width="130" height="68" rx="12" fill="#17304d"/>
+    <circle cx="314" cy="335" r="17" fill="#4cd7c3" fill-opacity=".19" stroke="#4cd7c3"/>
+    <path d="M308 335l5 5 9-11" fill="none" stroke="#4cd7c3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="342" y="320" width="56" height="7" rx="3.5" fill="#aebdca"/>
+    <rect x="342" y="337" width="46" height="7" rx="3.5" fill="#65778b"/>
+
+    <rect x="464" y="198" width="208" height="92" rx="17" fill="#ffffff" stroke="#dce6ee"/>
+    <rect x="484" y="218" width="76" height="11" rx="5.5" fill="#11223a"/>
+    <rect x="484" y="244" width="160" height="8" rx="4" fill="#d6e1e8"/>
+    <rect x="484" y="260" width="134" height="8" rx="4" fill="#d6e1e8"/>
+    <rect x="464" y="306" width="208" height="88" rx="17" fill="#e4faf6"/>
+    <path d="M486 370l28-26 26 13 31-36 34 21 38-31" fill="none" stroke="#087b6d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="514" cy="344" r="5" fill="#087b6d"/>
+    <circle cx="571" cy="321" r="5" fill="#087b6d"/>
+    <circle cx="643" cy="311" r="5" fill="#087b6d"/>
+
+    <path d="M185 462h570l-38 50H223z" fill="#11223a" stroke="#4cd7c3" stroke-opacity=".22" stroke-width="2"/>
+    <rect x="405" y="475" width="130" height="10" rx="5" fill="#273b55"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="248" width="150" height="300" rx="32" fill="#0b1728" stroke="#4cd7c3" stroke-opacity=".42" stroke-width="2"/>
+    <rect x="83" y="275" width="124" height="240" rx="22" fill="#f7fbfd"/>
+    <rect x="112" y="260" width="65" height="7" rx="3.5" fill="#2b4058"/>
+    <circle cx="145" cy="492" r="9" fill="#d9e4ea"/>
+    <rect x="99" y="294" width="92" height="70" rx="14" fill="#0d1a2c"/>
+    <circle cx="124" cy="325" r="13" fill="#4cd7c3" fill-opacity=".2" stroke="#4cd7c3"/>
+    <rect x="145" y="310" width="34" height="7" rx="3.5" fill="#cbd7df"/>
+    <rect x="145" y="326" width="28" height="7" rx="3.5" fill="#607386"/>
+    <rect x="99" y="381" width="92" height="16" rx="8" fill="#dce9ef"/>
+    <rect x="99" y="409" width="64" height="16" rx="8" fill="#e4faf6"/>
+    <rect x="99" y="438" width="78" height="16" rx="8" fill="#dce9ef"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="698" y="246" width="170" height="205" rx="26" fill="#10223a" stroke="#4cd7c3" stroke-opacity=".38" stroke-width="2"/>
+    <rect x="716" y="269" width="134" height="104" rx="17" fill="#172f4c"/>
+    <circle cx="782" cy="320" r="28" fill="#4cd7c3" fill-opacity=".17" stroke="#4cd7c3"/>
+    <path d="M770 321l11 10 19-23" fill="none" stroke="#4cd7c3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="719" y="393" width="81" height="10" rx="5" fill="#d6e2ea"/>
+    <rect x="719" y="415" width="108" height="8" rx="4" fill="#617488"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="314" y="521" width="305" height="112" rx="24" fill="#f8fbfd" stroke="#4cd7c3" stroke-opacity=".38" stroke-width="2"/>
+    <circle cx="354" cy="566" r="20" fill="#e4faf6"/>
+    <path d="M346 566h16M354 558v16" stroke="#087b6d" stroke-width="3" stroke-linecap="round"/>
+    <rect x="389" y="547" width="132" height="10" rx="5" fill="#11223a"/>
+    <rect x="389" y="570" width="194" height="8" rx="4" fill="#cbd8e1"/>
+    <rect x="389" y="589" width="151" height="8" rx="4" fill="#d9e4ea"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-weight="700" letter-spacing="1.2">
+    <rect x="341" y="58" width="255" height="40" rx="20" fill="#4cd7c3"/>
+    <text x="468.5" y="83" text-anchor="middle" font-size="14" fill="#06151b">DIGITAL WORK PACKAGE</text>
+    <rect x="92" y="214" width="106" height="34" rx="17" fill="#10223a" stroke="#4cd7c3" stroke-opacity=".4"/>
+    <text x="145" y="236" text-anchor="middle" font-size="12" fill="#aaf4e8">MOBILE APP</text>
+    <rect x="720" y="206" width="126" height="34" rx="17" fill="#10223a" stroke="#4cd7c3" stroke-opacity=".4"/>
+    <text x="783" y="228" text-anchor="middle" font-size="12" fill="#aaf4e8">SERIOUS GAME</text>
+    <rect x="396" y="637" width="142" height="32" rx="16" fill="#10223a" stroke="#4cd7c3" stroke-opacity=".4"/>
+    <text x="467" y="658" text-anchor="middle" font-size="12" fill="#aaf4e8">AI ASSISTANT</text>
+  </g>
+</svg>

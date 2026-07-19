@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" role="img" aria-labelledby="title desc">
+  <title id="title">Project AI assistant concept</title><desc id="desc">Illustrative AI assistant that searches project documents and supports reporting workflows.</desc>
+  <rect width="760" height="440" rx="28" fill="#0d1a2c"/>
+  <rect x="52" y="48" width="656" height="344" rx="24" fill="#f7fbfd"/>
+  <rect x="52" y="48" width="656" height="50" rx="24" fill="#ffffff"/>
+  <circle cx="80" cy="73" r="6" fill="#d6e2e9"/><circle cx="100" cy="73" r="6" fill="#d6e2e9"/><circle cx="120" cy="73" r="6" fill="#d6e2e9"/>
+  <rect x="80" y="126" width="176" height="238" rx="18" fill="#10223a"/>
+  <rect x="102" y="151" width="80" height="10" rx="5" fill="#4cd7c3"/>
+  <rect x="102" y="180" width="124" height="9" rx="4.5" fill="#65788d"/>
+  <rect x="102" y="205" width="118" height="38" rx="10" fill="#193451"/>
+  <rect x="114" y="218" width="76" height="8" rx="4" fill="#c8d6df"/>
+  <rect x="102" y="255" width="118" height="38" rx="10" fill="#193451"/>
+  <rect x="114" y="268" width="88" height="8" rx="4" fill="#c8d6df"/>
+  <rect x="102" y="305" width="118" height="38" rx="10" fill="#193451"/>
+  <rect x="114" y="318" width="68" height="8" rx="4" fill="#c8d6df"/>
+  <rect x="282" y="126" width="398" height="238" rx="18" fill="#ffffff" stroke="#dbe6ed"/>
+  <circle cx="320" cy="166" r="20" fill="#e4faf6"/>
+  <path d="M312 166h16M320 158v16" stroke="#087b6d" stroke-width="3" stroke-linecap="round"/>
+  <rect x="352" y="151" width="126" height="10" rx="5" fill="#11223a"/>
+  <rect x="352" y="174" width="240" height="8" rx="4" fill="#d3dfe6"/>
+  <rect x="308" y="210" width="290" height="62" rx="16" fill="#e4faf6"/>
+  <rect x="328" y="230" width="224" height="8" rx="4" fill="#8fbab3"/>
+  <rect x="328" y="249" width="180" height="8" rx="4" fill="#afd0cb"/>
+  <rect x="364" y="290" width="286" height="48" rx="16" fill="#0d1a2c"/>
+  <rect x="385" y="310" width="196" height="8" rx="4" fill="#718499"/>
+  <circle cx="622" cy="314" r="11" fill="#4cd7c3"/>
+  <path d="M618 314h8M622 310v8" stroke="#06151b" stroke-width="2" stroke-linecap="round"/>
+</svg>

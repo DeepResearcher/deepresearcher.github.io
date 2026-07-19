@@ -9,6 +9,7 @@
   <title>NARLI DIGITAL — Digital Solutions for European Projects</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -17,20 +18,17 @@
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="NARLI DIGITAL Startseite">
-        <span class="brand-mark" aria-hidden="true">N</span>
-        <span class="brand-text">
-          <strong>NARLI</strong>
-          <span>DIGITAL</span>
-        </span>
+        <span class="brand-mark" aria-hidden="true"><img src="assets/brand-mark.svg" alt=""></span>
+        <span class="brand-text"><strong>NARLI</strong><span>DIGITAL</span></span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-        <span class="sr-only">Menü öffnen</span>
-        <span></span><span></span><span></span>
+        <span class="sr-only">Menü öffnen</span><span></span><span></span><span></span>
       </button>
 
       <nav class="primary-nav" id="primary-nav" aria-label="Hauptnavigation">
         <a href="#services" data-i18n="nav.services">Leistungen</a>
+        <a href="#concepts" data-i18n="nav.concepts">Konzepte</a>
         <a href="#models" data-i18n="nav.models">Zusammenarbeit</a>
         <a href="#process" data-i18n="nav.process">Prozess</a>
         <a href="#contact" data-i18n="nav.contact">Kontakt</a>
@@ -46,15 +44,14 @@
   <main id="main">
     <section class="hero section">
       <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <div class="eyebrow" data-i18n="hero.eyebrow">Digital Development Partner für EU-Projekte</div>
-          <h1 data-i18n="hero.title">Wir entwickeln die digitale Seite europäischer Projekte.</h1>
-          <p class="hero-lead" data-i18n="hero.lead">Von der ersten Idee bis zum einsatzbereiten digitalen Ergebnis: Websites, Plattformen, Apps, Serious Games, KI-Lösungen und interaktive Outputs aus einer Hand.</p>
+          <h1 data-i18n="hero.title">Wir machen aus europäischen Projektideen funktionierende digitale Produkte.</h1>
+          <p class="hero-lead" data-i18n="hero.lead">Webplattform, App, Serious Game, KI-Assistent oder digitales Toolkit: Wir konzipieren, entwickeln und betreiben die digitale Seite Ihres Projekts als ein zusammenhängendes Arbeitspaket.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="mailto:serhan.narli@gmail.com?subject=Projektanfrage%20an%20NARLI%20DIGITAL" data-i18n="hero.ctaPrimary">Projekt besprechen</a>
-            <a class="button button-secondary" href="#services" data-i18n="hero.ctaSecondary">Leistungen ansehen</a>
+            <a class="button button-secondary" href="#concepts" data-i18n="hero.ctaSecondary">Beispiele ansehen</a>
           </div>
           <ul class="trust-list" aria-label="Kernvorteile">
             <li><span aria-hidden="true">✓</span><span data-i18n="hero.trust1">EU-Projektfokus</span></li>
@@ -63,42 +60,23 @@
           </ul>
         </div>
 
-        <div class="hero-visual reveal" aria-label="Digitaler Projektprozess">
-          <div class="visual-shell">
-            <div class="visual-topbar">
-              <span></span><span></span><span></span>
-              <small data-i18n="visual.label">Digital Work Package</small>
-            </div>
-            <div class="visual-canvas">
-              <div class="visual-node node-idea">
-                <span class="node-icon">01</span>
-                <strong data-i18n="visual.idea">Projektidee</strong>
-              </div>
-              <div class="visual-line line-one"></div>
-              <div class="visual-node node-build">
-                <span class="node-icon">02</span>
-                <strong data-i18n="visual.build">Entwicklung</strong>
-              </div>
-              <div class="visual-line line-two"></div>
-              <div class="visual-node node-impact">
-                <span class="node-icon">03</span>
-                <strong data-i18n="visual.impact">Digitaler Impact</strong>
-              </div>
-              <div class="floating-chip chip-web">Web</div>
-              <div class="floating-chip chip-app">App</div>
-              <div class="floating-chip chip-ai">AI</div>
-              <div class="floating-chip chip-game">Game</div>
-            </div>
-          </div>
-        </div>
+        <figure class="hero-product-figure reveal">
+          <img class="hero-product-art" src="assets/hero-ecosystem.svg" alt="Illustration eines digitalen Projektökosystems mit Webplattform, App, Serious Game und KI-Assistent">
+          <figcaption data-i18n="hero.visualCaption">Illustratives digitales Projektökosystem</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="proof-strip" aria-label="Leistungsübersicht">
-      <div class="container proof-grid">
-        <div><strong>6</strong><span data-i18n="proof.services">digitale Leistungsfelder</span></div>
-        <div><strong>3</strong><span data-i18n="proof.models">flexible Kooperationsmodelle</span></div>
-        <div><strong>1</strong><span data-i18n="proof.partner">technischer Partner für alles Digitale</span></div>
+    <section class="audience-strip" aria-label="Zielgruppen">
+      <div class="container audience-inner">
+        <span class="audience-label" data-i18n="audience.label">Digitale Lösungen für</span>
+        <div class="audience-list">
+          <span data-i18n="audience.universities">Universitäten</span>
+          <span data-i18n="audience.ngos">NGOs</span>
+          <span data-i18n="audience.research">Forschung</span>
+          <span data-i18n="audience.public">Öffentliche Einrichtungen</span>
+          <span data-i18n="audience.smes">KMU</span>
+        </div>
       </div>
     </section>
 
@@ -112,34 +90,76 @@
 
         <div class="service-grid">
           <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">⌘</div>
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></div>
             <h3 data-i18n="services.web.title">Websites & Plattformen</h3>
             <p data-i18n="services.web.text">Mehrsprachige Projektwebsites, Portale, Wissensplattformen, Mitgliederbereiche und interaktive Ressourcen.</p>
           </article>
           <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">▣</div>
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 5h6M11 18h2"/></svg></div>
             <h3 data-i18n="services.app.title">Web- & App-Entwicklung</h3>
             <p data-i18n="services.app.text">Nutzerorientierte Web- und Mobile-Apps, Prototypen, Dashboards und projektspezifische digitale Tools.</p>
           </article>
           <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">◆</div>
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8h8a5 5 0 015 5v2a3 3 0 01-5 2l-2-2h-4l-2 2a3 3 0 01-5-2v-2a5 5 0 015-5z"/><path d="M8 12v4M6 14h4M16 13h.01M18 15h.01"/></svg></div>
             <h3 data-i18n="services.game.title">Serious Games & Gamification</h3>
             <p data-i18n="services.game.text">Lernspiele, Simulationen, Quiz-Systeme und spielerische Formate für Bildung, Forschung und Outreach.</p>
           </article>
           <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">✦</div>
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 014 4v1a4 4 0 010 8v1a4 4 0 01-8 0v-1a4 4 0 010-8V7a4 4 0 014-4z"/><path d="M9 9h6M9 13h6M12 3v18"/></svg></div>
             <h3 data-i18n="services.ai.title">KI & Automatisierung</h3>
             <p data-i18n="services.ai.text">KI-Assistenten, intelligente Suche, Content-Workflows, Datenverarbeitung und praxisnahe Automatisierung.</p>
           </article>
           <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">◎</div>
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v5h5M8 13h8M8 17h6"/></svg></div>
             <h3 data-i18n="services.outputs.title">Digitale Outputs</h3>
             <p data-i18n="services.outputs.text">Interaktive Publikationen, E-Learning-Inhalte, Toolkits, Datenvisualisierungen und digitale Deliverables.</p>
           </article>
           <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">↗</div>
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 14a8 8 0 1115 4"/><path d="M19 14v5h-5M8 12l3 3 5-6"/></svg></div>
             <h3 data-i18n="services.support.title">Betrieb & Nachhaltigkeit</h3>
             <p data-i18n="services.support.text">Hosting, Wartung, technische Dokumentation, Schulung und nachhaltiger Betrieb über das Projektende hinaus.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section concepts-section" id="concepts">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow" data-i18n="concepts.eyebrow">Digitale Produktkonzepte</div>
+          <h2 data-i18n="concepts.title">So können digitale Projektergebnisse aussehen.</h2>
+          <p data-i18n="concepts.intro">Die folgenden Darstellungen sind illustrative Konzeptbeispiele, keine Kundenreferenzen. Sie zeigen, welche digitalen Lösungen wir für europäische Projekte entwickeln können.</p>
+        </div>
+
+        <div class="concept-grid">
+          <article class="concept-card reveal">
+            <img src="assets/concept-learning-hub.svg" alt="Illustration einer mehrsprachigen Lern- und Wissensplattform">
+            <div class="concept-content">
+              <span class="concept-badge" data-i18n="concepts.badge">Konzeptbeispiel</span>
+              <h3 data-i18n="concepts.hub.title">EU Learning Hub</h3>
+              <p data-i18n="concepts.hub.text">Mehrsprachige Projektplattform mit Ressourcenbibliothek, E-Learning, Veranstaltungen und Partnerbereich.</p>
+              <div class="concept-tags"><span>Website</span><span>Knowledge Platform</span><span>Multilingual</span></div>
+            </div>
+          </article>
+
+          <article class="concept-card reveal">
+            <img src="assets/concept-serious-game.svg" alt="Illustration eines browserbasierten Serious Games">
+            <div class="concept-content">
+              <span class="concept-badge" data-i18n="concepts.badge">Konzeptbeispiel</span>
+              <h3 data-i18n="concepts.game.title">Serious Game for Skills</h3>
+              <p data-i18n="concepts.game.text">Interaktives Lernspiel für Kompetenzentwicklung, Awareness, Simulationen und messbaren Lernfortschritt.</p>
+              <div class="concept-tags"><span>Serious Game</span><span>Quiz</span><span>Learning Analytics</span></div>
+            </div>
+          </article>
+
+          <article class="concept-card reveal">
+            <img src="assets/concept-ai-assistant.svg" alt="Illustration eines KI-Assistenten für Projektdokumente">
+            <div class="concept-content">
+              <span class="concept-badge" data-i18n="concepts.badge">Konzeptbeispiel</span>
+              <h3 data-i18n="concepts.ai.title">Project AI Assistant</h3>
+              <p data-i18n="concepts.ai.text">KI-gestützte Suche in Projektmaterialien sowie Unterstützung für Content-, Reporting- und Wissensprozesse.</p>
+              <div class="concept-tags"><span>AI Assistant</span><span>Document Search</span><span>Automation</span></div>
+            </div>
           </article>
         </div>
       </div>
@@ -152,63 +172,43 @@
           <h2 data-i18n="models.title">Die passende Rolle für Ihre Projektstruktur.</h2>
         </div>
 
-        <div class="model-grid">
-          <article class="model-card featured reveal">
-            <div class="model-number">01</div>
-            <div>
-              <span class="model-tag" data-i18n="models.partner.tag">Konsortium</span>
-              <h3 data-i18n="models.partner.title">Digital Development Partner</h3>
-              <p data-i18n="models.partner.text">Wir treten als regulärer Projektpartner bei und verantworten definierte digitale Aufgaben, Outputs oder Arbeitspakete.</p>
+        <div class="role-layout">
+          <div class="consortium-diagram reveal" aria-label="Beispielhafte Konsortialstruktur">
+            <div class="diagram-title" data-i18n="diagram.title">Beispielhafte Konsortialstruktur</div>
+            <div class="diagram-node coordinator" data-i18n="diagram.coordinator">Coordinator</div>
+            <div class="diagram-line vertical-one" aria-hidden="true"></div>
+            <div class="diagram-partners">
+              <div class="diagram-node" data-i18n="diagram.research">Research Partner</div>
+              <div class="diagram-node" data-i18n="diagram.education">Education Partner</div>
             </div>
-          </article>
-          <article class="model-card reveal">
-            <div class="model-number">02</div>
-            <div>
-              <span class="model-tag" data-i18n="models.provider.tag">Externe Vergabe</span>
-              <h3 data-i18n="models.provider.title">External Service Provider</h3>
-              <p data-i18n="models.provider.text">Wir liefern klar definierte Entwicklungsleistungen als externe Fachfirma mit transparentem Umfang und Meilensteinen.</p>
-            </div>
-          </article>
-          <article class="model-card reveal">
-            <div class="model-number">03</div>
-            <div>
-              <span class="model-tag" data-i18n="models.lead.tag">Arbeitspaket</span>
-              <h3 data-i18n="models.lead.title">Digital Work Package Lead</h3>
-              <p data-i18n="models.lead.text">Wir planen und koordinieren das digitale Arbeitspaket von den Anforderungen bis zu Abnahme, Dokumentation und Betrieb.</p>
-            </div>
-          </article>
+            <div class="diagram-line vertical-two" aria-hidden="true"></div>
+            <div class="diagram-node narli-node">NARLI DIGITAL<br><small data-i18n="diagram.role">Digital Work Package</small></div>
+            <div class="diagram-output-row"><span>Web</span><span>App</span><span>Game</span><span>AI</span><span>Outputs</span></div>
+          </div>
+
+          <div class="model-grid">
+            <article class="model-card featured reveal">
+              <div class="model-number">01</div><div><span class="model-tag" data-i18n="models.partner.tag">Konsortium</span><h3 data-i18n="models.partner.title">Digital Development Partner</h3><p data-i18n="models.partner.text">Wir treten als regulärer Projektpartner bei und verantworten definierte digitale Aufgaben, Outputs oder Arbeitspakete.</p></div>
+            </article>
+            <article class="model-card reveal">
+              <div class="model-number">02</div><div><span class="model-tag" data-i18n="models.provider.tag">Externe Vergabe</span><h3 data-i18n="models.provider.title">External Service Provider</h3><p data-i18n="models.provider.text">Wir liefern klar definierte Entwicklungsleistungen als externe Fachfirma mit transparentem Umfang und Meilensteinen.</p></div>
+            </article>
+            <article class="model-card reveal">
+              <div class="model-number">03</div><div><span class="model-tag" data-i18n="models.lead.tag">Arbeitspaket</span><h3 data-i18n="models.lead.title">Digital Work Package Lead</h3><p data-i18n="models.lead.text">Wir planen und koordinieren das digitale Arbeitspaket von den Anforderungen bis zu Abnahme, Dokumentation und Betrieb.</p></div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section section-accent" id="process">
       <div class="container">
-        <div class="section-heading reveal">
-          <div class="eyebrow" data-i18n="process.eyebrow">Unser Prozess</div>
-          <h2 data-i18n="process.title">Von der Projektlogik zum nutzbaren Produkt.</h2>
-        </div>
-
+        <div class="section-heading reveal"><div class="eyebrow" data-i18n="process.eyebrow">Unser Prozess</div><h2 data-i18n="process.title">Von der Projektlogik zum nutzbaren Produkt.</h2></div>
         <ol class="process-grid">
-          <li class="process-step reveal">
-            <span>01</span>
-            <h3 data-i18n="process.step1.title">Briefing & Ziele</h3>
-            <p data-i18n="process.step1.text">Zielgruppen, Programme, Deliverables, Zeitplan und technische Anforderungen werden gemeinsam geklärt.</p>
-          </li>
-          <li class="process-step reveal">
-            <span>02</span>
-            <h3 data-i18n="process.step2.title">Konzept & Prototyp</h3>
-            <p data-i18n="process.step2.text">Wir übersetzen die Projektidee in Nutzerflüsse, Architektur, Design und einen prüfbaren Prototyp.</p>
-          </li>
-          <li class="process-step reveal">
-            <span>03</span>
-            <h3 data-i18n="process.step3.title">Entwicklung & Tests</h3>
-            <p data-i18n="process.step3.text">Die Lösung wird iterativ entwickelt, getestet und mit dem Konsortium abgestimmt.</p>
-          </li>
-          <li class="process-step reveal">
-            <span>04</span>
-            <h3 data-i18n="process.step4.title">Launch & Support</h3>
-            <p data-i18n="process.step4.text">Bereitstellung, Dokumentation, Übergabe, Schulung und langfristige technische Betreuung.</p>
-          </li>
+          <li class="process-step reveal"><span>01</span><h3 data-i18n="process.step1.title">Briefing & Ziele</h3><p data-i18n="process.step1.text">Zielgruppen, Programme, Deliverables, Zeitplan und technische Anforderungen werden gemeinsam geklärt.</p></li>
+          <li class="process-step reveal"><span>02</span><h3 data-i18n="process.step2.title">Konzept & Prototyp</h3><p data-i18n="process.step2.text">Wir übersetzen die Projektidee in Nutzerflüsse, Architektur, Design und einen prüfbaren Prototyp.</p></li>
+          <li class="process-step reveal"><span>03</span><h3 data-i18n="process.step3.title">Entwicklung & Tests</h3><p data-i18n="process.step3.text">Die Lösung wird iterativ entwickelt, getestet und mit dem Konsortium abgestimmt.</p></li>
+          <li class="process-step reveal"><span>04</span><h3 data-i18n="process.step4.title">Launch & Support</h3><p data-i18n="process.step4.text">Bereitstellung, Dokumentation, Übergabe, Schulung und langfristige technische Betreuung.</p></li>
         </ol>
       </div>
     </section>
@@ -221,56 +221,27 @@
           <p data-i18n="about.text">Gute digitale Projektergebnisse brauchen mehr als Code. Sie müssen zu Zielgruppe, Arbeitspaket, Budget, Zeitplan, Dissemination und Nachhaltigkeitsstrategie passen. Genau diese Verbindung bildet den Kern unserer Arbeit.</p>
         </div>
         <div class="about-points reveal">
-          <div>
-            <strong data-i18n="about.point1.title">Projektorientiert</strong>
-            <span data-i18n="about.point1.text">Entwicklung entlang von Outputs, Meilensteinen und Wirkung.</span>
-          </div>
-          <div>
-            <strong data-i18n="about.point2.title">Verständlich</strong>
-            <span data-i18n="about.point2.text">Klare Kommunikation mit technischen und nichttechnischen Partnern.</span>
-          </div>
-          <div>
-            <strong data-i18n="about.point3.title">Nachhaltig</strong>
-            <span data-i18n="about.point3.text">Wartbare Systeme, Dokumentation und tragfähiger Betrieb.</span>
-          </div>
+          <div><strong data-i18n="about.point1.title">Mehrsprachig gedacht</strong><span data-i18n="about.point1.text">Digitale Lösungen für internationale Konsortien und unterschiedliche Zielgruppen.</span></div>
+          <div><strong data-i18n="about.point2.title">Barrierearm geplant</strong><span data-i18n="about.point2.text">Klare Nutzerführung, responsive Umsetzung und Zugänglichkeit als Projektanforderung.</span></div>
+          <div><strong data-i18n="about.point3.title">Dokumentation inklusive</strong><span data-i18n="about.point3.text">Nachvollziehbare Übergabe für Konsortium, Reporting und langfristige Nutzung.</span></div>
+          <div><strong data-i18n="about.point4.title">Nachhaltig betreibbar</strong><span data-i18n="about.point4.text">Wartbare Systeme, Hosting-Optionen und Support über das Projektende hinaus.</span></div>
         </div>
       </div>
     </section>
 
     <section class="section contact-section" id="contact">
       <div class="container contact-panel reveal">
-        <div>
-          <div class="eyebrow" data-i18n="contact.eyebrow">Projekt starten</div>
-          <h2 data-i18n="contact.title">Planen Sie ein digitales Arbeitspaket?</h2>
-          <p data-i18n="contact.text">Senden Sie uns eine kurze Beschreibung Ihres Projekts, des Programms und der gewünschten digitalen Ergebnisse. Wir melden uns mit einem passenden Kooperationsvorschlag.</p>
-        </div>
-        <div class="contact-actions">
-          <a class="button button-primary" href="mailto:serhan.narli@gmail.com?subject=Projektanfrage%20an%20NARLI%20DIGITAL" data-i18n="contact.cta">E-Mail schreiben</a>
-          <a class="contact-email" href="mailto:serhan.narli@gmail.com">serhan.narli@gmail.com</a>
-        </div>
+        <div><div class="eyebrow" data-i18n="contact.eyebrow">Projekt starten</div><h2 data-i18n="contact.title">Planen Sie ein digitales Arbeitspaket?</h2><p data-i18n="contact.text">Senden Sie uns eine kurze Beschreibung Ihres Projekts, des Programms, der Deadline und der gewünschten digitalen Ergebnisse. Wir melden uns mit einem passenden Kooperationsvorschlag.</p></div>
+        <div class="contact-actions"><a class="button button-primary" href="mailto:serhan.narli@gmail.com?subject=Projektanfrage%20an%20NARLI%20DIGITAL" data-i18n="contact.cta">Digitales Arbeitspaket besprechen</a><a class="contact-email" href="mailto:serhan.narli@gmail.com">serhan.narli@gmail.com</a></div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div>
-        <a class="brand footer-brand" href="#top">
-          <span class="brand-mark" aria-hidden="true">N</span>
-          <span class="brand-text"><strong>NARLI</strong><span>DIGITAL</span></span>
-        </a>
-        <p data-i18n="footer.tagline">Digital Solutions for European Projects</p>
-      </div>
-      <div class="footer-links">
-        <a href="#services" data-i18n="nav.services">Leistungen</a>
-        <a href="#models" data-i18n="nav.models">Zusammenarbeit</a>
-        <a href="#contact" data-i18n="nav.contact">Kontakt</a>
-      </div>
-      <div class="footer-meta">
-        <span>Berlin / Brandenburg · Europe</span>
-        <span>© <span id="year"></span> NARLI DIGITAL</span>
-        <span class="preview-note" data-i18n="footer.preview">Vorschau – rechtliche Angaben folgen vor dem öffentlichen Launch.</span>
-      </div>
+      <div><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><img src="assets/brand-mark.svg" alt=""></span><span class="brand-text"><strong>NARLI</strong><span>DIGITAL</span></span></a><p data-i18n="footer.tagline">Digital Solutions for European Projects</p></div>
+      <div class="footer-links"><a href="#services" data-i18n="nav.services">Leistungen</a><a href="#concepts" data-i18n="nav.concepts">Konzepte</a><a href="#models" data-i18n="nav.models">Zusammenarbeit</a><a href="#contact" data-i18n="nav.contact">Kontakt</a></div>
+      <div class="footer-meta"><span>Berlin / Brandenburg · Europe</span><span>© <span id="year"></span> NARLI DIGITAL</span><span class="preview-note" data-i18n="footer.preview">Vorschau – rechtliche Angaben folgen vor dem öffentlichen Launch.</span></div>
     </div>
   </footer>
 </body>

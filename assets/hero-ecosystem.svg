@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 680" role="img" aria-labelledby="title desc">
-  <title id="title">Illustrative digital project ecosystem</title>
-  <desc id="desc">A project platform, mobile app, serious game and AI assistant connected as one digital work package.</desc>
+  <title id="title">Illustrative digital outputs ecosystem</title>
+  <desc id="desc">A project platform, mobile app, serious game and AI assistant shown as connected digital outputs.</desc>
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
       <stop stop-color="#142945"/>
@@ -89,7 +89,7 @@
 
   <g font-family="Arial, sans-serif" font-weight="700" letter-spacing="1.2">
     <rect x="341" y="58" width="255" height="40" rx="20" fill="#4cd7c3"/>
-    <text x="468.5" y="83" text-anchor="middle" font-size="14" fill="#06151b">DIGITAL WORK PACKAGE</text>
+    <text x="468.5" y="83" text-anchor="middle" font-size="14" fill="#06151b">DIGITAL OUTPUTS</text>
     <rect x="92" y="214" width="106" height="34" rx="17" fill="#10223a" stroke="#4cd7c3" stroke-opacity=".4"/>
     <text x="145" y="236" text-anchor="middle" font-size="12" fill="#aaf4e8">MOBILE APP</text>
     <rect x="720" y="206" width="126" height="34" rx="17" fill="#10223a" stroke="#4cd7c3" stroke-opacity=".4"/>

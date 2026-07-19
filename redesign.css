@@ -1,0 +1,355 @@
+/* 2026 homepage redesign: minimal hero, services, portfolio, contact-first collaboration */
+
+.hero-minimal {
+  min-height: calc(100vh - 78px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 110px 0 90px;
+  background: #08111f;
+}
+
+.hero-minimal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(76, 215, 195, 0.13), transparent 34%),
+    linear-gradient(to bottom, rgba(8, 17, 31, 0.1), rgba(8, 17, 31, 0.78));
+  pointer-events: none;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.hero-background img {
+  width: min(1180px, 96vw);
+  max-width: none;
+  transform: scale(1.08);
+  filter: saturate(0.8) contrast(1.05);
+}
+
+.hero-minimal-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hero-brand-name {
+  max-width: none;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(4.4rem, 13vw, 10.5rem);
+  font-weight: 820;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  text-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+}
+
+.hero-brand-name span {
+  display: block;
+  margin-top: 0.18em;
+  color: var(--accent);
+  font-size: 0.42em;
+  letter-spacing: 0.34em;
+  transform: translateX(0.16em);
+}
+
+.hero-slogan {
+  max-width: 760px;
+  margin: 38px auto 0;
+  color: #d5dfeb;
+  font-size: clamp(1.15rem, 2.3vw, 1.7rem);
+  font-weight: 520;
+  letter-spacing: 0.015em;
+}
+
+.hero-minimal .hero-actions {
+  justify-content: center;
+  margin: 36px 0 0;
+}
+
+.section-heading.compact {
+  max-width: 760px;
+}
+
+.section-kicker {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 820;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.capabilities-section {
+  background: #f4f7fb;
+}
+
+.capabilities-section .service-card {
+  min-height: 260px;
+}
+
+.portfolio-section {
+  background:
+    radial-gradient(circle at 14% 15%, rgba(76, 215, 195, 0.08), transparent 28%),
+    #08111f;
+}
+
+.portfolio-note {
+  max-width: 760px;
+  color: var(--muted);
+}
+
+.portfolio-section .concept-card {
+  height: 100%;
+}
+
+.portfolio-section .concept-card p {
+  min-height: 88px;
+}
+
+.collaboration-section {
+  overflow: hidden;
+  background:
+    linear-gradient(125deg, rgba(76, 215, 195, 0.11), transparent 52%),
+    #0b1728;
+}
+
+.collaboration-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(420px, 1.22fr);
+  gap: 54px;
+  align-items: center;
+}
+
+.collaboration-copy h2 {
+  max-width: 620px;
+  margin-bottom: 18px;
+  font-size: clamp(2.3rem, 4.6vw, 4.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.collaboration-copy > p {
+  max-width: 610px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.contact-step-card {
+  position: relative;
+  overflow: hidden;
+  padding: 36px;
+  border: 1px solid rgba(76, 215, 195, 0.32);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.22);
+}
+
+.contact-step-card::before {
+  content: "";
+  position: absolute;
+  inset: -80px auto auto -80px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(76, 215, 195, 0.09);
+  filter: blur(8px);
+}
+
+.contact-step-number {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  background: var(--accent);
+  color: #06151b;
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
+.contact-step-card h3 {
+  position: relative;
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+}
+
+.contact-step-card > p {
+  position: relative;
+  color: var(--muted);
+}
+
+.offer-list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 24px 0 30px;
+  padding: 0;
+  list-style: none;
+}
+
+.offer-list li {
+  padding: 8px 11px;
+  border: 1px solid rgba(76, 215, 195, 0.24);
+  border-radius: 999px;
+  background: rgba(76, 215, 195, 0.07);
+  color: #c9f7f0;
+  font-size: 0.78rem;
+  font-weight: 680;
+}
+
+.contact-step-card .button {
+  position: relative;
+}
+
+.why-section {
+  background: #f4f7fb;
+  color: var(--light-text);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 60px;
+  align-items: start;
+}
+
+.why-copy h2 {
+  margin-bottom: 20px;
+  font-size: clamp(2.4rem, 4.8vw, 4.3rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.why-copy p {
+  color: var(--light-muted);
+  font-size: 1.02rem;
+}
+
+.why-points {
+  display: grid;
+  gap: 14px;
+}
+
+.why-point {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--light-line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(17, 33, 58, 0.06);
+}
+
+.why-point::before {
+  content: "✓";
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #e4faf6;
+  color: #087b6d;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.why-point strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--light-text);
+}
+
+.why-point span {
+  color: var(--light-muted);
+  font-size: 0.92rem;
+}
+
+.team-section .section-heading h2 {
+  font-size: clamp(1.25rem, 2vw, 1.55rem) !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.team-section .section-heading {
+  margin-bottom: 28px;
+}
+
+.site-footer .footer-links {
+  gap: 10px 18px;
+}
+
+@media (max-width: 920px) {
+  .collaboration-shell,
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .contact-step-card {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-minimal {
+    min-height: calc(100svh - 70px);
+    padding: 86px 0 68px;
+  }
+
+  .hero-background img {
+    width: 145vw;
+  }
+
+  .hero-brand-name {
+    font-size: clamp(3.8rem, 22vw, 6.4rem);
+  }
+
+  .hero-brand-name span {
+    letter-spacing: 0.22em;
+  }
+
+  .hero-slogan {
+    margin-top: 28px;
+    font-size: 1.08rem;
+  }
+
+  .hero-minimal .hero-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-minimal .button {
+    width: 100%;
+  }
+
+  .contact-step-card {
+    padding: 27px 22px;
+  }
+
+  .why-point {
+    padding: 17px;
+  }
+}

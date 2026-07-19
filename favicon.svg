@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NARLI DIGITAL">
-  <rect width="64" height="64" rx="16" fill="#08111f"/>
-  <rect x="5" y="5" width="54" height="54" rx="13" fill="none" stroke="#4cd7c3" stroke-opacity=".55"/>
-  <path d="M18 46V18h7l14 18V18h7v28h-7L25 28v18z" fill="#4cd7c3"/>
+  <rect width="64" height="64" rx="17" fill="#0d1a2c"/>
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="none" stroke="#4cd7c3" stroke-opacity=".62" stroke-width="2"/>
+  <path d="M18 46V18l28 28V18" fill="none" stroke="#4cd7c3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="18" cy="18" r="3.5" fill="#f5f8fc"/>
+  <circle cx="46" cy="46" r="3.5" fill="#f5f8fc"/>
+  <circle cx="46" cy="18" r="3.5" fill="#4cd7c3"/>
 </svg>

@@ -1,6 +1,4 @@
 (() => {
-  const STYLE_ID = "stable-portfolio-category-styles";
-
   const categories = [
     {
       title: { de: "Digitale Lernspiele", en: "Digital Learning Games" },
@@ -70,40 +68,17 @@
     return document.documentElement.lang === "en" ? "en" : "de";
   }
 
-  function installStyles() {
-    document.querySelectorAll('link[href*="portfolio-gallery.css"]').forEach(link => link.remove());
-    if (document.getElementById(STYLE_ID)) return;
-
-    const style = document.createElement("style");
-    style.id = STYLE_ID;
-    style.textContent = `
-      .portfolio-section{content-visibility:auto;contain-intrinsic-size:820px}
-      .portfolio-category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-      .portfolio-category{min-width:0}
-      .portfolio-category-media{position:relative;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:#07111e;isolation:isolate;touch-action:pan-y}
-      .portfolio-category-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transform:scale(1);transition:transform .35s ease,opacity .18s ease}
-      .portfolio-category-image.is-changing{opacity:.3;transform:scale(1.015)}
-      .portfolio-category:hover .portfolio-category-image{transform:scale(1.025)}
-      .portfolio-category-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,12,23,.12) 10%,rgba(4,12,23,.22) 45%,rgba(4,12,23,.96) 100%);pointer-events:none}
-      .portfolio-category-label{position:absolute;top:17px;left:17px;z-index:2;max-width:calc(100% - 34px);padding:8px 12px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(5,15,27,.84);color:#fff;font-size:.76rem;font-weight:700;line-height:1.2;backdrop-filter:blur(8px)}
-      .portfolio-category-copy{position:absolute;right:18px;bottom:72px;left:18px;z-index:2}
-      .portfolio-category-description{margin:0 0 7px;color:rgba(255,255,255,.8);font-size:.8rem;line-height:1.4}
-      .portfolio-category-item-title{margin:0;color:#fff;font-size:clamp(1.08rem,1.45vw,1.42rem);line-height:1.15}
-      .portfolio-category-controls{position:absolute;right:15px;bottom:14px;left:15px;z-index:3;display:grid;grid-template-columns:40px 1fr 40px;align-items:center;gap:10px}
-      .portfolio-category-button{display:inline-grid;width:40px;height:40px;place-items:center;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(5,15,27,.84);color:#fff;cursor:pointer;font:inherit;font-size:1.15rem;line-height:1;backdrop-filter:blur(8px)}
-      .portfolio-category-button:hover,.portfolio-category-button:focus-visible{border-color:rgba(76,215,195,.7);background:rgba(76,215,195,.2)}
-      .portfolio-category-button:focus-visible,.portfolio-category-dot:focus-visible{outline:3px solid rgba(76,215,195,.36);outline-offset:2px}
-      .portfolio-category-counter{color:rgba(255,255,255,.84);font-size:.8rem;font-variant-numeric:tabular-nums;text-align:center}
-      .portfolio-category-dots{display:flex;min-height:30px;align-items:center;justify-content:center;gap:7px;padding-top:10px}
-      .portfolio-category-dot{width:7px;height:7px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.25);cursor:pointer;transition:width .2s ease,background .2s ease}
-      .portfolio-category-dot.is-active{width:22px;background:rgba(76,215,195,.9)}
-      .location-identity-note{display:flex;align-items:center;gap:9px;margin:18px 0;color:#c9f7f0;font-size:.9rem;font-weight:680}
-      .location-identity-note:before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(76,215,195,.1)}
-      @media(max-width:1050px){.portfolio-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.portfolio-category:last-child{grid-column:1/-1;width:calc((100% - 22px)/2);justify-self:center}}
-      @media(max-width:700px){.reveal,.reveal.is-visible{opacity:1!important;transform:none!important;transition:none!important}.site-header,.site-header.is-scrolled{background:#08111f!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.portfolio-category-grid{grid-template-columns:1fr;gap:24px}.portfolio-category:last-child{grid-column:auto;width:auto;justify-self:stretch}.portfolio-category-media{width:min(100%,430px);margin-inline:auto;border-radius:22px}.portfolio-category-description{font-size:.78rem}.location-identity-note{align-items:flex-start;font-size:.86rem;line-height:1.5}.location-identity-note:before{margin-top:.42em}}
-      @media(prefers-reduced-motion:reduce){.portfolio-category-image,.portfolio-category-dot{transition:none}}
-    `;
-    document.head.appendChild(style);
+  function ensureStylesheet() {
+    const href = "portfolio-gallery.css?v=20260720-stable-2";
+    let link = document.querySelector('link[href*="portfolio-gallery.css"]');
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "stylesheet";
+      document.head.appendChild(link);
+    }
+    if (!link.href.endsWith("portfolio-gallery.css?v=20260720-stable-2")) {
+      link.href = href;
+    }
   }
 
   function categoryMarkup(category, categoryIndex) {
@@ -258,7 +233,7 @@
   }
 
   function start() {
-    installStyles();
+    ensureStylesheet();
     if (!buildStablePortfolio()) {
       const observer = new MutationObserver(() => {
         if (buildStablePortfolio()) observer.disconnect();

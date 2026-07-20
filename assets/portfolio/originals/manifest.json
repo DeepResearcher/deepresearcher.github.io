@@ -1,0 +1,62 @@
+[
+  {
+    "file": "portfolio-01.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.45 (1).jpeg",
+    "sha256": "0b2456da712f8fda902e8b6e2a9f084eb86b33f9e2a053d366c39c38247b45c4",
+    "bytes": 281972
+  },
+  {
+    "file": "portfolio-02.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.45 (2).jpeg",
+    "sha256": "8bd5a45ae86d10a447c8069d980027587446d24942ee4354100e21da303342b5",
+    "bytes": 519955
+  },
+  {
+    "file": "portfolio-03.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.45 (3).jpeg",
+    "sha256": "bd47a78aacbfdefe2f7718a3124176a1dd9ce4cb97db0e266aa2711c4e8bc7f9",
+    "bytes": 304170
+  },
+  {
+    "file": "portfolio-04.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.45 (5).jpeg",
+    "sha256": "01564e515d6b6912e2f03c82d86f844cd7b1493023480238194857b167216c62",
+    "bytes": 254932
+  },
+  {
+    "file": "portfolio-05.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.46 (1).jpeg",
+    "sha256": "a123288eb0d261c1a0ad963e4b53cc4a660253ef3cb52cfa355db179322c5ba2",
+    "bytes": 224254
+  },
+  {
+    "file": "portfolio-06.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.46 (2).jpeg",
+    "sha256": "902dfb1247e737d8b049461583de646c5c497d5f8126bfae0fa160d237d27b02",
+    "bytes": 333138
+  },
+  {
+    "file": "portfolio-07.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.46 (3).jpeg",
+    "sha256": "31a76e9e798bd96ceb2a5b5dc43a9c27cfe37a6a39ef040db414306439e7e0b2",
+    "bytes": 229418
+  },
+  {
+    "file": "portfolio-08.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.46.jpeg",
+    "sha256": "b40b0338e05572bfc7225dac461e74fa7dc62db314cca13b666fc005668d004c",
+    "bytes": 367892
+  },
+  {
+    "file": "portfolio-09.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.47 (1).jpeg",
+    "sha256": "d073bd553d36480641add86dd7cc8ed3990eacf7352c5f98fd15cb9d1ba1e572",
+    "bytes": 346733
+  },
+  {
+    "file": "portfolio-10.jpg",
+    "source_name": "WhatsApp Image 2026-07-19 at 22.16.47.jpeg",
+    "sha256": "37ff8d7bbe96f6a2a0cd1addf8da06087e5eff499ef7585712bd744ec4ee9550",
+    "bytes": 364876
+  }
+]

@@ -48,7 +48,10 @@
       hero: "Standort Berlin/Brandenburg · Europaweit tätig",
       contact: "Persönliche Gespräche in Berlin · Digitale Zusammenarbeit europaweit",
       why: "Gute digitale Outputs brauchen mehr als Code. Sie müssen zur Zielgruppe, zum Inhalt, zum Zeitplan, zum Budget und zur langfristigen Nutzung passen. Genau diese Verbindung bildet den Kern unserer Arbeit. Aus der Region Berlin/Brandenburg arbeiten wir mit internationalen Projektteams und Organisationen in ganz Europa zusammen.",
-      footer: "Standort Berlin/Brandenburg · Europaweit tätig"
+      footer: "Standort Berlin/Brandenburg · Europaweit tätig",
+      outputsNav: "Digital Outputs",
+      outputsHero: "Digital Outputs entdecken",
+      outputsAll: "Alle digitalen Outputs ansehen"
     },
     en: {
       intro: "The examples are grouped into three clear solution categories. Browse the related concepts within each category.",
@@ -58,7 +61,10 @@
       hero: "Berlin/Brandenburg location · Working across Europe",
       contact: "In-person meetings in Berlin · Digital collaboration across Europe",
       why: "Strong digital outputs require more than code. They must fit the target group, content, timeline, budget and long-term use. Connecting these elements is at the core of our work. From the Berlin/Brandenburg region, we collaborate with international project teams and organisations across Europe.",
-      footer: "Berlin/Brandenburg location · Working across Europe"
+      footer: "Berlin/Brandenburg location · Working across Europe",
+      outputsNav: "Digital Outputs",
+      outputsHero: "Explore Digital Outputs",
+      outputsAll: "View all digital outputs"
     }
   };
 
@@ -82,9 +88,67 @@
   function loadContactDetails() {
     if (document.querySelector('script[src*="contact-details.js"]')) return;
     const script = document.createElement("script");
-    script.src = "contact-details.js?v=20260720-phones-2";
-    script.defer = true;
+    script.src = "contact-details.js?v=20260720-outputs-4";
     document.head.appendChild(script);
+  }
+
+  function installOutputsLinks() {
+    const text = copy[language()];
+    const href = "digital-outputs.html";
+
+    const nav = document.querySelector(".primary-nav");
+    if (nav) {
+      let link = nav.querySelector(".digital-outputs-direct-link");
+      if (!link) {
+        link = document.createElement("a");
+        link.className = "digital-outputs-direct-link";
+        link.href = href;
+        const portfolioLink = nav.querySelector('a[href="#portfolio"]');
+        portfolioLink ? portfolioLink.insertAdjacentElement("afterend", link) : nav.appendChild(link);
+      }
+      link.textContent = text.outputsNav;
+    }
+
+    const heroActions = document.querySelector(".hero-actions");
+    if (heroActions) {
+      let link = heroActions.querySelector(".digital-outputs-direct-hero");
+      if (!link) {
+        link = document.createElement("a");
+        link.className = "button button-secondary digital-outputs-direct-hero";
+        link.href = href;
+        heroActions.appendChild(link);
+      }
+      link.textContent = text.outputsHero;
+    }
+
+    const portfolio = document.getElementById("portfolio");
+    const container = portfolio?.querySelector(".container");
+    if (container) {
+      let action = container.querySelector(".digital-outputs-direct-action");
+      if (!action) {
+        action = document.createElement("div");
+        action.className = "digital-outputs-direct-action";
+        action.style.display = "flex";
+        action.style.justifyContent = "center";
+        action.style.marginTop = "34px";
+        action.innerHTML = `<a class="button button-primary" href="${href}"></a>`;
+        container.appendChild(action);
+      }
+      action.querySelector("a").textContent = text.outputsAll;
+    }
+
+    const footerLinks = document.querySelector(".footer-links");
+    if (footerLinks) {
+      let link = footerLinks.querySelector(".digital-outputs-direct-footer");
+      if (!link) {
+        link = document.createElement("a");
+        link.className = "digital-outputs-direct-footer";
+        link.href = href;
+        const portfolioLink = footerLinks.querySelector('a[href="#portfolio"]');
+        portfolioLink ? portfolioLink.insertAdjacentElement("afterend", link) : footerLinks.appendChild(link);
+      }
+      link.textContent = text.outputsNav;
+    }
   }
 
   function categoryMarkup(category, categoryIndex) {
@@ -250,10 +314,13 @@
       }
       note.textContent = text.contact;
     }
+
+    installOutputsLinks();
   }
 
   function start() {
     installStylesheet();
+    installOutputsLinks();
     loadContactDetails();
 
     if (!buildPortfolio()) {

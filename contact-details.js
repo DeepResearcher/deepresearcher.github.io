@@ -5,8 +5,8 @@
   ];
 
   const labels = {
-    de: "Telefon",
-    en: "Phone"
+    de: { phone: "Telefon", outputs: "Digital Outputs", allOutputs: "Alle digitalen Outputs ansehen" },
+    en: { phone: "Phone", outputs: "Digital Outputs", allOutputs: "View all digital outputs" }
   };
 
   function language() {
@@ -20,7 +20,7 @@
   }
 
   function installStylesheet() {
-    const href = "contact-details.css?v=20260720-phones-2";
+    const href = "contact-details.css?v=20260720-outputs-1";
     let link = document.querySelector('link[href*="contact-details.css"]');
     if (!link) {
       link = document.createElement("link");
@@ -53,13 +53,63 @@
     }
 
     const label = document.querySelector(".contact-phone-label");
-    if (label) label.textContent = labels[language()];
+    if (label) label.textContent = labels[language()].phone;
+  }
+
+  function installOutputsNavigation() {
+    const text = labels[language()];
+    const nav = document.querySelector(".primary-nav");
+    if (nav) {
+      let outputLink = nav.querySelector(".digital-outputs-nav-link");
+      if (!outputLink) {
+        outputLink = document.createElement("a");
+        outputLink.className = "digital-outputs-nav-link";
+        outputLink.href = "digital-outputs.html";
+        const portfolioLink = nav.querySelector('a[href="#portfolio"]');
+        portfolioLink ? portfolioLink.insertAdjacentElement("afterend", outputLink) : nav.appendChild(outputLink);
+      }
+      outputLink.textContent = text.outputs;
+    }
+
+    const footerLinks = document.querySelector(".footer-links");
+    if (footerLinks) {
+      let outputLink = footerLinks.querySelector(".digital-outputs-footer-link");
+      if (!outputLink) {
+        outputLink = document.createElement("a");
+        outputLink.className = "digital-outputs-footer-link";
+        outputLink.href = "digital-outputs.html";
+        const portfolioLink = footerLinks.querySelector('a[href="#portfolio"]');
+        portfolioLink ? portfolioLink.insertAdjacentElement("afterend", outputLink) : footerLinks.appendChild(outputLink);
+      }
+      outputLink.textContent = text.outputs;
+    }
+
+    const section = document.getElementById("portfolio");
+    if (section) {
+      const container = section.querySelector(".container");
+      if (container) {
+        let action = container.querySelector(".portfolio-page-action");
+        if (!action) {
+          action = document.createElement("div");
+          action.className = "portfolio-page-action reveal is-visible";
+          action.innerHTML = '<a class="button button-primary" href="digital-outputs.html"></a>';
+          container.appendChild(action);
+        }
+        const link = action.querySelector("a");
+        if (link) link.textContent = text.allOutputs;
+      }
+    }
+  }
+
+  function refresh() {
+    installContacts();
+    installOutputsNavigation();
   }
 
   installStylesheet();
-  installContacts();
+  refresh();
 
   document.querySelectorAll("[data-lang]").forEach(button => {
-    button.addEventListener("click", () => requestAnimationFrame(installContacts));
+    button.addEventListener("click", () => requestAnimationFrame(refresh));
   });
 })();

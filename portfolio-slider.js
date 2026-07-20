@@ -1,123 +1,162 @@
 (() => {
-  const labels = {
+  const categories = [
+    {
+      title: { de: "Digitale Lernspiele", en: "Digital Learning Games" },
+      description: {
+        de: "Mobile und browserbasierte Lernspiele für Wissenstransfer, Awareness und Gamification.",
+        en: "Mobile and browser-based learning games for knowledge transfer, awareness and gamification."
+      },
+      items: [
+        { title: "EcoSort Challenge", image: "assets/portfolio/originals/portfolio-08.jpg" },
+        { title: "CyberWise Mission", image: "assets/portfolio/originals/portfolio-09.jpg" },
+        { title: "Sustainable Millionaire", image: "assets/portfolio/originals/portfolio-01.jpg" },
+        { title: "GreenFuture Academy", image: "assets/portfolio/originals/portfolio-10.jpg" }
+      ]
+    },
+    {
+      title: { de: "Szenario- & Simulationsspiele", en: "Scenario & Simulation Games" },
+      description: {
+        de: "Entscheidungsbasierte Formate mit Rollen, Ressourcen, Konsequenzen und messbarem Fortschritt.",
+        en: "Decision-based formats with roles, resources, consequences and measurable progress."
+      },
+      items: [
+        { title: "Chrono-Cogs", image: "assets/portfolio/originals/portfolio-02.jpg" },
+        { title: "Scenario Lab", image: "assets/portfolio/originals/portfolio-07.jpg" },
+        { title: "Project Nexus", image: "assets/portfolio/originals/portfolio-06.jpg" },
+        { title: "Project Aegis", image: "assets/portfolio/originals/portfolio-03.jpg" }
+      ]
+    },
+    {
+      title: { de: "Workshop- & Brettspielformate", en: "Workshop & Board Game Formats" },
+      description: {
+        de: "Analoge und hybride Lernformate für moderierte Diskussionen, Teamarbeit und Reflexion.",
+        en: "Analogue and hybrid learning formats for facilitated discussion, teamwork and reflection."
+      },
+      items: [
+        { title: "Ethical Choices Workshop", image: "assets/portfolio/originals/portfolio-05.jpg" },
+        { title: "Collaborative Board Game", image: "assets/portfolio/originals/portfolio-04.jpg" }
+      ]
+    }
+  ];
+
+  const copy = {
     de: {
-      previous: "Vorherige Beispiele",
-      next: "Nächste Beispiele",
-      region: "Portfolio-Slider"
+      intro: "Die Beispiele sind in drei klaren Lösungskategorien gebündelt. Innerhalb jeder Kategorie können Sie durch die zugehörigen Konzepte blättern.",
+      previous: "Vorheriges Beispiel",
+      next: "Nächstes Beispiel",
+      example: "Beispiel"
     },
     en: {
-      previous: "Previous examples",
-      next: "Next examples",
-      region: "Portfolio slider"
+      intro: "The examples are grouped into three clear solution categories. Browse the related concepts within each category.",
+      previous: "Previous example",
+      next: "Next example",
+      example: "Example"
     }
   };
 
-  function initialiseSlider() {
-    const track = document.querySelector("#portfolio .portfolio-gallery");
-    if (!track || track.dataset.sliderReady === "true") return false;
+  function language() {
+    return document.documentElement.lang === "en" ? "en" : "de";
+  }
 
-    track.dataset.sliderReady = "true";
-    track.tabIndex = 0;
+  function categoryMarkup(category, categoryIndex) {
+    return `
+      <article class="portfolio-category" data-category="${categoryIndex}">
+        <div class="portfolio-category-media">
+          <img class="portfolio-category-image" src="${category.items[0].image}" alt="${category.items[0].title}" loading="lazy">
+          <div class="portfolio-category-shade" aria-hidden="true"></div>
+          <span class="portfolio-category-label"></span>
+          <div class="portfolio-category-copy">
+            <p class="portfolio-category-description"></p>
+            <h3 class="portfolio-category-item-title">${category.items[0].title}</h3>
+          </div>
+          <div class="portfolio-category-controls">
+            <button type="button" class="portfolio-category-button portfolio-category-prev" aria-label="Previous example">&#8592;</button>
+            <span class="portfolio-category-counter" aria-live="polite">1 / ${category.items.length}</span>
+            <button type="button" class="portfolio-category-button portfolio-category-next" aria-label="Next example">&#8594;</button>
+          </div>
+        </div>
+        <div class="portfolio-category-dots" aria-hidden="true">
+          ${category.items.map((_, index) => `<span class="portfolio-category-dot${index === 0 ? " is-active" : ""}"></span>`).join("")}
+        </div>
+      </article>`;
+  }
 
-    const shell = document.createElement("div");
-    shell.className = "portfolio-slider";
-    track.parentNode.insertBefore(shell, track);
-    shell.appendChild(track);
+  function initialiseCategories() {
+    const oldGallery = document.querySelector("#portfolio .portfolio-gallery");
+    if (!oldGallery || document.querySelector("#portfolio .portfolio-category-grid")) return false;
 
-    const toolbar = document.createElement("div");
-    toolbar.className = "portfolio-slider-toolbar";
+    const oldSlider = oldGallery.closest(".portfolio-slider");
+    const grid = document.createElement("div");
+    grid.className = "portfolio-category-grid";
+    grid.innerHTML = categories.map(categoryMarkup).join("");
 
-    const previousButton = document.createElement("button");
-    previousButton.type = "button";
-    previousButton.className = "portfolio-slider-button portfolio-slider-previous";
-    previousButton.innerHTML = "&#8592;";
+    if (oldSlider) oldSlider.replaceWith(grid);
+    else oldGallery.replaceWith(grid);
 
-    const status = document.createElement("span");
-    status.className = "portfolio-slider-status";
-    status.setAttribute("aria-live", "polite");
+    const states = categories.map(() => 0);
 
-    const nextButton = document.createElement("button");
-    nextButton.type = "button";
-    nextButton.className = "portfolio-slider-button portfolio-slider-next";
-    nextButton.innerHTML = "&#8594;";
+    function renderCard(categoryIndex) {
+      const category = categories[categoryIndex];
+      const card = grid.querySelector(`[data-category="${categoryIndex}"]`);
+      const index = states[categoryIndex];
+      const item = category.items[index];
+      const lang = language();
 
-    toolbar.append(previousButton, status, nextButton);
-    shell.insertBefore(toolbar, track);
-
-    const cards = [...track.querySelectorAll(".portfolio-item")];
-
-    function currentLanguage() {
-      return document.documentElement.lang === "en" ? "en" : "de";
-    }
-
-    function updateLabels() {
-      const language = currentLanguage();
-      track.setAttribute("aria-label", labels[language].region);
-      previousButton.setAttribute("aria-label", labels[language].previous);
-      nextButton.setAttribute("aria-label", labels[language].next);
-    }
-
-    function cardStep() {
-      const firstCard = cards[0];
-      if (!firstCard) return track.clientWidth;
-      const styles = getComputedStyle(track);
-      const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
-      return firstCard.getBoundingClientRect().width + gap;
-    }
-
-    function activeIndex() {
-      const step = cardStep();
-      return step > 0 ? Math.round(track.scrollLeft / step) : 0;
-    }
-
-    function updateState() {
-      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
-      const tolerance = 4;
-      previousButton.disabled = track.scrollLeft <= tolerance;
-      nextButton.disabled = track.scrollLeft >= maxScroll - tolerance;
-      const index = Math.min(cards.length - 1, Math.max(0, activeIndex()));
-      status.textContent = `${index + 1} / ${cards.length}`;
-    }
-
-    function move(direction) {
-      track.scrollBy({
-        left: direction * cardStep(),
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      const image = card.querySelector(".portfolio-category-image");
+      image.src = item.image;
+      image.alt = item.title;
+      card.querySelector(".portfolio-category-label").textContent = category.title[lang];
+      card.querySelector(".portfolio-category-description").textContent = category.description[lang];
+      card.querySelector(".portfolio-category-item-title").textContent = item.title;
+      card.querySelector(".portfolio-category-counter").textContent = `${index + 1} / ${category.items.length}`;
+      card.querySelector(".portfolio-category-prev").setAttribute("aria-label", copy[lang].previous);
+      card.querySelector(".portfolio-category-next").setAttribute("aria-label", copy[lang].next);
+      card.querySelectorAll(".portfolio-category-dot").forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === index);
       });
     }
 
-    previousButton.addEventListener("click", () => move(-1));
-    nextButton.addEventListener("click", () => move(1));
-    track.addEventListener("scroll", () => requestAnimationFrame(updateState), { passive: true });
-    window.addEventListener("resize", updateState, { passive: true });
+    function move(categoryIndex, direction) {
+      const count = categories[categoryIndex].items.length;
+      states[categoryIndex] = (states[categoryIndex] + direction + count) % count;
+      renderCard(categoryIndex);
+    }
 
-    track.addEventListener("keydown", event => {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        move(-1);
-      }
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
-        move(1);
-      }
+    grid.querySelectorAll(".portfolio-category").forEach((card, categoryIndex) => {
+      card.querySelector(".portfolio-category-prev").addEventListener("click", () => move(categoryIndex, -1));
+      card.querySelector(".portfolio-category-next").addEventListener("click", () => move(categoryIndex, 1));
+
+      let startX = 0;
+      card.addEventListener("pointerdown", event => {
+        startX = event.clientX;
+      });
+      card.addEventListener("pointerup", event => {
+        const delta = event.clientX - startX;
+        if (Math.abs(delta) < 45) return;
+        move(categoryIndex, delta < 0 ? 1 : -1);
+      });
     });
+
+    function updateLanguage() {
+      const lang = language();
+      const intro = document.querySelector("#portfolio [data-i18n='portfolio.intro']");
+      if (intro) intro.textContent = copy[lang].intro;
+      categories.forEach((_, index) => renderCard(index));
+    }
 
     document.querySelectorAll("[data-lang]").forEach(button => {
-      button.addEventListener("click", () => requestAnimationFrame(updateLabels));
+      button.addEventListener("click", () => requestAnimationFrame(updateLanguage));
     });
 
-    updateLabels();
-    updateState();
+    updateLanguage();
     return true;
   }
 
   function waitForPortfolio() {
-    if (initialiseSlider()) return;
-
+    if (initialiseCategories()) return;
     const observer = new MutationObserver(() => {
-      if (initialiseSlider()) observer.disconnect();
+      if (initialiseCategories()) observer.disconnect();
     });
-
     observer.observe(document.documentElement, { childList: true, subtree: true });
     window.setTimeout(() => observer.disconnect(), 10000);
   }

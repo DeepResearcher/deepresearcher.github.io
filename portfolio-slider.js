@@ -1,4 +1,6 @@
 (() => {
+  const STYLE_ID = "stable-portfolio-category-styles";
+
   const categories = [
     {
       title: { de: "Digitale Lernspiele", en: "Digital Learning Games" },
@@ -44,24 +46,17 @@
       intro: "Die Beispiele sind in drei klaren Lösungskategorien gebündelt. Innerhalb jeder Kategorie können Sie durch die zugehörigen Konzepte blättern.",
       previous: "Vorheriges Beispiel",
       next: "Nächstes Beispiel",
-      example: "Beispiel"
-    },
-    en: {
-      intro: "The examples are grouped into three clear solution categories. Browse the related concepts within each category.",
-      previous: "Previous example",
-      next: "Next example",
-      example: "Example"
-    }
-  };
-
-  const locationCopy = {
-    de: {
+      dots: "Beispiele auswählen",
       hero: "Standort Berlin/Brandenburg · Europaweit tätig",
       contact: "Persönliche Gespräche in Berlin · Digitale Zusammenarbeit europaweit",
       why: "Gute digitale Outputs brauchen mehr als Code. Sie müssen zur Zielgruppe, zum Inhalt, zum Zeitplan, zum Budget und zur langfristigen Nutzung passen. Genau diese Verbindung bildet den Kern unserer Arbeit. Aus der Region Berlin/Brandenburg arbeiten wir mit internationalen Projektteams und Organisationen in ganz Europa zusammen.",
       footer: "Standort Berlin/Brandenburg · Europaweit tätig"
     },
     en: {
+      intro: "The examples are grouped into three clear solution categories. Browse the related concepts within each category.",
+      previous: "Previous example",
+      next: "Next example",
+      dots: "Select examples",
       hero: "Berlin/Brandenburg location · Working across Europe",
       contact: "In-person meetings in Berlin · Digital collaboration across Europe",
       why: "Strong digital outputs require more than code. They must fit the target group, content, timeline, budget and long-term use. Connecting these elements is at the core of our work. From the Berlin/Brandenburg region, we collaborate with international project teams and organisations across Europe.",
@@ -69,57 +64,183 @@
     }
   };
 
+  const states = categories.map(() => 0);
+
   function language() {
     return document.documentElement.lang === "en" ? "en" : "de";
   }
 
-  function installLocationStyles() {
-    if (document.getElementById("location-identity-styles")) return;
+  function installStyles() {
+    document.querySelectorAll('link[href*="portfolio-gallery.css"]').forEach(link => link.remove());
+    if (document.getElementById(STYLE_ID)) return;
+
     const style = document.createElement("style");
-    style.id = "location-identity-styles";
+    style.id = STYLE_ID;
     style.textContent = `
-      .location-identity-note {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        margin: 18px 0 0;
-        color: #c9f7f0;
-        font-size: 0.9rem;
-        font-weight: 680;
-      }
-      .location-identity-note::before {
-        content: "";
-        flex: 0 0 auto;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--accent);
-        box-shadow: 0 0 0 5px rgba(76, 215, 195, 0.1);
-      }
-      @media (max-width: 700px) {
-        .location-identity-note {
-          align-items: flex-start;
-          font-size: 0.86rem;
-          line-height: 1.5;
-        }
-        .location-identity-note::before {
-          margin-top: 0.42em;
-        }
-      }
+      .portfolio-section{content-visibility:auto;contain-intrinsic-size:820px}
+      .portfolio-category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+      .portfolio-category{min-width:0}
+      .portfolio-category-media{position:relative;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:#07111e;isolation:isolate;touch-action:pan-y}
+      .portfolio-category-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transform:scale(1);transition:transform .35s ease,opacity .18s ease}
+      .portfolio-category-image.is-changing{opacity:.3;transform:scale(1.015)}
+      .portfolio-category:hover .portfolio-category-image{transform:scale(1.025)}
+      .portfolio-category-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,12,23,.12) 10%,rgba(4,12,23,.22) 45%,rgba(4,12,23,.96) 100%);pointer-events:none}
+      .portfolio-category-label{position:absolute;top:17px;left:17px;z-index:2;max-width:calc(100% - 34px);padding:8px 12px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(5,15,27,.84);color:#fff;font-size:.76rem;font-weight:700;line-height:1.2;backdrop-filter:blur(8px)}
+      .portfolio-category-copy{position:absolute;right:18px;bottom:72px;left:18px;z-index:2}
+      .portfolio-category-description{margin:0 0 7px;color:rgba(255,255,255,.8);font-size:.8rem;line-height:1.4}
+      .portfolio-category-item-title{margin:0;color:#fff;font-size:clamp(1.08rem,1.45vw,1.42rem);line-height:1.15}
+      .portfolio-category-controls{position:absolute;right:15px;bottom:14px;left:15px;z-index:3;display:grid;grid-template-columns:40px 1fr 40px;align-items:center;gap:10px}
+      .portfolio-category-button{display:inline-grid;width:40px;height:40px;place-items:center;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(5,15,27,.84);color:#fff;cursor:pointer;font:inherit;font-size:1.15rem;line-height:1;backdrop-filter:blur(8px)}
+      .portfolio-category-button:hover,.portfolio-category-button:focus-visible{border-color:rgba(76,215,195,.7);background:rgba(76,215,195,.2)}
+      .portfolio-category-button:focus-visible,.portfolio-category-dot:focus-visible{outline:3px solid rgba(76,215,195,.36);outline-offset:2px}
+      .portfolio-category-counter{color:rgba(255,255,255,.84);font-size:.8rem;font-variant-numeric:tabular-nums;text-align:center}
+      .portfolio-category-dots{display:flex;min-height:30px;align-items:center;justify-content:center;gap:7px;padding-top:10px}
+      .portfolio-category-dot{width:7px;height:7px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.25);cursor:pointer;transition:width .2s ease,background .2s ease}
+      .portfolio-category-dot.is-active{width:22px;background:rgba(76,215,195,.9)}
+      .location-identity-note{display:flex;align-items:center;gap:9px;margin:18px 0;color:#c9f7f0;font-size:.9rem;font-weight:680}
+      .location-identity-note:before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(76,215,195,.1)}
+      @media(max-width:1050px){.portfolio-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.portfolio-category:last-child{grid-column:1/-1;width:calc((100% - 22px)/2);justify-self:center}}
+      @media(max-width:700px){.reveal,.reveal.is-visible{opacity:1!important;transform:none!important;transition:none!important}.site-header,.site-header.is-scrolled{background:#08111f!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.portfolio-category-grid{grid-template-columns:1fr;gap:24px}.portfolio-category:last-child{grid-column:auto;width:auto;justify-self:stretch}.portfolio-category-media{width:min(100%,430px);margin-inline:auto;border-radius:22px}.portfolio-category-description{font-size:.78rem}.location-identity-note{align-items:flex-start;font-size:.86rem;line-height:1.5}.location-identity-note:before{margin-top:.42em}}
+      @media(prefers-reduced-motion:reduce){.portfolio-category-image,.portfolio-category-dot{transition:none}}
     `;
     document.head.appendChild(style);
   }
 
-  function applyLocationIdentity() {
+  function categoryMarkup(category, categoryIndex) {
+    const first = category.items[0];
+    return `
+      <article class="portfolio-category" data-category="${categoryIndex}">
+        <div class="portfolio-category-media">
+          <img class="portfolio-category-image" src="${first.image}" alt="${first.title}" loading="lazy" decoding="async">
+          <div class="portfolio-category-shade" aria-hidden="true"></div>
+          <span class="portfolio-category-label"></span>
+          <div class="portfolio-category-copy">
+            <p class="portfolio-category-description"></p>
+            <h3 class="portfolio-category-item-title">${first.title}</h3>
+          </div>
+          <div class="portfolio-category-controls">
+            <button type="button" class="portfolio-category-button portfolio-category-prev">←</button>
+            <span class="portfolio-category-counter" aria-live="polite">1 / ${category.items.length}</span>
+            <button type="button" class="portfolio-category-button portfolio-category-next">→</button>
+          </div>
+        </div>
+        <div class="portfolio-category-dots"></div>
+      </article>`;
+  }
+
+  function buildStablePortfolio() {
+    const portfolio = document.getElementById("portfolio");
+    if (!portfolio) return false;
+
+    let grid = portfolio.querySelector(".portfolio-category-grid");
+    if (!grid) {
+      const oldGallery = portfolio.querySelector(".portfolio-gallery, .concept-grid");
+      if (!oldGallery) return false;
+
+      const oldShell = oldGallery.closest(".portfolio-slider");
+      grid = document.createElement("div");
+      grid.className = "portfolio-category-grid";
+      grid.setAttribute("aria-label", "Portfolio categories");
+      grid.innerHTML = categories.map(categoryMarkup).join("");
+      oldShell ? oldShell.replaceWith(grid) : oldGallery.replaceWith(grid);
+    }
+
+    if (grid.dataset.initialised === "true") return true;
+    grid.dataset.initialised = "true";
+
+    grid.querySelectorAll(".portfolio-category").forEach((card, categoryIndex) => {
+      const category = categories[categoryIndex];
+      const dots = card.querySelector(".portfolio-category-dots");
+      dots.innerHTML = category.items.map((item, itemIndex) =>
+        `<button type="button" class="portfolio-category-dot${itemIndex === 0 ? " is-active" : ""}" aria-label="${item.title}" aria-current="${itemIndex === 0 ? "true" : "false"}"></button>`
+      ).join("");
+
+      card.querySelector(".portfolio-category-prev").addEventListener("click", () => move(categoryIndex, -1));
+      card.querySelector(".portfolio-category-next").addEventListener("click", () => move(categoryIndex, 1));
+      dots.querySelectorAll(".portfolio-category-dot").forEach((dot, itemIndex) => {
+        dot.addEventListener("click", () => {
+          states[categoryIndex] = itemIndex;
+          renderCard(categoryIndex, true);
+        });
+      });
+
+      let startX = null;
+      const media = card.querySelector(".portfolio-category-media");
+      media.addEventListener("pointerdown", event => {
+        if (event.target.closest("button")) return;
+        startX = event.clientX;
+      });
+      media.addEventListener("pointerup", event => {
+        if (startX === null) return;
+        const delta = event.clientX - startX;
+        startX = null;
+        if (Math.abs(delta) >= 50) move(categoryIndex, delta < 0 ? 1 : -1);
+      });
+      media.addEventListener("pointercancel", () => { startX = null; });
+
+      category.items.forEach(item => {
+        const preload = new Image();
+        preload.src = item.image;
+      });
+    });
+
+    applyLanguageAndLocation();
+    return true;
+  }
+
+  function renderCard(categoryIndex, animate = false) {
+    const card = document.querySelector(`.portfolio-category[data-category="${categoryIndex}"]`);
+    if (!card) return;
+
+    const category = categories[categoryIndex];
+    const itemIndex = states[categoryIndex];
+    const item = category.items[itemIndex];
     const lang = language();
-    const text = locationCopy[lang];
+    const image = card.querySelector(".portfolio-category-image");
+
+    const apply = () => {
+      image.src = item.image;
+      image.alt = item.title;
+      card.querySelector(".portfolio-category-label").textContent = category.title[lang];
+      card.querySelector(".portfolio-category-description").textContent = category.description[lang];
+      card.querySelector(".portfolio-category-item-title").textContent = item.title;
+      card.querySelector(".portfolio-category-counter").textContent = `${itemIndex + 1} / ${category.items.length}`;
+      card.querySelector(".portfolio-category-prev").setAttribute("aria-label", copy[lang].previous);
+      card.querySelector(".portfolio-category-next").setAttribute("aria-label", copy[lang].next);
+      card.querySelector(".portfolio-category-dots").setAttribute("aria-label", copy[lang].dots);
+      card.querySelectorAll(".portfolio-category-dot").forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === itemIndex);
+        dot.setAttribute("aria-current", dotIndex === itemIndex ? "true" : "false");
+      });
+      requestAnimationFrame(() => image.classList.remove("is-changing"));
+    };
+
+    if (animate) {
+      image.classList.add("is-changing");
+      window.setTimeout(apply, 100);
+    } else {
+      apply();
+    }
+  }
+
+  function move(categoryIndex, direction) {
+    const count = categories[categoryIndex].items.length;
+    states[categoryIndex] = (states[categoryIndex] + direction + count) % count;
+    renderCard(categoryIndex, true);
+  }
+
+  function applyLanguageAndLocation() {
+    const lang = language();
+    const text = copy[lang];
+
+    const intro = document.querySelector('#portfolio [data-i18n="portfolio.intro"]');
+    if (intro) intro.textContent = text.intro;
+    categories.forEach((_, index) => renderCard(index));
 
     const heroLocation = document.querySelector('[data-i18n="hero.trust3"]');
     if (heroLocation) heroLocation.textContent = text.hero;
-
     const whyText = document.querySelector('[data-i18n="why.text"]');
     if (whyText) whyText.textContent = text.why;
-
     const footerLocation = document.querySelector(".footer-meta > span:first-child");
     if (footerLocation) footerLocation.textContent = text.footer;
 
@@ -129,133 +250,31 @@
       if (!note) {
         note = document.createElement("p");
         note.className = "location-identity-note";
-        const offerList = contactCard.querySelector(".offer-list");
-        if (offerList) contactCard.insertBefore(note, offerList);
-        else contactCard.appendChild(note);
+        const cta = contactCard.querySelector(".button");
+        cta ? contactCard.insertBefore(note, cta) : contactCard.appendChild(note);
       }
       note.textContent = text.contact;
     }
   }
 
-  function categoryMarkup(category, categoryIndex) {
-    return `
-      <article class="portfolio-category" data-category="${categoryIndex}">
-        <div class="portfolio-category-media">
-          <img class="portfolio-category-image" src="${category.items[0].image}" alt="${category.items[0].title}" loading="lazy">
-          <div class="portfolio-category-shade" aria-hidden="true"></div>
-          <span class="portfolio-category-label"></span>
-          <div class="portfolio-category-copy">
-            <p class="portfolio-category-description"></p>
-            <h3 class="portfolio-category-item-title">${category.items[0].title}</h3>
-          </div>
-          <div class="portfolio-category-controls">
-            <button type="button" class="portfolio-category-button portfolio-category-prev" aria-label="Previous example">&#8592;</button>
-            <span class="portfolio-category-counter" aria-live="polite">1 / ${category.items.length}</span>
-            <button type="button" class="portfolio-category-button portfolio-category-next" aria-label="Next example">&#8594;</button>
-          </div>
-        </div>
-        <div class="portfolio-category-dots" aria-hidden="true">
-          ${category.items.map((_, index) => `<span class="portfolio-category-dot${index === 0 ? " is-active" : ""}"></span>`).join("")}
-        </div>
-      </article>`;
-  }
-
-  function initialiseCategories() {
-    const oldGallery = document.querySelector("#portfolio .portfolio-gallery");
-    if (!oldGallery || document.querySelector("#portfolio .portfolio-category-grid")) return false;
-
-    const oldSlider = oldGallery.closest(".portfolio-slider");
-    const grid = document.createElement("div");
-    grid.className = "portfolio-category-grid";
-    grid.innerHTML = categories.map(categoryMarkup).join("");
-
-    if (oldSlider) oldSlider.replaceWith(grid);
-    else oldGallery.replaceWith(grid);
-
-    const states = categories.map(() => 0);
-
-    function renderCard(categoryIndex) {
-      const category = categories[categoryIndex];
-      const card = grid.querySelector(`[data-category="${categoryIndex}"]`);
-      const index = states[categoryIndex];
-      const item = category.items[index];
-      const lang = language();
-
-      const image = card.querySelector(".portfolio-category-image");
-      image.src = item.image;
-      image.alt = item.title;
-      card.querySelector(".portfolio-category-label").textContent = category.title[lang];
-      card.querySelector(".portfolio-category-description").textContent = category.description[lang];
-      card.querySelector(".portfolio-category-item-title").textContent = item.title;
-      card.querySelector(".portfolio-category-counter").textContent = `${index + 1} / ${category.items.length}`;
-      card.querySelector(".portfolio-category-prev").setAttribute("aria-label", copy[lang].previous);
-      card.querySelector(".portfolio-category-next").setAttribute("aria-label", copy[lang].next);
-      card.querySelectorAll(".portfolio-category-dot").forEach((dot, dotIndex) => {
-        dot.classList.toggle("is-active", dotIndex === index);
+  function start() {
+    installStyles();
+    if (!buildStablePortfolio()) {
+      const observer = new MutationObserver(() => {
+        if (buildStablePortfolio()) observer.disconnect();
       });
-    }
-
-    function move(categoryIndex, direction) {
-      const count = categories[categoryIndex].items.length;
-      states[categoryIndex] = (states[categoryIndex] + direction + count) % count;
-      renderCard(categoryIndex);
-    }
-
-    grid.querySelectorAll(".portfolio-category").forEach((card, categoryIndex) => {
-      card.querySelector(".portfolio-category-prev").addEventListener("click", () => move(categoryIndex, -1));
-      card.querySelector(".portfolio-category-next").addEventListener("click", () => move(categoryIndex, 1));
-
-      let startX = 0;
-      card.addEventListener("pointerdown", event => {
-        startX = event.clientX;
-      });
-      card.addEventListener("pointerup", event => {
-        const delta = event.clientX - startX;
-        if (Math.abs(delta) < 45) return;
-        move(categoryIndex, delta < 0 ? 1 : -1);
-      });
-    });
-
-    function updateLanguage() {
-      const lang = language();
-      const intro = document.querySelector("#portfolio [data-i18n='portfolio.intro']");
-      if (intro) intro.textContent = copy[lang].intro;
-      categories.forEach((_, index) => renderCard(index));
-      applyLocationIdentity();
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+      window.setTimeout(() => observer.disconnect(), 5000);
     }
 
     document.querySelectorAll("[data-lang]").forEach(button => {
-      button.addEventListener("click", () => requestAnimationFrame(updateLanguage));
-    });
-
-    updateLanguage();
-    return true;
-  }
-
-  function waitForPortfolio() {
-    if (initialiseCategories()) return;
-    const observer = new MutationObserver(() => {
-      if (initialiseCategories()) observer.disconnect();
-    });
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    window.setTimeout(() => observer.disconnect(), 10000);
-  }
-
-  function initialiseLocationIdentity() {
-    installLocationStyles();
-    applyLocationIdentity();
-    document.querySelectorAll("[data-lang]").forEach(button => {
-      button.addEventListener("click", () => requestAnimationFrame(applyLocationIdentity));
+      button.addEventListener("click", () => requestAnimationFrame(applyLanguageAndLocation));
     });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-      initialiseLocationIdentity();
-      waitForPortfolio();
-    }, { once: true });
+    document.addEventListener("DOMContentLoaded", start, { once: true });
   } else {
-    initialiseLocationIdentity();
-    waitForPortfolio();
+    start();
   }
 })();

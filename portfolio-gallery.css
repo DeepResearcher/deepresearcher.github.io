@@ -1,0 +1,54 @@
+/* Separate portfolio examples: one visual per card */
+.portfolio-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.portfolio-item {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.035);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(76, 215, 195, 0.42);
+  background: rgba(76, 215, 195, 0.055);
+}
+
+.portfolio-thumb {
+  height: 280px;
+  background-color: #07111e;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.portfolio-item-content { padding: 23px; }
+.portfolio-item h3 { margin: 0 0 10px; font-size: 1.28rem; }
+.portfolio-item p { min-height: 88px; margin: 0 0 18px; color: var(--muted); font-size: 0.93rem; }
+
+.portfolio-thumb-1 { background-image: url("assets/portfolio/examples/ecosort.svg"); }
+.portfolio-thumb-2 { background-image: url("assets/portfolio/examples/chrono-cogs.svg"); }
+.portfolio-thumb-3 { background-image: url("assets/portfolio/examples/scenario-lab.svg"); }
+.portfolio-thumb-4 { background-image: url("assets/portfolio/examples/cyberwise.svg"); }
+.portfolio-thumb-5 { background-image: url("assets/portfolio/examples/sustainable-millionaire.svg"); }
+.portfolio-thumb-6 { background-image: url("assets/portfolio/examples/project-nexus.svg"); }
+.portfolio-thumb-7 { background-image: url("assets/portfolio/examples/greenfuture-academy.svg"); }
+.portfolio-thumb-8 { background-image: url("assets/portfolio/examples/project-aegis.svg"); }
+.portfolio-thumb-9 { background-image: url("assets/portfolio/examples/ethical-choices-workshop.svg"); }
+.portfolio-thumb-10 { background-image: url("assets/portfolio/examples/collaborative-board-game.svg"); }
+
+@media (max-width: 1080px) {
+  .portfolio-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .portfolio-gallery { grid-template-columns: 1fr; }
+  .portfolio-thumb { height: 360px; }
+  .portfolio-item p { min-height: 0; }
+}

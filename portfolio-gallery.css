@@ -1,8 +1,14 @@
 /* Separate portfolio examples: one visual per card */
+.portfolio-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 4200px;
+}
+
 .portfolio-gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
+  contain: layout paint style;
 }
 
 .portfolio-item {
@@ -10,6 +16,8 @@
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.035);
+  content-visibility: auto;
+  contain-intrinsic-size: 520px;
   transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
@@ -47,7 +55,22 @@
   .portfolio-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 700px) {
+  /* Avoid the dark flash caused by opacity transitions and mobile compositing. */
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .site-header,
+  .site-header.is-scrolled {
+    background: #08111f !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
   .portfolio-gallery { grid-template-columns: 1fr; }
   .portfolio-thumb { height: 360px; }
   .portfolio-item p { min-height: 0; }

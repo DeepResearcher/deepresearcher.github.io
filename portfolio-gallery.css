@@ -1,23 +1,88 @@
-/* Separate portfolio examples: one visual per card */
+/* High-resolution portfolio carousel */
 .portfolio-section {
   content-visibility: auto;
-  contain-intrinsic-size: 4200px;
+  contain-intrinsic-size: 980px;
+}
+
+.portfolio-slider {
+  position: relative;
+}
+
+.portfolio-slider-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.portfolio-slider-status {
+  min-width: 52px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.portfolio-slider-button {
+  display: inline-grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.055);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.55rem;
+  line-height: 1;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.portfolio-slider-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(76, 215, 195, 0.55);
+  background: rgba(76, 215, 195, 0.12);
+}
+
+.portfolio-slider-button:focus-visible {
+  outline: 3px solid rgba(76, 215, 195, 0.38);
+  outline-offset: 3px;
+}
+
+.portfolio-slider-button:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
 .portfolio-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
   gap: 22px;
-  contain: layout paint style;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 2px 18px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.portfolio-gallery::-webkit-scrollbar {
+  display: none;
 }
 
 .portfolio-item {
+  flex: 0 0 calc((100% - 44px) / 3);
+  min-width: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.035);
-  content-visibility: auto;
-  contain-intrinsic-size: 520px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
@@ -28,7 +93,7 @@
 }
 
 .portfolio-thumb {
-  height: 280px;
+  height: 350px;
   background-color: #07111e;
   background-position: center;
   background-repeat: no-repeat;
@@ -36,27 +101,46 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.portfolio-item-content { padding: 23px; }
-.portfolio-item h3 { margin: 0 0 10px; font-size: 1.28rem; }
-.portfolio-item p { min-height: 88px; margin: 0 0 18px; color: var(--muted); font-size: 0.93rem; }
+.portfolio-item-content {
+  padding: 23px;
+}
 
-.portfolio-thumb-1 { background-image: url("assets/portfolio/examples/ecosort.svg"); }
-.portfolio-thumb-2 { background-image: url("assets/portfolio/examples/chrono-cogs.svg"); }
-.portfolio-thumb-3 { background-image: url("assets/portfolio/examples/scenario-lab.svg"); }
-.portfolio-thumb-4 { background-image: url("assets/portfolio/examples/cyberwise.svg"); }
-.portfolio-thumb-5 { background-image: url("assets/portfolio/examples/sustainable-millionaire.svg"); }
-.portfolio-thumb-6 { background-image: url("assets/portfolio/examples/project-nexus.svg"); }
-.portfolio-thumb-7 { background-image: url("assets/portfolio/examples/greenfuture-academy.svg"); }
-.portfolio-thumb-8 { background-image: url("assets/portfolio/examples/project-aegis.svg"); }
-.portfolio-thumb-9 { background-image: url("assets/portfolio/examples/ethical-choices-workshop.svg"); }
-.portfolio-thumb-10 { background-image: url("assets/portfolio/examples/collaborative-board-game.svg"); }
+.portfolio-item h3 {
+  margin: 0 0 10px;
+  font-size: 1.28rem;
+}
+
+.portfolio-item p {
+  min-height: 88px;
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+/* Original high-resolution JPGs extracted from the uploaded ZIP. */
+.portfolio-thumb-1 { background-image: url("assets/portfolio/originals/portfolio-08.jpg"); }
+.portfolio-thumb-2 { background-image: url("assets/portfolio/originals/portfolio-02.jpg"); }
+.portfolio-thumb-3 { background-image: url("assets/portfolio/originals/portfolio-07.jpg"); }
+.portfolio-thumb-4 { background-image: url("assets/portfolio/originals/portfolio-09.jpg"); }
+.portfolio-thumb-5 { background-image: url("assets/portfolio/originals/portfolio-01.jpg"); }
+.portfolio-thumb-6 { background-image: url("assets/portfolio/originals/portfolio-06.jpg"); }
+.portfolio-thumb-7 { background-image: url("assets/portfolio/originals/portfolio-10.jpg"); }
+.portfolio-thumb-8 { background-image: url("assets/portfolio/originals/portfolio-03.jpg"); }
+.portfolio-thumb-9 { background-image: url("assets/portfolio/originals/portfolio-05.jpg"); }
+.portfolio-thumb-10 { background-image: url("assets/portfolio/originals/portfolio-04.jpg"); }
 
 @media (max-width: 1080px) {
-  .portfolio-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .portfolio-item {
+    flex-basis: calc((100% - 22px) / 2);
+  }
+
+  .portfolio-thumb {
+    height: 370px;
+  }
 }
 
 @media (max-width: 700px) {
-  /* Avoid the dark flash caused by opacity transitions and mobile compositing. */
+  /* Avoid dark flashes caused by opacity transitions and mobile compositing. */
   .reveal,
   .reveal.is-visible {
     opacity: 1 !important;
@@ -71,7 +155,42 @@
     backdrop-filter: none !important;
   }
 
-  .portfolio-gallery { grid-template-columns: 1fr; }
-  .portfolio-thumb { height: 360px; }
-  .portfolio-item p { min-height: 0; }
+  .portfolio-slider-toolbar {
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .portfolio-slider-button {
+    width: 43px;
+    height: 43px;
+  }
+
+  .portfolio-gallery {
+    gap: 14px;
+    margin-inline: -2px;
+    padding-bottom: 12px;
+  }
+
+  .portfolio-item {
+    flex-basis: 88%;
+  }
+
+  .portfolio-thumb {
+    height: 410px;
+  }
+
+  .portfolio-item p {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-gallery {
+    scroll-behavior: auto;
+  }
+
+  .portfolio-slider-button,
+  .portfolio-item {
+    transition: none;
+  }
 }

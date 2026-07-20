@@ -54,8 +54,87 @@
     }
   };
 
+  const locationCopy = {
+    de: {
+      hero: "Standort Berlin/Brandenburg · Europaweit tätig",
+      contact: "Persönliche Gespräche in Berlin · Digitale Zusammenarbeit europaweit",
+      why: "Gute digitale Outputs brauchen mehr als Code. Sie müssen zur Zielgruppe, zum Inhalt, zum Zeitplan, zum Budget und zur langfristigen Nutzung passen. Genau diese Verbindung bildet den Kern unserer Arbeit. Aus der Region Berlin/Brandenburg arbeiten wir mit internationalen Projektteams und Organisationen in ganz Europa zusammen.",
+      footer: "Standort Berlin/Brandenburg · Europaweit tätig"
+    },
+    en: {
+      hero: "Berlin/Brandenburg location · Working across Europe",
+      contact: "In-person meetings in Berlin · Digital collaboration across Europe",
+      why: "Strong digital outputs require more than code. They must fit the target group, content, timeline, budget and long-term use. Connecting these elements is at the core of our work. From the Berlin/Brandenburg region, we collaborate with international project teams and organisations across Europe.",
+      footer: "Berlin/Brandenburg location · Working across Europe"
+    }
+  };
+
   function language() {
     return document.documentElement.lang === "en" ? "en" : "de";
+  }
+
+  function installLocationStyles() {
+    if (document.getElementById("location-identity-styles")) return;
+    const style = document.createElement("style");
+    style.id = "location-identity-styles";
+    style.textContent = `
+      .location-identity-note {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin: 18px 0 0;
+        color: #c9f7f0;
+        font-size: 0.9rem;
+        font-weight: 680;
+      }
+      .location-identity-note::before {
+        content: "";
+        flex: 0 0 auto;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 5px rgba(76, 215, 195, 0.1);
+      }
+      @media (max-width: 700px) {
+        .location-identity-note {
+          align-items: flex-start;
+          font-size: 0.86rem;
+          line-height: 1.5;
+        }
+        .location-identity-note::before {
+          margin-top: 0.42em;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function applyLocationIdentity() {
+    const lang = language();
+    const text = locationCopy[lang];
+
+    const heroLocation = document.querySelector('[data-i18n="hero.trust3"]');
+    if (heroLocation) heroLocation.textContent = text.hero;
+
+    const whyText = document.querySelector('[data-i18n="why.text"]');
+    if (whyText) whyText.textContent = text.why;
+
+    const footerLocation = document.querySelector(".footer-meta > span:first-child");
+    if (footerLocation) footerLocation.textContent = text.footer;
+
+    const contactCard = document.querySelector(".contact-step-card");
+    if (contactCard) {
+      let note = contactCard.querySelector(".location-identity-note");
+      if (!note) {
+        note = document.createElement("p");
+        note.className = "location-identity-note";
+        const offerList = contactCard.querySelector(".offer-list");
+        if (offerList) contactCard.insertBefore(note, offerList);
+        else contactCard.appendChild(note);
+      }
+      note.textContent = text.contact;
+    }
   }
 
   function categoryMarkup(category, categoryIndex) {
@@ -142,6 +221,7 @@
       const intro = document.querySelector("#portfolio [data-i18n='portfolio.intro']");
       if (intro) intro.textContent = copy[lang].intro;
       categories.forEach((_, index) => renderCard(index));
+      applyLocationIdentity();
     }
 
     document.querySelectorAll("[data-lang]").forEach(button => {
@@ -161,9 +241,21 @@
     window.setTimeout(() => observer.disconnect(), 10000);
   }
 
+  function initialiseLocationIdentity() {
+    installLocationStyles();
+    applyLocationIdentity();
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => requestAnimationFrame(applyLocationIdentity));
+    });
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", waitForPortfolio, { once: true });
+    document.addEventListener("DOMContentLoaded", () => {
+      initialiseLocationIdentity();
+      waitForPortfolio();
+    }, { once: true });
   } else {
+    initialiseLocationIdentity();
     waitForPortfolio();
   }
 })();

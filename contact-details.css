@@ -1,0 +1,81 @@
+/* Visible telephone contact details */
+.contact-phone-block {
+  margin: 18px 0 22px;
+  padding: 17px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.contact-phone-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-phone-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
+.contact-phone-link,
+.footer-phone-link {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.contact-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.contact-phone-link::before {
+  content: "☎";
+  color: var(--accent);
+  font-size: 0.95em;
+}
+
+.contact-phone-link:hover,
+.footer-phone-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-phone-link:focus-visible,
+.footer-phone-link:focus-visible {
+  outline: 3px solid rgba(76, 215, 195, 0.36);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.footer-phone-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+}
+
+.footer-phone-link {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .contact-phone-links,
+  .footer-phone-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-phone-block {
+    padding: 16px;
+  }
+}

@@ -1,7 +1,7 @@
 (() => {
   const copy = {
     de: {
-      "access.skip":"Zum Inhalt springen","access.menu":"Menü öffnen","nav.services":"Leistungen","nav.outputs":"Digital Outputs","nav.contact":"Kontakt","nav.team":"Team",
+      "access.skip":"Zum Inhalt springen","access.menu":"Menü öffnen","nav.services":"Leistungen","nav.portfolio":"Portfolio","nav.outputs":"Digital Outputs","nav.contact":"Kontakt","nav.why":"Warum wir","nav.team":"Team",
       "hero.kicker":"Digital Output Library","hero.title":"Digitale Konzepte für Lernen, Zusammenarbeit und Projektwirkung.","hero.text":"Diese Seite bündelt unsere eigenen Konzeptbeispiele, interaktive Format-Referenzen und eine klare Übersicht darüber, wie digitale Outputs in europäischen Projekten eingesetzt werden können.","hero.ctaPrimary":"Konzeptbeispiele ansehen","hero.ctaSecondary":"Projekt besprechen","hero.metric1":"eigene Konzeptbeispiele","hero.metric2":"interaktive Format-Referenzen","hero.metric3":"technische Kernbereiche",
       "concepts.kicker":"Unsere Konzeptbeispiele","concepts.title":"So können digitale Projektoutputs aussehen.","concepts.text":"Alle folgenden Arbeiten sind als Konzeptbeispiele gekennzeichnet. Sie zeigen mögliche Funktionen, visuelle Richtungen und Einsatzformen, werden jedoch nicht als abgeschlossene Kundenprojekte dargestellt.",
       "filter.all":"Alle","filter.games":"Serious Games","filter.learning":"Interactive Learning","filter.platforms":"Plattformen","filter.workshops":"Workshop-Formate","status.concept":"Konzeptbeispiel",
@@ -11,7 +11,7 @@
       "cta.kicker":"Projektspezifische Umsetzung","cta.title":"Ein vergleichbarer digitaler Output kann für Ihr Projekt entwickelt werden.","cta.text":"Thema, Zielgruppe, Sprache, visuelle Identität, technische Funktionen und Lieferformat werden projektspezifisch angepasst.","cta.button":"Projekt besprechen","footer.preview":"Vorschau – rechtliche Angaben folgen vor dem öffentlichen Launch."
     },
     en: {
-      "access.skip":"Skip to content","access.menu":"Open menu","nav.services":"Services","nav.outputs":"Digital Outputs","nav.contact":"Contact","nav.team":"Team",
+      "access.skip":"Skip to content","access.menu":"Open menu","nav.services":"Services","nav.portfolio":"Portfolio","nav.outputs":"Digital Outputs","nav.contact":"Contact","nav.why":"Why Us","nav.team":"Team",
       "hero.kicker":"Digital Output Library","hero.title":"Digital concepts for learning, collaboration and project impact.","hero.text":"This page brings together our own concept examples, interactive format references and a clear overview of how digital outputs can be used in European projects.","hero.ctaPrimary":"Explore concept examples","hero.ctaSecondary":"Discuss a project","hero.metric1":"original concept examples","hero.metric2":"interactive format references","hero.metric3":"core technical areas",
       "concepts.kicker":"Our concept examples","concepts.title":"What digital project outputs can look like.","concepts.text":"All works below are clearly marked as concept examples. They illustrate possible functions, visual directions and use cases, but are not presented as completed client projects.",
       "filter.all":"All","filter.games":"Serious Games","filter.learning":"Interactive Learning","filter.platforms":"Platforms","filter.workshops":"Workshop Formats","status.concept":"Concept Example",
@@ -26,6 +26,39 @@
   const menuToggle = document.querySelector('.menu-toggle');
   const primaryNav = document.querySelector('.primary-nav');
   const header = document.querySelector('.site-header');
+
+  function addNavigationLinks(container) {
+    if (!container) return;
+
+    const outputsLink = container.querySelector('[href="digital-outputs.html"], [href="/digital-outputs.html"], [href="/digital-outputs"]');
+    const contactLink = container.querySelector('[href="index.html#collaborate"], [href="/#collaborate"]');
+    const teamLink = container.querySelector('[href="index.html#team"], [href="/#team"]');
+
+    if (!container.querySelector('[data-i18n="nav.portfolio"]')) {
+      const portfolioLink = document.createElement('a');
+      portfolioLink.href = '/#portfolio';
+      portfolioLink.dataset.i18n = 'nav.portfolio';
+      portfolioLink.textContent = 'Portfolio';
+      outputsLink ? container.insertBefore(portfolioLink, outputsLink) : container.appendChild(portfolioLink);
+    }
+
+    if (!container.querySelector('[data-i18n="nav.why"]')) {
+      const whyLink = document.createElement('a');
+      whyLink.href = '/#why-us';
+      whyLink.dataset.i18n = 'nav.why';
+      whyLink.textContent = 'Warum wir';
+      teamLink ? container.insertBefore(whyLink, teamLink) : (contactLink ? contactLink.insertAdjacentElement('afterend', whyLink) : container.appendChild(whyLink));
+    }
+
+    const servicesLink = container.querySelector('[data-i18n="nav.services"]');
+    if (servicesLink) servicesLink.href = '/#services';
+    if (outputsLink) outputsLink.href = '/digital-outputs';
+    if (contactLink) contactLink.href = '/#collaborate';
+    if (teamLink) teamLink.href = '/#team';
+  }
+
+  addNavigationLinks(primaryNav);
+  addNavigationLinks(document.querySelector('.footer-links'));
 
   function setLanguage(lang) {
     const selected = copy[lang] ? lang : 'de';

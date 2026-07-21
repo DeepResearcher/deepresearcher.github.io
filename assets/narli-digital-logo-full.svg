@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 820" role="img" aria-label="NARLI DIGITAL">
+  <defs>
+    <linearGradient id="ndGradient" x1="0" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#c8f3df"/>
+      <stop offset="0.48" stop-color="#69d4bd"/>
+      <stop offset="1" stop-color="#16917f"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0b6f63" flood-opacity=".2"/>
+    </filter>
+  </defs>
+  <g transform="translate(80 55)">
+    <g fill="url(#ndGradient)" filter="url(#softGlow)">
+      <path d="M72 52h51l197 199v68h-48L124 171v197H72z"/>
+      <path d="M166 239l151 129h-70l-81-69z"/>
+      <path d="M288 118h50v180h-50z"/>
+    </g>
+    <path d="M288 52h95c105 0 163 68 163 158s-58 158-163 158h-49v-50h49c72 0 113-45 113-108S455 102 383 102h-95z" fill="url(#ndGradient)" filter="url(#softGlow)"/>
+  </g>
+  <text x="340" y="575" fill="#f7f9fc" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="600" letter-spacing="27">NARLI</text>
+  <text x="340" y="680" fill="url(#ndGradient)" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="49" font-weight="500" letter-spacing="28">DIGITAL</text>
+</svg>

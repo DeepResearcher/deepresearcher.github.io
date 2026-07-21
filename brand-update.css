@@ -1,7 +1,12 @@
 /* NARLI DIGITAL logo update */
+.brand {
+  overflow: visible;
+}
+
 .brand-mark {
-  width: 58px;
+  width: 64px;
   height: 46px;
+  flex: 0 0 auto;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -12,7 +17,10 @@
 .brand-mark img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: contain;
+  object-position: center;
+  overflow: visible;
   filter: drop-shadow(0 7px 18px rgba(22, 145, 127, 0.18));
 }
 
@@ -33,11 +41,15 @@
 .footer-brand.brand-full-lockup {
   display: inline-flex;
   margin-bottom: 12px;
+  overflow: visible;
 }
 
 .brand-full-logo {
   width: 112px;
   height: auto;
+  display: block;
+  object-fit: contain;
+  overflow: visible;
   filter: drop-shadow(0 12px 30px rgba(22, 145, 127, 0.16));
 }
 
@@ -53,8 +65,8 @@
 
 @media (max-width: 700px) {
   .brand-mark {
-    width: 50px;
-    height: 39px;
+    width: 55px;
+    height: 40px;
   }
 
   .brand-full-logo {

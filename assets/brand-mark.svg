@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" role="img" aria-label="NARLI DIGITAL monogram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="35 20 560 390" preserveAspectRatio="xMidYMid meet" role="img" aria-label="NARLI DIGITAL monogram">
   <defs>
     <linearGradient id="ndGradient" x1="0" y1="0" x2="0.85" y2="1">
       <stop offset="0" stop-color="#c8f3df"/>
       <stop offset="0.48" stop-color="#69d4bd"/>
       <stop offset="1" stop-color="#16917f"/>
     </linearGradient>
-    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <filter id="softGlow" x="-30%" y="-30%" width="170%" height="180%">
       <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0b6f63" flood-opacity=".18"/>
     </filter>
   </defs>

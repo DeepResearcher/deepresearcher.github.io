@@ -1,5 +1,5 @@
 (() => {
-  const version = "20260721-1";
+  const version = "20260721-2";
 
   function installStylesheet() {
     let link = document.querySelector('link[href*="brand-update.css"]');

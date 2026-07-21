@@ -19,6 +19,13 @@
     }
   };
 
+  function loadBrand() {
+    if (document.querySelector('script[src*="brand.js"]')) return;
+    const script = document.createElement("script");
+    script.src = "brand.js?v=20260721-1";
+    document.head.appendChild(script);
+  }
+
   function language() {
     return document.documentElement.lang === "en" ? "en" : "de";
   }
@@ -75,7 +82,7 @@
       if (!outputLink) {
         outputLink = document.createElement("a");
         outputLink.className = "digital-outputs-nav-link";
-        outputLink.href = "/digital-outputs.html";
+        outputLink.href = "/digital-outputs";
         const portfolioLink = nav.querySelector('a[href="#portfolio"]');
         portfolioLink ? portfolioLink.insertAdjacentElement("afterend", outputLink) : nav.appendChild(outputLink);
       }
@@ -88,7 +95,7 @@
       if (!heroLink) {
         heroLink = document.createElement("a");
         heroLink.className = "button button-secondary digital-outputs-hero-link";
-        heroLink.href = "/digital-outputs.html";
+        heroLink.href = "/digital-outputs";
         heroActions.appendChild(heroLink);
       }
       heroLink.textContent = text.heroOutputs;
@@ -100,7 +107,7 @@
       if (!outputLink) {
         outputLink = document.createElement("a");
         outputLink.className = "digital-outputs-footer-link";
-        outputLink.href = "/digital-outputs.html";
+        outputLink.href = "/digital-outputs";
         const portfolioLink = footerLinks.querySelector('a[href="#portfolio"]');
         portfolioLink ? portfolioLink.insertAdjacentElement("afterend", outputLink) : footerLinks.appendChild(outputLink);
       }
@@ -115,7 +122,7 @@
         if (!action) {
           action = document.createElement("div");
           action.className = "portfolio-page-action reveal is-visible";
-          action.innerHTML = '<a class="button button-primary" href="/digital-outputs.html"></a>';
+          action.innerHTML = '<a class="button button-primary" href="/digital-outputs"></a>';
           container.appendChild(action);
         }
         const link = action.querySelector("a");
@@ -129,6 +136,7 @@
     installOutputsNavigation();
   }
 
+  loadBrand();
   installStylesheet();
   refresh();
 

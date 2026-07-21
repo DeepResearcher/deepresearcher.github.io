@@ -1,0 +1,63 @@
+/* NARLI DIGITAL logo update */
+.brand-mark {
+  width: 58px;
+  height: 46px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 7px 18px rgba(22, 145, 127, 0.18));
+}
+
+.brand-text {
+  letter-spacing: 0.16em;
+}
+
+.brand-text strong {
+  font-size: 0.98rem;
+  letter-spacing: 0.18em;
+}
+
+.brand-text span {
+  color: #66d2bd;
+  letter-spacing: 0.22em;
+}
+
+.footer-brand.brand-full-lockup {
+  display: inline-flex;
+  margin-bottom: 12px;
+}
+
+.brand-full-logo {
+  width: 112px;
+  height: auto;
+  filter: drop-shadow(0 12px 30px rgba(22, 145, 127, 0.16));
+}
+
+.site-header .brand:hover .brand-mark img,
+.site-header .brand:focus-visible .brand-mark img {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 9px 22px rgba(76, 215, 195, 0.28));
+}
+
+.site-header .brand-mark img {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+@media (max-width: 700px) {
+  .brand-mark {
+    width: 50px;
+    height: 39px;
+  }
+
+  .brand-full-logo {
+    width: 102px;
+  }
+}

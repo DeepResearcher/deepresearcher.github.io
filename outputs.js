@@ -27,6 +27,13 @@
   const primaryNav = document.querySelector('.primary-nav');
   const header = document.querySelector('.site-header');
 
+  function loadBrand() {
+    if (document.querySelector('script[src*="brand.js"]')) return;
+    const script = document.createElement('script');
+    script.src = 'brand.js?v=20260721-1';
+    document.head.appendChild(script);
+  }
+
   function addNavigationLinks(container) {
     if (!container) return;
 
@@ -104,5 +111,6 @@
   if (year) year.textContent = new Date().getFullYear();
   let initial = 'de';
   try { initial = localStorage.getItem('narli-language') || 'de'; } catch (_) {}
+  loadBrand();
   setLanguage(initial);
 })();

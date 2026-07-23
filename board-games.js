@@ -27,6 +27,13 @@
 
   const language = () => document.documentElement.lang === "en" ? "en" : "de";
 
+  function loadSiteEmail() {
+    if (document.querySelector('script[src*="site-email.js"]')) return;
+    const script = document.createElement("script");
+    script.src = "site-email.js?v=20260723-1";
+    document.head.appendChild(script);
+  }
+
   function moveCapabilityFramework() {
     const hero = document.querySelector(".outputs-hero");
     const capability = document.querySelector(".capability-section");
@@ -86,6 +93,7 @@
 
   async function install() {
     moveCapabilityFramework();
+    loadSiteEmail();
 
     const grid = document.querySelector(".output-grid");
     if (!grid) return;
@@ -152,6 +160,7 @@
   }
 
   moveCapabilityFramework();
+  loadSiteEmail();
   install().catch(error => {
     console.error("Board-game concepts could not be installed.", error);
   });

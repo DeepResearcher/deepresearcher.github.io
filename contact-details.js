@@ -22,7 +22,14 @@
   function loadBrand() {
     if (document.querySelector('script[src*="brand.js"]')) return;
     const script = document.createElement("script");
-    script.src = "brand.js?v=20260721-1";
+    script.src = "brand.js?v=20260721-2";
+    document.head.appendChild(script);
+  }
+
+  function loadSiteEmail() {
+    if (document.querySelector('script[src*="site-email.js"]')) return;
+    const script = document.createElement("script");
+    script.src = "site-email.js?v=20260723-1";
     document.head.appendChild(script);
   }
 
@@ -134,6 +141,7 @@
   function refresh() {
     installContacts();
     installOutputsNavigation();
+    loadSiteEmail();
   }
 
   loadBrand();

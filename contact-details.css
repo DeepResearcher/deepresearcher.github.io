@@ -1,3 +1,13 @@
+/* Homepage readability refinements */
+.hero-copy h1 {
+  max-width: 760px;
+  font-size: clamp(2.6rem, 3.8vw, 3.85rem);
+  font-weight: 690;
+  line-height: 1.1;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
+}
+
 /* Visible telephone contact details */
 .contact-phone-block {
   margin: 18px 0 22px;
@@ -79,7 +89,20 @@
   text-align: center;
 }
 
+@media (max-width: 1080px) {
+  .hero-copy h1 {
+    font-size: clamp(2.45rem, 4.7vw, 3.55rem);
+  }
+}
+
 @media (max-width: 700px) {
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(2.15rem, 9.4vw, 3rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
+
   .contact-phone-links,
   .footer-phone-list {
     flex-direction: column;

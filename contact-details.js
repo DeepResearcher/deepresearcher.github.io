@@ -5,18 +5,8 @@
   ];
 
   const labels = {
-    de: {
-      phone: "Telefon",
-      outputs: "Digital Outputs",
-      allOutputs: "Alle digitalen Outputs ansehen",
-      heroOutputs: "Digital Outputs entdecken"
-    },
-    en: {
-      phone: "Phone",
-      outputs: "Digital Outputs",
-      allOutputs: "View all digital outputs",
-      heroOutputs: "Explore Digital Outputs"
-    }
+    de: { phone: "Telefon" },
+    en: { phone: "Phone" }
   };
 
   function loadBrand() {
@@ -29,7 +19,7 @@
   function loadSiteEmail() {
     if (document.querySelector('script[src*="site-email.js"]')) return;
     const script = document.createElement("script");
-    script.src = "site-email.js?v=20260723-1";
+    script.src = "site-email.js?v=20260723-2";
     document.head.appendChild(script);
   }
 
@@ -44,7 +34,7 @@
   }
 
   function installStylesheet() {
-    const href = "contact-details.css?v=20260720-outputs-2";
+    const href = "contact-details.css?v=20260723-hero-1";
     let link = document.querySelector('link[href*="contact-details.css"]');
     if (!link) {
       link = document.createElement("link");
@@ -80,67 +70,8 @@
     if (label) label.textContent = labels[language()].phone;
   }
 
-  function installOutputsNavigation() {
-    const text = labels[language()];
-
-    const nav = document.querySelector(".primary-nav");
-    if (nav) {
-      let outputLink = nav.querySelector(".digital-outputs-nav-link");
-      if (!outputLink) {
-        outputLink = document.createElement("a");
-        outputLink.className = "digital-outputs-nav-link";
-        outputLink.href = "/digital-outputs";
-        const portfolioLink = nav.querySelector('a[href="#portfolio"]');
-        portfolioLink ? portfolioLink.insertAdjacentElement("afterend", outputLink) : nav.appendChild(outputLink);
-      }
-      outputLink.textContent = text.outputs;
-    }
-
-    const heroActions = document.querySelector(".hero-actions");
-    if (heroActions) {
-      let heroLink = heroActions.querySelector(".digital-outputs-hero-link");
-      if (!heroLink) {
-        heroLink = document.createElement("a");
-        heroLink.className = "button button-secondary digital-outputs-hero-link";
-        heroLink.href = "/digital-outputs";
-        heroActions.appendChild(heroLink);
-      }
-      heroLink.textContent = text.heroOutputs;
-    }
-
-    const footerLinks = document.querySelector(".footer-links");
-    if (footerLinks) {
-      let outputLink = footerLinks.querySelector(".digital-outputs-footer-link");
-      if (!outputLink) {
-        outputLink = document.createElement("a");
-        outputLink.className = "digital-outputs-footer-link";
-        outputLink.href = "/digital-outputs";
-        const portfolioLink = footerLinks.querySelector('a[href="#portfolio"]');
-        portfolioLink ? portfolioLink.insertAdjacentElement("afterend", outputLink) : footerLinks.appendChild(outputLink);
-      }
-      outputLink.textContent = text.outputs;
-    }
-
-    const section = document.getElementById("portfolio");
-    if (section) {
-      const container = section.querySelector(".container");
-      if (container) {
-        let action = container.querySelector(".portfolio-page-action");
-        if (!action) {
-          action = document.createElement("div");
-          action.className = "portfolio-page-action reveal is-visible";
-          action.innerHTML = '<a class="button button-primary" href="/digital-outputs"></a>';
-          container.appendChild(action);
-        }
-        const link = action.querySelector("a");
-        if (link) link.textContent = text.allOutputs;
-      }
-    }
-  }
-
   function refresh() {
     installContacts();
-    installOutputsNavigation();
     loadSiteEmail();
   }
 

@@ -14,7 +14,7 @@
       link.rel = "stylesheet";
       document.head.appendChild(link);
     }
-    link.href = "site-email.css?v=20260723-1";
+    link.href = "site-email.css?v=20260723-2";
   }
 
   function replaceExistingMailLinks() {
@@ -75,12 +75,32 @@
     copyright ? footer.insertBefore(line, copyright) : footer.prepend(line);
   }
 
+  function installLegalLinks() {
+    const footerLinks = document.querySelector(".footer-links");
+    if (!footerLinks) return;
+
+    if (!footerLinks.querySelector('a[href="/impressum"]')) {
+      const impressum = document.createElement("a");
+      impressum.href = "/impressum";
+      impressum.textContent = "Impressum";
+      footerLinks.appendChild(impressum);
+    }
+
+    if (!footerLinks.querySelector('a[href="/datenschutz"]')) {
+      const privacy = document.createElement("a");
+      privacy.href = "/datenschutz";
+      privacy.textContent = document.documentElement.lang === "en" ? "Privacy" : "Datenschutz";
+      footerLinks.appendChild(privacy);
+    }
+  }
+
   function install() {
     installStylesheet();
     replaceExistingMailLinks();
     installHomepageEmail();
     installOutputsEmail();
     installFooterEmail();
+    installLegalLinks();
   }
 
   if (document.readyState === "loading") {
@@ -88,4 +108,8 @@
   } else {
     install();
   }
+
+  document.querySelectorAll("[data-lang]").forEach(button => {
+    button.addEventListener("click", () => requestAnimationFrame(installLegalLinks));
+  });
 })();

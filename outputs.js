@@ -30,7 +30,14 @@
   function loadBrand() {
     if (document.querySelector('script[src*="brand.js"]')) return;
     const script = document.createElement('script');
-    script.src = 'brand.js?v=20260721-1';
+    script.src = 'brand.js?v=20260721-2';
+    document.head.appendChild(script);
+  }
+
+  function loadBoardGames() {
+    if (document.querySelector('script[src*="board-games.js"]')) return;
+    const script = document.createElement('script');
+    script.src = 'board-games.js?v=20260723-1';
     document.head.appendChild(script);
   }
 
@@ -112,5 +119,6 @@
   let initial = 'de';
   try { initial = localStorage.getItem('narli-language') || 'de'; } catch (_) {}
   loadBrand();
+  loadBoardGames();
   setLanguage(initial);
 })();

@@ -10,15 +10,17 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="redesign.css">
-  <link rel="stylesheet" href="outputs.css?v=20260723-2">
-  <script src="outputs.js?v=20260723-2" defer></script>
+  <link rel="stylesheet" href="outputs.css?v=20260723-3">
+  <link rel="stylesheet" href="site-email.css?v=20260723-1">
+  <script src="outputs.js?v=20260723-3" defer></script>
+  <script src="site-email.js?v=20260723-2" defer></script>
 </head>
 <body class="outputs-page">
   <a class="skip-link" href="#main" data-i18n="access.skip">Zum Inhalt springen</a>
 
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="NARLI DIGITAL Startseite">
+      <a class="brand" href="/" aria-label="NARLI DIGITAL Startseite">
         <span class="brand-mark" aria-hidden="true"><img src="assets/brand-mark.svg" alt=""></span>
         <span class="brand-text"><strong>NARLI</strong><span>DIGITAL</span></span>
       </a>
@@ -28,10 +30,12 @@
       </button>
 
       <nav class="primary-nav" id="primary-nav" aria-label="Hauptnavigation">
-        <a href="index.html#services" data-i18n="nav.services">Leistungen</a>
-        <a href="digital-outputs.html" aria-current="page" data-i18n="nav.outputs">Digital Outputs</a>
-        <a href="index.html#collaborate" data-i18n="nav.contact">Kontakt</a>
-        <a href="index.html#team" data-i18n="nav.team">Team</a>
+        <a href="/#services" data-i18n="nav.services">Leistungen</a>
+        <a href="/#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="/digital-outputs" aria-current="page" data-i18n="nav.outputs">Digital Outputs</a>
+        <a href="/#collaborate" data-i18n="nav.contact">Kontakt</a>
+        <a href="/#why-us" data-i18n="nav.why">Warum wir</a>
+        <a href="/#team" data-i18n="nav.team">Team</a>
       </nav>
 
       <div class="language-switch" aria-label="Sprache wählen">
@@ -50,15 +54,33 @@
           <p data-i18n="hero.text">Diese Seite bündelt unsere eigenen Konzeptbeispiele, mögliche interaktive Lernformate und eine klare Übersicht darüber, wie digitale Outputs in europäischen Projekten eingesetzt werden können.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#concepts" data-i18n="hero.ctaPrimary">Konzeptbeispiele ansehen</a>
-            <a class="button button-secondary" href="mailto:serhan.narli@gmail.com?subject=Digital%20Output%20Anfrage" data-i18n="hero.ctaSecondary">Projekt besprechen</a>
+            <a class="button button-secondary" href="mailto:info@narli-digital.de?subject=Digital%20Output%20Anfrage" data-i18n="hero.ctaSecondary">Projekt besprechen</a>
           </div>
         </div>
 
-        <aside class="outputs-hero-panel reveal" aria-label="Output categories">
+        <aside class="outputs-hero-panel reveal" aria-label="Kategorien digitaler Outputs">
           <div><strong>11</strong><span data-i18n="hero.metric1">eigene Konzeptbeispiele</span></div>
           <div><strong>6</strong><span data-i18n="hero.metric2">interaktive Lernformate</span></div>
           <div><strong>3</strong><span data-i18n="hero.metric3">technische Kernbereiche</span></div>
         </aside>
+      </div>
+    </section>
+
+    <section class="section section-light capability-section" id="capabilities">
+      <div class="container">
+        <div class="section-heading compact reveal">
+          <span class="section-kicker" data-i18n="matrix.kicker">EU Project Capability Framework</span>
+          <h2 data-i18n="matrix.title">Wir verbinden digitale Kompetenzen mit konkreten Projektbedarfen.</h2>
+          <p data-i18n="matrix.text">Der folgende Überblick zeigt, wie unsere Kompetenzen in europäischen Projekten eingesetzt und mit konkreten Projektanforderungen verbunden werden können.</p>
+        </div>
+
+        <div class="capability-matrix reveal" role="table" aria-label="NARLI DIGITAL capability matrix">
+          <div class="matrix-row matrix-head" role="row"><div role="columnheader"></div><div role="columnheader" data-i18n="matrix.learning">Interactive Learning</div><div role="columnheader" data-i18n="matrix.platforms">Websites & Plattformen</div><div role="columnheader" data-i18n="matrix.ai">KI & Automatisierung</div></div>
+          <div class="matrix-row" role="row"><div class="matrix-label" role="rowheader" data-i18n="matrix.mission.label">Mission</div><div role="cell" data-i18n="matrix.mission.learning">Bildungsinhalte in interaktive und nutzerfreundliche digitale Erfahrungen überführen.</div><div role="cell" data-i18n="matrix.mission.platforms">Projektergebnisse über zugängliche und nachhaltig nutzbare Plattformen veröffentlichen.</div><div role="cell" data-i18n="matrix.mission.ai">Informationszugang und Projektprozesse mit intelligenten Werkzeugen unterstützen.</div></div>
+          <div class="matrix-row" role="row"><div class="matrix-label" role="rowheader" data-i18n="matrix.expertise.label">Kernkompetenzen</div><div role="cell" data-i18n="matrix.expertise.learning">Serious Games, Quizformate, Szenarien und Microlearning.</div><div role="cell" data-i18n="matrix.expertise.platforms">Mehrsprachige Websites, Portale, Ressourcenbibliotheken und Anwendungen.</div><div role="cell" data-i18n="matrix.expertise.ai">KI-Assistenten, intelligente Suche, Automatisierung und Datenvisualisierung.</div></div>
+          <div class="matrix-row" role="row"><div class="matrix-label" role="rowheader" data-i18n="matrix.focus.label">EU-Aktivitätsschwerpunkt</div><div role="cell" data-i18n="matrix.focus.learning">Bildung, Awareness, Beteiligung und messbare Lernergebnisse.</div><div role="cell" data-i18n="matrix.focus.platforms">Dissemination, Zugänglichkeit und langfristige digitale Nutzung.</div><div role="cell" data-i18n="matrix.focus.ai">Effizienz, Personalisierung und Wissensmanagement.</div></div>
+          <div class="matrix-row" role="row"><div class="matrix-label" role="rowheader" data-i18n="matrix.integration.label">Projektintegration</div><div role="cell" data-i18n="matrix.integration.learning">Entwicklung digitaler Outputs oder technische Dienstleistung.</div><div role="cell" data-i18n="matrix.integration.platforms">Technischer Partner oder Unterauftragnehmer.</div><div role="cell" data-i18n="matrix.integration.ai">Entwicklungsunterstützung für KI und Automatisierung.</div></div>
+        </div>
       </div>
     </section>
 
@@ -79,58 +101,23 @@
         </div>
 
         <div class="output-grid">
-          <article class="output-card reveal" data-category="game">
-            <img src="assets/portfolio/examples/ecosort.svg" alt="EcoSort Challenge Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>EcoSort Challenge</h3><p data-i18n="card.ecosort">Mobiles Lernspiel zur Abfalltrennung mit Levels, Punkten und direktem Feedback.</p><div class="output-tags"><span>Mobile Game</span><span>Sustainability</span><span>Gamification</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="game">
-            <img src="assets/portfolio/examples/chrono-cogs.svg" alt="Chrono-Cogs Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Chrono-Cogs</h3><p data-i18n="card.chrono">Narratives Serious Game mit Teamrollen, Ressourcenmanagement und verzweigten Entscheidungen.</p><div class="output-tags"><span>Serious Game</span><span>Scenario</span><span>Team Play</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="learning">
-            <img src="assets/portfolio/examples/scenario-lab.svg" alt="Scenario Lab Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Scenario Lab</h3><p data-i18n="card.scenario">Interaktive E-Learning-Szenarien für Inklusion, Reflexion und wirkungsorientierte Entscheidungen.</p><div class="output-tags"><span>E-Learning</span><span>Inclusion</span><span>Analytics</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="learning">
-            <img src="assets/portfolio/examples/cyberwise.svg" alt="CyberWise Mission Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>CyberWise Mission</h3><p data-i18n="card.cyberwise">Mobile Microlearning-Anwendung für Cybersecurity-Awareness und sichere digitale Entscheidungen.</p><div class="output-tags"><span>Microlearning</span><span>Cybersecurity</span><span>Mobile</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="game">
-            <img src="assets/portfolio/examples/sustainable-millionaire.svg" alt="Sustainable Millionaire Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Sustainable Millionaire</h3><p data-i18n="card.millionaire">Quizbasiertes Serious Game zu Nachhaltigkeit, Wissenstransfer und spielerischem Lernen.</p><div class="output-tags"><span>Quiz</span><span>Web Game</span><span>Sustainability</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="game">
-            <img src="assets/portfolio/examples/project-nexus.svg" alt="Project Nexus Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Project Nexus</h3><p data-i18n="card.nexus">Kollaboratives Entscheidungsspiel mit Ressourcen, Teamfortschritt und projektbezogenem Feedback.</p><div class="output-tags"><span>Decision Game</span><span>Collaboration</span><span>Feedback</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="platform">
-            <img src="assets/portfolio/examples/greenfuture-academy.svg" alt="GreenFuture Academy Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>GreenFuture Academy</h3><p data-i18n="card.greenfuture">Browserbasierte Lernplattform mit spielerischen Übungen, Fortschritt und thematischen Modulen.</p><div class="output-tags"><span>Learning Platform</span><span>Modules</span><span>Progress</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="game">
-            <img src="assets/portfolio/examples/project-aegis.svg" alt="Project Aegis Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Project Aegis</h3><p data-i18n="card.aegis">Simulation für gesellschaftliche Resilienz mit Teamwerten, Szenarien und messbaren Auswirkungen.</p><div class="output-tags"><span>Simulation</span><span>Resilience</span><span>Dashboard</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="workshop">
-            <img src="assets/portfolio/examples/ethical-choices-workshop.svg" alt="Ethical Choices Workshop Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Ethical Choices Workshop</h3><p data-i18n="card.ethical">Workshop- und Kartenspiel für moderierte Diskussionen, Reflexion und Gruppenlernen.</p><div class="output-tags"><span>Workshop</span><span>Card Game</span><span>Facilitation</span></div></div>
-          </article>
-          <article class="output-card reveal" data-category="workshop">
-            <img src="assets/portfolio/examples/collaborative-board-game.svg" alt="Collaborative Board Game Konzeptansicht" loading="lazy">
-            <div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Collaborative Board Game</h3><p data-i18n="card.boardgame">Gemeinsam spielbares Lernformat mit Karten, Spielfeld, Ressourcen und sozialer Interaktion.</p><div class="output-tags"><span>Board Game</span><span>Learning</span><span>Group Activity</span></div></div>
-          </article>
+          <article class="output-card reveal" data-category="game"><img src="assets/portfolio/examples/ecosort.svg" alt="EcoSort Challenge Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>EcoSort Challenge</h3><p data-i18n="card.ecosort">Mobiles Lernspiel zur Abfalltrennung mit Levels, Punkten und direktem Feedback.</p><div class="output-tags"><span>Mobile Game</span><span>Sustainability</span><span>Gamification</span></div></div></article>
+          <article class="output-card reveal" data-category="game"><img src="assets/portfolio/examples/chrono-cogs.svg" alt="Chrono-Cogs Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Chrono-Cogs</h3><p data-i18n="card.chrono">Narratives Serious Game mit Teamrollen, Ressourcenmanagement und verzweigten Entscheidungen.</p><div class="output-tags"><span>Serious Game</span><span>Scenario</span><span>Team Play</span></div></div></article>
+          <article class="output-card reveal" data-category="learning"><img src="assets/portfolio/examples/scenario-lab.svg" alt="Scenario Lab Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Scenario Lab</h3><p data-i18n="card.scenario">Interaktive E-Learning-Szenarien für Inklusion, Reflexion und wirkungsorientierte Entscheidungen.</p><div class="output-tags"><span>E-Learning</span><span>Inclusion</span><span>Analytics</span></div></div></article>
+          <article class="output-card reveal" data-category="learning"><img src="assets/portfolio/examples/cyberwise.svg" alt="CyberWise Mission Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>CyberWise Mission</h3><p data-i18n="card.cyberwise">Mobile Microlearning-Anwendung für Cybersecurity-Awareness und sichere digitale Entscheidungen.</p><div class="output-tags"><span>Microlearning</span><span>Cybersecurity</span><span>Mobile</span></div></div></article>
+          <article class="output-card reveal" data-category="game"><img src="assets/portfolio/examples/sustainable-millionaire.svg" alt="Sustainable Millionaire Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Sustainable Millionaire</h3><p data-i18n="card.millionaire">Quizbasiertes Serious Game zu Nachhaltigkeit, Wissenstransfer und spielerischem Lernen.</p><div class="output-tags"><span>Quiz</span><span>Web Game</span><span>Sustainability</span></div></div></article>
+          <article class="output-card reveal" data-category="game"><img src="assets/portfolio/examples/project-nexus.svg" alt="Project Nexus Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Project Nexus</h3><p data-i18n="card.nexus">Kollaboratives Entscheidungsspiel mit Ressourcen, Teamfortschritt und projektbezogenem Feedback.</p><div class="output-tags"><span>Decision Game</span><span>Collaboration</span><span>Feedback</span></div></div></article>
+          <article class="output-card reveal" data-category="platform"><img src="assets/portfolio/examples/greenfuture-academy.svg" alt="GreenFuture Academy Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>GreenFuture Academy</h3><p data-i18n="card.greenfuture">Browserbasierte Lernplattform mit spielerischen Übungen, Fortschritt und thematischen Modulen.</p><div class="output-tags"><span>Learning Platform</span><span>Modules</span><span>Progress</span></div></div></article>
+          <article class="output-card reveal" data-category="game"><img src="assets/portfolio/examples/project-aegis.svg" alt="Project Aegis Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Project Aegis</h3><p data-i18n="card.aegis">Simulation für gesellschaftliche Resilienz mit Teamwerten, Szenarien und messbaren Auswirkungen.</p><div class="output-tags"><span>Simulation</span><span>Resilience</span><span>Dashboard</span></div></div></article>
+          <article class="output-card reveal" data-category="workshop"><img src="assets/portfolio/examples/ethical-choices-workshop.svg" alt="Ethical Choices Workshop Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Ethical Choices Workshop</h3><p data-i18n="card.ethical">Workshop- und Kartenspiel für moderierte Diskussionen, Reflexion und Gruppenlernen.</p><div class="output-tags"><span>Workshop</span><span>Card Game</span><span>Facilitation</span></div></div></article>
+          <article class="output-card reveal" data-category="workshop"><img src="assets/portfolio/examples/collaborative-board-game.svg" alt="Collaborative Board Game Konzeptansicht" loading="lazy"><div class="output-card-body"><span class="output-status" data-i18n="status.concept">Konzeptbeispiel</span><h3>Collaborative Board Game</h3><p data-i18n="card.boardgame">Gemeinsam spielbares Lernformat mit Karten, Spielfeld, Ressourcen und sozialer Interaktion.</p><div class="output-tags"><span>Board Game</span><span>Learning</span><span>Group Activity</span></div></div></article>
         </div>
       </div>
     </section>
 
     <section class="section references-section" id="formats">
       <div class="container">
-        <div class="section-heading compact reveal">
-          <span class="section-kicker" data-i18n="formats.kicker">Interaktive Lernformate</span>
-          <h2 data-i18n="formats.title">Flexible Formate für unterschiedliche Lernziele.</h2>
-          <p data-i18n="formats.text">Je nach Thema und Zielgruppe können Inhalte als Quiz, Szenario, Microlearning, Simulation, Zuordnungsaufgabe oder Workshop-Tool umgesetzt werden. Gestaltung, Sprache und Funktionen werden projektspezifisch angepasst.</p>
-        </div>
-
+        <div class="section-heading compact reveal"><span class="section-kicker" data-i18n="formats.kicker">Interaktive Lernformate</span><h2 data-i18n="formats.title">Flexible Formate für unterschiedliche Lernziele.</h2><p data-i18n="formats.text">Je nach Thema und Zielgruppe können Inhalte als Quiz, Szenario, Microlearning, Simulation, Zuordnungsaufgabe oder Workshop-Tool umgesetzt werden. Gestaltung, Sprache und Funktionen werden projektspezifisch angepasst.</p></div>
         <div class="reference-grid format-grid">
           <article class="reference-card reveal"><div class="reference-frame"><img src="assets/portfolio/examples/sustainable-millionaire.svg" alt="Interaktives Quizformat" loading="lazy"></div><div class="reference-body"><span data-i18n="formats.label">Formatbeispiel</span><h3 data-i18n="formats.quiz.title">Interaktives Quiz</h3><p data-i18n="formats.quiz.text">Wissensfragen mit unmittelbarem Feedback, Punkten, Fortschritt und optionalen Erklärungen.</p></div></article>
           <article class="reference-card reveal"><div class="reference-frame"><img src="assets/portfolio/examples/scenario-lab.svg" alt="Verzweigtes Szenarioformat" loading="lazy"></div><div class="reference-body"><span data-i18n="formats.label">Formatbeispiel</span><h3 data-i18n="formats.scenario.title">Verzweigtes Szenario</h3><p data-i18n="formats.scenario.text">Entscheidungsbasierte Lernpfade, in denen verschiedene Optionen zu sichtbaren Konsequenzen führen.</p></div></article>
@@ -142,37 +129,19 @@
       </div>
     </section>
 
-    <section class="section section-light capability-section" id="capabilities">
-      <div class="container">
-        <div class="section-heading compact reveal">
-          <span class="section-kicker" data-i18n="matrix.kicker">EU Project Capability Framework</span>
-          <h2 data-i18n="matrix.title">Dijital yetkinliklerimizi proje ihtiyaçlarıyla eşleştiriyoruz.</h2>
-          <p data-i18n="matrix.text">Aşağıdaki yapı, sağlanan partner sunumundaki misyon, temel uzmanlık, faaliyet odağı ve proje entegrasyonu yaklaşımından uyarlanmıştır.</p>
-        </div>
-
-        <div class="capability-matrix reveal" role="table" aria-label="NARLI DIGITAL capability matrix">
-          <div class="matrix-row matrix-head" role="row"><div role="columnheader"></div><div role="columnheader" data-i18n="matrix.learning">Interactive Learning</div><div role="columnheader" data-i18n="matrix.platforms">Websites & Platforms</div><div role="columnheader" data-i18n="matrix.ai">AI & Automation</div></div>
-          <div class="matrix-row" role="row"><div class="matrix-label" role="rowheader" data-i18n="matrix.mission.label">Mission</div><div role="cell" data-i18n="matrix.mission.learning">Eğitim içeriğini etkileşimli ve kullanılabilir dijital deneyimlere dönüştürmek.</div><div role="cell" data-i18n="matrix.mission.platforms">Proje sonuçlarını erişilebilir ve sürdürülebilir platformlarda yayınlamak.</div><div role="cell" data-i18n="matrix.mission.ai">Bilgi erişimini ve proje süreçlerini akıllı araçlarla desteklemek.</div></div>
-          <div class="matrix-row" role="row"><div class="matrix-label" role="rowheader" data-i18n="matrix.expertise.label">Core Expertise</div><div role="cell" data-i18n="matrix.expertise.learning">Serious games, quizler, senaryolar ve mikro öğrenme.</div><div role="cell" data-i18n="matrix.expertise.platforms">Çok dilli siteler, portallar, kaynak kütüphaneleri ve uygulamalar.</div><div role="cell" data-i18n="matrix.expertise.ai">AI asistanları, akıllı arama, otomasyon ve veri görselleştirme.</div></div>
-          <div class="matrix-row" role="row"><div class="matrix-label" role="rowheader" data-i18n="matrix.focus.label">EU Activity Focus</div><div role="cell" data-i18n="matrix.focus.learning">Eğitim, farkındalık, katılım ve öğrenme çıktıları.</div><div role="cell" data-i18n="matrix.focus.platforms">Yaygınlaştırma, erişilebilirlik ve uzun vadeli dijital kullanım.</div><div role="cell" data-i18n="matrix.focus.ai">Verimlilik, kişiselleştirme ve bilgi yönetimi.</div></div>
-          <div class="matrix-row" role="row"><div class="matrix-label" role="rowheader" data-i18n="matrix.integration.label">Project Integration</div><div role="cell" data-i18n="matrix.integration.learning">Dijital çıktı geliştiricisi veya teknik hizmet sağlayıcı.</div><div role="cell" data-i18n="matrix.integration.platforms">Teknik partner veya subcontractor.</div><div role="cell" data-i18n="matrix.integration.ai">AI ve otomasyon geliştirme desteği.</div></div>
-        </div>
-      </div>
-    </section>
-
     <section class="section outputs-cta-section">
       <div class="container outputs-cta reveal">
-        <div><span class="section-kicker" data-i18n="cta.kicker">Project-specific implementation</span><h2 data-i18n="cta.title">Benzer bir dijital çıktı projeniz için geliştirilebilir.</h2><p data-i18n="cta.text">Konu, hedef grup, dil, görsel kimlik, teknik özellikler ve teslimat biçimi projeye göre uyarlanır.</p></div>
-        <a class="button button-primary" href="mailto:serhan.narli@gmail.com?subject=Digital%20Output%20Anfrage" data-i18n="cta.button">Projeyi görüşelim</a>
+        <div><span class="section-kicker" data-i18n="cta.kicker">Projektspezifische Umsetzung</span><h2 data-i18n="cta.title">Ein vergleichbarer digitaler Output kann für Ihr Projekt entwickelt werden.</h2><p data-i18n="cta.text">Thema, Zielgruppe, Sprache, visuelle Identität, technische Funktionen und Lieferformat werden projektspezifisch angepasst.</p><p class="site-email-cta"><span>E-Mail</span><a href="mailto:info@narli-digital.de?subject=Digital%20Output%20Anfrage">info@narli-digital.de</a></p></div>
+        <a class="button button-primary" href="mailto:info@narli-digital.de?subject=Digital%20Output%20Anfrage" data-i18n="cta.button">Projekt besprechen</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div><a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true"><img src="assets/brand-mark.svg" alt=""></span><span class="brand-text"><strong>NARLI</strong><span>DIGITAL</span></span></a><p>Digital Outputs for European Projects</p></div>
-      <div class="footer-links"><a href="index.html#services" data-i18n="nav.services">Leistungen</a><a href="digital-outputs.html" data-i18n="nav.outputs">Digital Outputs</a><a href="index.html#collaborate" data-i18n="nav.contact">Kontakt</a><a href="index.html#team" data-i18n="nav.team">Team</a></div>
-      <div class="footer-meta"><span>Berlin / Brandenburg · Europe</span><span>© <span id="year"></span> NARLI DIGITAL</span><span data-i18n="footer.preview">Vorschau – rechtliche Angaben folgen vor dem öffentlichen Launch.</span></div>
+      <div><a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true"><img src="assets/brand-mark.svg" alt=""></span><span class="brand-text"><strong>NARLI</strong><span>DIGITAL</span></span></a><p>Digital Outputs for European Projects</p></div>
+      <div class="footer-links"><a href="/#services" data-i18n="nav.services">Leistungen</a><a href="/#portfolio" data-i18n="nav.portfolio">Portfolio</a><a href="/digital-outputs" data-i18n="nav.outputs">Digital Outputs</a><a href="/#collaborate" data-i18n="nav.contact">Kontakt</a><a href="/#why-us" data-i18n="nav.why">Warum wir</a><a href="/#team" data-i18n="nav.team">Team</a></div>
+      <div class="footer-meta"><span>Berlin / Brandenburg · Europe</span><span class="site-email-footer"><a href="mailto:info@narli-digital.de?subject=Digital%20Output%20Anfrage">info@narli-digital.de</a></span><span>© <span id="year"></span> NARLI DIGITAL</span><span data-i18n="footer.preview">Vorschau – rechtliche Angaben folgen vor dem öffentlichen Launch.</span></div>
     </div>
   </footer>
 </body>

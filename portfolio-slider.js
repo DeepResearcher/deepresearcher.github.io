@@ -75,7 +75,7 @@
   }
 
   function installStylesheet() {
-    const href = "portfolio-gallery.css?v=20260720-stable-4";
+    const href = "portfolio-gallery.css?v=20260724-performance-1";
     let link = document.querySelector('link[href*="portfolio-gallery.css"]');
     if (!link) {
       link = document.createElement("link");
@@ -88,13 +88,13 @@
   function loadContactDetails() {
     if (document.querySelector('script[src*="contact-details.js"]')) return;
     const script = document.createElement("script");
-    script.src = "contact-details.js?v=20260720-outputs-4";
+    script.src = "contact-details.js?v=20260724-performance-1";
     document.head.appendChild(script);
   }
 
   function installOutputsLinks() {
     const text = copy[language()];
-    const href = "digital-outputs.html";
+    const href = "/digital-outputs";
 
     const nav = document.querySelector(".primary-nav");
     if (nav) {
@@ -151,12 +151,23 @@
     }
   }
 
+  function applyImageHints() {
+    const heroImage = document.querySelector(".hero-product-art");
+    if (heroImage) {
+      heroImage.width = 920;
+      heroImage.height = 680;
+      heroImage.loading = "eager";
+      heroImage.decoding = "async";
+      heroImage.fetchPriority = "high";
+    }
+  }
+
   function categoryMarkup(category, categoryIndex) {
     const first = category.items[0];
     return `
       <article class="portfolio-category" data-category="${categoryIndex}">
         <div class="portfolio-category-media">
-          <img class="portfolio-category-image" src="${first.image}" alt="${first.title}" loading="lazy" decoding="async">
+          <img class="portfolio-category-image" src="${first.image}" alt="${first.title}" width="720" height="720" loading="lazy" decoding="async">
           <div class="portfolio-category-shade" aria-hidden="true"></div>
           <span class="portfolio-category-label"></span>
           <div class="portfolio-category-copy">
@@ -232,15 +243,25 @@
       media.addEventListener("pointercancel", () => {
         startX = null;
       });
-
-      category.items.forEach(item => {
-        const preload = new Image();
-        preload.src = item.image;
-      });
     });
 
     applyLanguageAndLocation();
     return true;
+  }
+
+  function updateCardCopy(card, category, item, itemIndex, lang) {
+    card.querySelector(".portfolio-category-label").textContent = category.title[lang];
+    card.querySelector(".portfolio-category-description").textContent = category.description[lang];
+    card.querySelector(".portfolio-category-item-title").textContent = item.title;
+    card.querySelector(".portfolio-category-counter").textContent = `${itemIndex + 1} / ${category.items.length}`;
+    card.querySelector(".portfolio-category-prev").setAttribute("aria-label", copy[lang].previous);
+    card.querySelector(".portfolio-category-next").setAttribute("aria-label", copy[lang].next);
+    card.querySelector(".portfolio-category-dots").setAttribute("aria-label", copy[lang].dots);
+    card.querySelectorAll(".portfolio-category-dot").forEach((dot, dotIndex) => {
+      const active = dotIndex === itemIndex;
+      dot.classList.toggle("is-active", active);
+      dot.setAttribute("aria-current", active ? "true" : "false");
+    });
   }
 
   function renderCard(categoryIndex, animate = false) {
@@ -253,30 +274,30 @@
     const lang = language();
     const image = card.querySelector(".portfolio-category-image");
 
-    const apply = () => {
+    updateCardCopy(card, category, item, itemIndex, lang);
+
+    if (image.getAttribute("src") === item.image) {
+      image.alt = item.title;
+      return;
+    }
+
+    const applyImage = () => {
       image.src = item.image;
       image.alt = item.title;
-      card.querySelector(".portfolio-category-label").textContent = category.title[lang];
-      card.querySelector(".portfolio-category-description").textContent = category.description[lang];
-      card.querySelector(".portfolio-category-item-title").textContent = item.title;
-      card.querySelector(".portfolio-category-counter").textContent = `${itemIndex + 1} / ${category.items.length}`;
-      card.querySelector(".portfolio-category-prev").setAttribute("aria-label", copy[lang].previous);
-      card.querySelector(".portfolio-category-next").setAttribute("aria-label", copy[lang].next);
-      card.querySelector(".portfolio-category-dots").setAttribute("aria-label", copy[lang].dots);
-      card.querySelectorAll(".portfolio-category-dot").forEach((dot, dotIndex) => {
-        const active = dotIndex === itemIndex;
-        dot.classList.toggle("is-active", active);
-        dot.setAttribute("aria-current", active ? "true" : "false");
-      });
       requestAnimationFrame(() => image.classList.remove("is-changing"));
     };
 
-    if (animate) {
-      image.classList.add("is-changing");
-      window.setTimeout(apply, 100);
-    } else {
-      apply();
+    if (!animate) {
+      applyImage();
+      return;
     }
+
+    image.classList.add("is-changing");
+    const loader = new Image();
+    loader.decoding = "async";
+    loader.onload = applyImage;
+    loader.onerror = applyImage;
+    loader.src = item.image;
   }
 
   function move(categoryIndex, direction) {
@@ -319,6 +340,7 @@
   }
 
   function start() {
+    applyImageHints();
     installStylesheet();
     installOutputsLinks();
     loadContactDetails();

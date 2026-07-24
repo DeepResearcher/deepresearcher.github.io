@@ -24,8 +24,14 @@
   gap: 54px;
 }
 
+/* Match the final hero typography in every render-blocking stylesheet. */
 .hero-copy h1 {
-  font-size: clamp(3rem, 5.4vw, 5.35rem);
+  max-width: 760px;
+  font-size: clamp(2.6rem, 3.8vw, 3.85rem);
+  font-weight: 690;
+  line-height: 1.1;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
 }
 
 .hero-product-figure {
@@ -304,6 +310,7 @@
   .primary-nav { gap: 15px; }
   .primary-nav a { font-size: .84rem; }
   .hero-grid { grid-template-columns: 1fr 420px; gap: 32px; }
+  .hero-copy h1 { font-size: clamp(2.45rem, 4.7vw, 3.55rem); }
   .concept-grid { grid-template-columns: 1fr 1fr; }
   .concept-card:last-child { grid-column: 1 / -1; max-width: 570px; }
   .role-layout { grid-template-columns: 1fr; }
@@ -322,7 +329,12 @@
 }
 
 @media (max-width: 620px) {
-  .hero-copy h1 { font-size: clamp(2.6rem, 13vw, 4rem); }
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(2.15rem, 9.4vw, 3rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
   .audience-list span { padding: 8px 10px; font-size: .78rem; }
   .concept-content { padding: 21px; }
   .diagram-partners { grid-template-columns: 1fr; }

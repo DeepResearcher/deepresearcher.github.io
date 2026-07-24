@@ -8,6 +8,30 @@
   text-wrap: balance;
 }
 
+/* Keep above-the-fold content immediately paintable. */
+.hero .reveal,
+.hero .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.hero-product-art {
+  aspect-ratio: 920 / 680;
+}
+
+/* Stronger contrast on light sections. */
+.section-light .section-kicker,
+.why-section .section-kicker,
+.capabilities-section .section-kicker {
+  color: #087b6d;
+}
+
+/* Avoid a continuously running decorative animation. */
+.floating-chip {
+  animation: none !important;
+}
+
 /* Visible telephone contact details */
 .contact-phone-block {
   margin: 18px 0 22px;
@@ -89,6 +113,42 @@
   text-align: center;
 }
 
+/* Large accessible hit area, small visual pagination dot. */
+.portfolio-category-dots {
+  gap: 0;
+  min-height: 44px;
+  padding-top: 0;
+}
+
+.portfolio-category-dot,
+.portfolio-category-dot.is-active {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.portfolio-category-dot::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.34);
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.portfolio-category-dot.is-active::before {
+  width: 22px;
+  background: rgba(76, 215, 195, 0.95);
+}
+
 @media (max-width: 1080px) {
   .hero-copy h1 {
     font-size: clamp(2.45rem, 4.7vw, 3.55rem);
@@ -116,5 +176,11 @@
   .portfolio-page-action .button {
     width: 100%;
     min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-category-dot::before {
+    transition: none;
   }
 }

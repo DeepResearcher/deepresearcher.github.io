@@ -14,7 +14,7 @@
       link.rel = "stylesheet";
       document.head.appendChild(link);
     }
-    link.href = "site-email.css?v=20260723-2";
+    link.href = "site-email.css?v=20260724-hero-1";
   }
 
   function replaceExistingMailLinks() {
@@ -71,8 +71,10 @@
     line.className = "site-email-footer";
     line.innerHTML = `<a href="${mailto(document.body.classList.contains("outputs-page") ? SUBJECT_OUTPUTS : SUBJECT_HOME)}">${EMAIL}</a>`;
 
-    const copyright = footer.querySelector("#year")?.closest("span");
-    copyright ? footer.insertBefore(line, copyright) : footer.prepend(line);
+    const year = footer.querySelector("#year");
+    const copyright = year?.parentElement;
+    if (copyright && copyright.parentElement === footer) footer.insertBefore(line, copyright);
+    else footer.prepend(line);
   }
 
   function installLegalLinks() {

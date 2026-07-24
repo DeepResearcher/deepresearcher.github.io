@@ -11,7 +11,7 @@
   function loadBrand() {
     if (document.querySelector('script[src*="brand.js"]')) return;
     const script = document.createElement("script");
-    script.src = "brand.js?v=20260724-1";
+    script.src = "brand.js?v=20260724-2";
     document.head.appendChild(script);
   }
 

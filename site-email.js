@@ -14,7 +14,21 @@
       link.rel = "stylesheet";
       document.head.appendChild(link);
     }
-    link.href = "site-email.css?v=20260724-hero-1";
+    link.href = "site-email.css?v=20260724-services-1";
+  }
+
+  function installLandingPageStylesheet(onReady) {
+    let link = document.querySelector('link[href*="landing-pages.css"]');
+    if (link) {
+      onReady?.();
+      return;
+    }
+
+    link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "landing-pages.css?v=20260724-1";
+    link.addEventListener("load", () => onReady?.(), { once: true });
+    document.head.appendChild(link);
   }
 
   function replaceExistingMailLinks() {
@@ -63,6 +77,63 @@
     copy.appendChild(email);
   }
 
+  function serviceLinkCopy() {
+    const english = document.documentElement.lang === "en";
+    return {
+      websitesTitle: "EU Project Websites",
+      websitesText: english
+        ? "Multilingual project websites, results platforms and resource libraries."
+        : "Mehrsprachige Projektwebsites, Ergebnisplattformen und Ressourcenbibliotheken.",
+      gamesTitle: english ? "Serious Games & Digital Outputs" : "Serious Games & Digitale Outputs",
+      gamesText: english
+        ? "Interactive learning modules, simulations, quizzes and digital toolkits."
+        : "Interaktive Lernmodule, Simulationen, Quizformate und digitale Toolkits."
+    };
+  }
+
+  function updateServiceLandingLinks() {
+    const grid = document.querySelector(".service-link-grid");
+    if (!grid) return;
+    const copy = serviceLinkCopy();
+    grid.querySelector('[data-service-link="websites"] strong').textContent = copy.websitesTitle;
+    grid.querySelector('[data-service-link="websites"] span').textContent = copy.websitesText;
+    grid.querySelector('[data-service-link="games"] strong').textContent = copy.gamesTitle;
+    grid.querySelector('[data-service-link="games"] span').textContent = copy.gamesText;
+  }
+
+  function installServiceLandingLinks() {
+    const serviceGrid = document.querySelector("#services .service-grid");
+    if (!serviceGrid || document.querySelector(".service-link-grid")) return;
+
+    installLandingPageStylesheet(() => {
+      if (document.querySelector(".service-link-grid")) return;
+      const copy = serviceLinkCopy();
+      const grid = document.createElement("div");
+      grid.className = "service-link-grid";
+      grid.setAttribute("aria-label", "Specialised service pages");
+      grid.innerHTML = `
+        <a class="service-link-card" data-service-link="websites" href="/eu-project-websites">
+          <div><strong>${copy.websitesTitle}</strong><span>${copy.websitesText}</span></div>
+        </a>
+        <a class="service-link-card" data-service-link="games" href="/serious-games-digital-outputs">
+          <div><strong>${copy.gamesTitle}</strong><span>${copy.gamesText}</span></div>
+        </a>
+      `;
+      serviceGrid.insertAdjacentElement("afterend", grid);
+    });
+  }
+
+  function installOutputsServiceLink() {
+    const heroActions = document.querySelector(".outputs-hero .hero-actions");
+    if (!heroActions || heroActions.querySelector('a[href="/serious-games-digital-outputs"]')) return;
+
+    const link = document.createElement("a");
+    link.className = "button button-secondary";
+    link.href = "/serious-games-digital-outputs";
+    link.textContent = document.documentElement.lang === "en" ? "Serious Games Service" : "Serious-Games-Leistung";
+    heroActions.appendChild(link);
+  }
+
   function installFooterEmail() {
     const footer = document.querySelector(".footer-meta");
     if (!footer || footer.querySelector(".site-email-footer")) return;
@@ -75,6 +146,24 @@
     const copyright = year?.parentElement;
     if (copyright && copyright.parentElement === footer) footer.insertBefore(line, copyright);
     else footer.prepend(line);
+  }
+
+  function installServiceFooterLinks() {
+    const footerLinks = document.querySelector(".footer-links");
+    if (!footerLinks) return;
+
+    const links = [
+      ["/eu-project-websites", "EU Project Websites"],
+      ["/serious-games-digital-outputs", "Serious Games & Digital Outputs"]
+    ];
+
+    links.forEach(([href, text]) => {
+      if (footerLinks.querySelector(`a[href="${href}"]`)) return;
+      const link = document.createElement("a");
+      link.href = href;
+      link.textContent = text;
+      footerLinks.appendChild(link);
+    });
   }
 
   function installLegalLinks() {
@@ -101,7 +190,10 @@
     replaceExistingMailLinks();
     installHomepageEmail();
     installOutputsEmail();
+    installServiceLandingLinks();
+    installOutputsServiceLink();
     installFooterEmail();
+    installServiceFooterLinks();
     installLegalLinks();
   }
 
@@ -112,6 +204,10 @@
   }
 
   document.querySelectorAll("[data-lang]").forEach(button => {
-    button.addEventListener("click", () => requestAnimationFrame(installLegalLinks));
+    button.addEventListener("click", () => requestAnimationFrame(() => {
+      updateServiceLandingLinks();
+      installOutputsServiceLink();
+      installLegalLinks();
+    }));
   });
 })();

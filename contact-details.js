@@ -1,7 +1,6 @@
 (() => {
   const phones = [
-    { href: "+4915257848836", display: "+49 152 57848836" },
-    { href: "+4917755845906", display: "+49 177 55845906" }
+    { href: "+4915257848836", display: "+49 152 57848836" }
   ];
 
   const labels = {
@@ -12,7 +11,7 @@
   function loadBrand() {
     if (document.querySelector('script[src*="brand.js"]')) return;
     const script = document.createElement("script");
-    script.src = "brand.js?v=20260721-2";
+    script.src = "brand.js?v=20260724-1";
     document.head.appendChild(script);
   }
 
@@ -34,7 +33,7 @@
   }
 
   function installStylesheet() {
-    const href = "contact-details.css?v=20260723-hero-1";
+    const href = "contact-details.css?v=20260724-performance-1";
     let link = document.querySelector('link[href*="contact-details.css"]');
     if (!link) {
       link = document.createElement("link");
@@ -62,8 +61,14 @@
       const list = document.createElement("span");
       list.className = "footer-phone-list";
       list.innerHTML = phoneLinks("footer-phone-link");
-      const copyright = footer.querySelector("#year")?.closest("span");
-      copyright ? footer.insertBefore(list, copyright) : footer.appendChild(list);
+
+      const year = footer.querySelector("#year");
+      const copyrightLine = year?.parentElement;
+      if (copyrightLine && copyrightLine.parentElement === footer) {
+        footer.insertBefore(list, copyrightLine);
+      } else {
+        footer.appendChild(list);
+      }
     }
 
     const label = document.querySelector(".contact-phone-label");

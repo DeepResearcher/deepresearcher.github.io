@@ -1,0 +1,37 @@
+name: Apply first-paint hero typography
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/bump-hero-css.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Refresh critical headline stylesheet version
+        shell: bash
+        run: |
+          set -euo pipefail
+          sed -i 's#site-email.css?v=20260723-2#site-email.css?v=20260724-hero-2#g' index.html
+
+      - name: Commit the version refresh
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- index.html; then
+            echo "No change needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Load final hero typography before first paint"
+          git push

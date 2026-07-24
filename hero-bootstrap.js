@@ -64,10 +64,13 @@
     stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
     stylesheet.href = stylesheetHref;
+    stylesheet.addEventListener("load", revealHero, { once: true });
+    stylesheet.addEventListener("error", revealHero, { once: true });
     document.head.appendChild(stylesheet);
+  } else {
+    stylesheet.addEventListener("load", revealHero, { once: true });
+    stylesheet.addEventListener("error", revealHero, { once: true });
   }
 
-  stylesheet.addEventListener("load", revealHero, { once: true });
-  stylesheet.addEventListener("error", revealHero, { once: true });
   window.setTimeout(revealHero, 2000);
 })();

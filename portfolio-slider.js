@@ -7,10 +7,10 @@
         en: "Mobile and browser-based learning games for knowledge transfer, awareness and gamification."
       },
       items: [
-        { title: "EcoSort Challenge", image: "assets/portfolio/originals/portfolio-08.jpg" },
-        { title: "CyberWise Mission", image: "assets/portfolio/originals/portfolio-09.jpg" },
-        { title: "Sustainable Millionaire", image: "assets/portfolio/originals/portfolio-01.jpg" },
-        { title: "GreenFuture Academy", image: "assets/portfolio/originals/portfolio-10.jpg" }
+        { title: "EcoSort Challenge", image: "assets/portfolio/optimized/portfolio-08.webp" },
+        { title: "CyberWise Mission", image: "assets/portfolio/optimized/portfolio-09.webp" },
+        { title: "Sustainable Millionaire", image: "assets/portfolio/optimized/portfolio-01.webp" },
+        { title: "GreenFuture Academy", image: "assets/portfolio/optimized/portfolio-10.webp" }
       ]
     },
     {
@@ -20,10 +20,10 @@
         en: "Decision-based formats with roles, resources, consequences and measurable progress."
       },
       items: [
-        { title: "Chrono-Cogs", image: "assets/portfolio/originals/portfolio-02.jpg" },
-        { title: "Scenario Lab", image: "assets/portfolio/originals/portfolio-07.jpg" },
-        { title: "Project Nexus", image: "assets/portfolio/originals/portfolio-06.jpg" },
-        { title: "Project Aegis", image: "assets/portfolio/originals/portfolio-03.jpg" }
+        { title: "Chrono-Cogs", image: "assets/portfolio/optimized/portfolio-02.webp" },
+        { title: "Scenario Lab", image: "assets/portfolio/optimized/portfolio-07.webp" },
+        { title: "Project Nexus", image: "assets/portfolio/optimized/portfolio-06.webp" },
+        { title: "Project Aegis", image: "assets/portfolio/optimized/portfolio-03.webp" }
       ]
     },
     {
@@ -33,8 +33,8 @@
         en: "Analogue and hybrid learning formats for facilitated discussion, teamwork and reflection."
       },
       items: [
-        { title: "Ethical Choices Workshop", image: "assets/portfolio/originals/portfolio-05.jpg" },
-        { title: "Collaborative Board Game", image: "assets/portfolio/originals/portfolio-04.jpg" }
+        { title: "Ethical Choices Workshop", image: "assets/portfolio/optimized/portfolio-05.webp" },
+        { title: "Collaborative Board Game", image: "assets/portfolio/optimized/portfolio-04.webp" }
       ]
     }
   ];

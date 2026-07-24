@@ -5,7 +5,9 @@ NARLI DIGITAL develops websites, web and mobile applications, serious games, int
 ## Main pages
 
 - [Homepage](https://www.narli-digital.de/)
-- [Digital Outputs](https://www.narli-digital.de/digital-outputs)
+- [EU Project Websites](https://www.narli-digital.de/eu-project-websites)
+- [Serious Games and Digital Outputs](https://www.narli-digital.de/serious-games-digital-outputs)
+- [Digital Outputs Library](https://www.narli-digital.de/digital-outputs)
 - [Contact](https://www.narli-digital.de/#collaborate)
 - [Impressum](https://www.narli-digital.de/impressum)
 - [Datenschutzerklärung](https://www.narli-digital.de/datenschutz)

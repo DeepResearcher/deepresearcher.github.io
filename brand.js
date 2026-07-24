@@ -1,5 +1,5 @@
 (() => {
-  const version = "20260724-1";
+  const version = "20260724-2";
 
   function installStylesheet() {
     let link = document.querySelector('link[href*="brand-update.css"]');
@@ -30,11 +30,31 @@
     });
   }
 
+  function activateDeferredStyles() {
+    document.querySelectorAll('link[data-deferred-style][media="print"]').forEach(link => {
+      link.media = "all";
+    });
+  }
+
+  function scheduleDeferredStyles() {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(activateDeferredStyles, { timeout: 1500 });
+    } else {
+      window.setTimeout(activateDeferredStyles, 250);
+    }
+  }
+
   installStylesheet();
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", applyBrand, { once: true });
   } else {
     applyBrand();
+  }
+
+  if (document.readyState === "complete") {
+    scheduleDeferredStyles();
+  } else {
+    window.addEventListener("load", scheduleDeferredStyles, { once: true });
   }
 })();

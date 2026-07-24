@@ -14,15 +14,32 @@
   white-space: nowrap;
 }
 
-/* Defensive fallback: these elements are also removed from the DOM by hero-bootstrap.js. */
+.hero-product-figure .hero-product-photo {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 560px);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  object-fit: cover;
+  filter: none;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+}
+
+/* Defensive fallbacks: these elements are also removed by hero-bootstrap.js. */
 .hero-copy > .hero-lead,
-.hero-copy .hero-actions > .button-secondary[href="#services"] {
+.hero-copy .hero-actions > .button-secondary[href="#services"],
+.hero-product-figure figcaption {
   display: none !important;
 }
 
 @media (max-width: 820px) {
   .hero-product-figure .hero-figure-eyebrow {
     margin-top: 10px;
+  }
+
+  .hero-product-figure .hero-product-photo {
+    width: min(100%, 520px);
   }
 }
 
@@ -32,5 +49,10 @@
     margin-bottom: 12px;
     white-space: normal;
     text-align: center;
+  }
+
+  .hero-product-figure .hero-product-photo {
+    width: 100%;
+    border-radius: 18px;
   }
 }

@@ -1,26 +1,43 @@
-/* Critical first-paint typography. Loaded before the main stylesheets. */
+/* Critical first-paint typography. Loaded before all main stylesheets. */
+
+/* Keep the hero hidden for the few milliseconds needed to resolve language. */
+.hero-copy {
+  visibility: hidden;
+}
+
+html.hero-ready .hero-copy {
+  visibility: visible;
+}
+
+.hero-copy,
 .hero-copy h1 {
-  max-width: 760px;
-  margin-bottom: 26px;
-  font-size: clamp(2.6rem, 3.8vw, 3.85rem);
-  font-weight: 690;
-  line-height: 1.1;
-  letter-spacing: -0.038em;
-  text-wrap: balance;
   transition: none !important;
+  animation: none !important;
+}
+
+/* Lock the final hero size so no later stylesheet can enlarge it. */
+.hero-copy h1 {
+  max-width: 760px !important;
+  margin-bottom: 26px !important;
+  font-size: clamp(2.6rem, 3.8vw, 3.85rem) !important;
+  font-weight: 690 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.038em !important;
+  text-wrap: balance;
+  transform: none !important;
 }
 
 @media (max-width: 1080px) {
   .hero-copy h1 {
-    font-size: clamp(2.45rem, 4.7vw, 3.55rem);
+    font-size: clamp(2.45rem, 4.7vw, 3.55rem) !important;
   }
 }
 
 @media (max-width: 700px) {
   .hero-copy h1 {
-    max-width: 100%;
-    font-size: clamp(2.15rem, 9.4vw, 3rem);
-    line-height: 1.12;
-    letter-spacing: -0.03em;
+    max-width: 100% !important;
+    font-size: clamp(2.15rem, 9.4vw, 3rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.03em !important;
   }
 }

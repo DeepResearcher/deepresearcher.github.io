@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   const heroGrid = document.querySelector(".hero-grid");
   if (heroGrid) heroGrid.hidden = true;
 
@@ -16,8 +16,7 @@
       "hero.ctaPrimary": "Discuss Your Project",
       "hero.trust1": "Focused on digital outputs",
       "hero.trust2": "Concept, development & handover",
-      "hero.trust3": "Berlin · Europe-wide",
-      "hero.visualCaption": "Illustrative ecosystem of digital outputs"
+      "hero.trust3": "Berlin · Europe-wide"
     };
 
     Object.entries(englishHero).forEach(([key, value]) => {
@@ -37,6 +36,7 @@
 
   heroCopy?.querySelector(":scope > .hero-lead")?.remove();
   heroCopy?.querySelector('.hero-actions > .button-secondary[href="#services"]')?.remove();
+  figure?.querySelector("figcaption")?.remove();
 
   document.querySelectorAll("[data-lang]").forEach(button => {
     const active = button.dataset.lang === language;
@@ -44,33 +44,51 @@
     button.setAttribute("aria-pressed", String(active));
   });
 
-  let revealed = false;
-  const revealHero = () => {
-    if (revealed) return;
-    revealed = true;
-    if (heroGrid) heroGrid.hidden = false;
-    document.documentElement.classList.add("hero-ready");
-  };
+  const loadStyles = () => new Promise(resolve => {
+    const href = "hero-layout.css?v=20260724-hero-artwork-1";
+    let stylesheet = document.querySelector('link[href*="hero-layout.css"]');
 
-  const stylesheetHref = "hero-layout.css?v=20260724-hero-layout-1";
-  let stylesheet = document.querySelector('link[href*="hero-layout.css"]');
+    if (stylesheet?.sheet) {
+      resolve();
+      return;
+    }
 
-  if (stylesheet?.sheet) {
-    revealHero();
-    return;
-  }
+    if (!stylesheet) {
+      stylesheet = document.createElement("link");
+      stylesheet.rel = "stylesheet";
+      stylesheet.href = href;
+      document.head.appendChild(stylesheet);
+    }
 
-  if (!stylesheet) {
-    stylesheet = document.createElement("link");
-    stylesheet.rel = "stylesheet";
-    stylesheet.href = stylesheetHref;
-    stylesheet.addEventListener("load", revealHero, { once: true });
-    stylesheet.addEventListener("error", revealHero, { once: true });
-    document.head.appendChild(stylesheet);
-  } else {
-    stylesheet.addEventListener("load", revealHero, { once: true });
-    stylesheet.addEventListener("error", revealHero, { once: true });
-  }
+    stylesheet.addEventListener("load", resolve, { once: true });
+    stylesheet.addEventListener("error", resolve, { once: true });
+  });
 
-  window.setTimeout(revealHero, 2000);
+  const loadArtwork = () => new Promise(resolve => {
+    const image = figure?.querySelector(".hero-product-art");
+    if (!image) {
+      resolve();
+      return;
+    }
+
+    image.classList.add("hero-product-photo");
+    image.width = 384;
+    image.height = 384;
+    image.alt = language === "en"
+      ? "NARLI DIGITAL presentation of digital solutions for education and innovation"
+      : "NARLI DIGITAL Präsentation digitaler Lösungen für Bildung und Innovation";
+    image.addEventListener("load", resolve, { once: true });
+    image.addEventListener("error", resolve, { once: true });
+    image.src = "assets/hero-narli-banner.webp?v=20260724-1";
+
+    if (image.complete) resolve();
+  });
+
+  await Promise.race([
+    Promise.allSettled([loadStyles(), loadArtwork()]),
+    new Promise(resolve => window.setTimeout(resolve, 2500))
+  ]);
+
+  if (heroGrid) heroGrid.hidden = false;
+  document.documentElement.classList.add("hero-ready");
 })();

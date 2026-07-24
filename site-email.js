@@ -7,16 +7,6 @@
     return `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
   }
 
-  function installStylesheet() {
-    let link = document.querySelector('link[href*="site-email.css"]');
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "stylesheet";
-      document.head.appendChild(link);
-    }
-    link.href = "site-email.css?v=20260724-services-1";
-  }
-
   function installLandingPageStylesheet(onReady) {
     let link = document.querySelector('link[href*="landing-pages.css"]');
     if (link) {
@@ -186,7 +176,6 @@
   }
 
   function install() {
-    installStylesheet();
     replaceExistingMailLinks();
     installHomepageEmail();
     installOutputsEmail();

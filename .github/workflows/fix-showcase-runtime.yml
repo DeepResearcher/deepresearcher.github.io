@@ -1,0 +1,49 @@
+name: Fix showcase runtime
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-showcase-runtime.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Refresh showcase loader and cache keys
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          html = html.replace('site-email.js?v=20260725-gallery-2', 'site-email.js?v=20260725-gallery-3')
+          marker = '  <script src="site-email.js?v=20260725-gallery-3" defer></script>'
+          direct = (
+              '  <link rel="stylesheet" href="services-showcase.css?v=20260725-gallery-3">\n'
+              '  <script src="services-showcase.js?v=20260725-gallery-3" defer></script>\n'
+              + marker
+          )
+          if 'services-showcase.js?v=20260725-gallery-3' not in html:
+              html = html.replace(marker, direct)
+          index.write_text(html, encoding='utf-8')
+
+          loader = Path('site-email.js')
+          js = loader.read_text(encoding='utf-8')
+          js = js.replace('services-showcase.css?v=20260725-gallery-2', 'services-showcase.css?v=20260725-gallery-3')
+          js = js.replace('services-showcase.js?v=20260725-gallery-2', 'services-showcase.js?v=20260725-gallery-3')
+          loader.write_text(js, encoding='utf-8')
+          PY
+
+      - name: Commit runtime fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html site-email.js
+          git rm .github/workflows/fix-showcase-runtime.yml
+          git commit -m "Fix showcase runtime and refresh asset cache [skip ci]"
+          git push

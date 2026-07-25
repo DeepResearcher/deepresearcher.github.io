@@ -10,9 +10,10 @@
         en: 'Multilingual project websites and digital platforms that clearly present objectives, partners, activities, results and resources.'
       },
       images: [
-        { src: 'assets/portfolio/optimized/portfolio-03.webp', alt: 'Konzept einer europäischen Projektwebsite mit moderner digitaler Benutzeroberfläche' },
-        { src: 'assets/portfolio/optimized/portfolio-06.webp', alt: 'Konzept einer digitalen Ergebnis- und Ressourcenplattform' },
-        { src: 'assets/portfolio/optimized/portfolio-07.webp', alt: 'Konzept eines interaktiven Projektportals für europäische Partnerschaften' }
+        { src: 'assets/services/project-websites/futureskills.webp', alt: 'FutureSkills concept for a European education project website', width: 1536, height: 1024 },
+        { src: 'assets/services/project-websites/ai4cities-light.webp', alt: 'Light AI4Cities concept for a European project website', width: 1536, height: 1024 },
+        { src: 'assets/services/project-websites/ai4cities-dark.webp', alt: 'Dark AI4Cities concept for a European project website', width: 1536, height: 1024 },
+        { src: 'assets/services/ai-toolkits/greened-toolkit.webp', alt: 'GreenEd project website, communication materials and responsive digital presence', width: 1448, height: 1086 }
       ]
     },
     {
@@ -22,8 +23,9 @@
         en: 'Responsive web and mobile applications that make learning, participation and project services available across devices.'
       },
       images: [
-        { src: 'assets/portfolio/optimized/portfolio-08.webp', alt: 'Konzept einer mobilen und browserbasierten Lernanwendung' },
-        { src: 'assets/portfolio/optimized/portfolio-10.webp', alt: 'Konzept einer responsiven digitalen Lernplattform' }
+        { src: 'assets/services/web-mobile-apps/learning-dashboard.webp', alt: 'European education learning application presented on mobile and desktop devices', width: 1448, height: 1086 },
+        { src: 'assets/services/web-mobile-apps/greenmind-ecosystem.webp', alt: 'GreenMind website, mobile application and connected project ecosystem', width: 1536, height: 1024 },
+        { src: 'assets/hero-narli-showcase-hq.webp', alt: 'EduInnovate event website and mobile schedule application', width: 1536, height: 1024 }
       ]
     },
     {
@@ -33,22 +35,22 @@
         en: 'Digital and physical game-based formats that transform complex project topics into engaging and measurable learning experiences.'
       },
       images: [
-        { src: 'assets/portfolio/optimized/portfolio-01.webp', alt: 'Browserbasiertes Quiz- und Serious-Game-Konzept' },
-        { src: 'assets/portfolio/optimized/portfolio-02.webp', alt: 'Narratives Serious Game mit Entscheidungsmechanik' },
-        { src: 'assets/portfolio/optimized/portfolio-04.webp', alt: 'Kollaboratives Brettspiel- und Workshopkonzept' },
-        { src: 'assets/portfolio/optimized/portfolio-05.webp', alt: 'Hybrides Lernspiel für moderierte Gruppenaktivitäten' },
-        { src: 'assets/portfolio/optimized/portfolio-09.webp', alt: 'Gamifizierte Lernaktivität für digitale Kompetenzen' }
+        { src: 'assets/services/serious-games/truth-detectives.webp', alt: 'Truth Detectives physical media-literacy board game', width: 1448, height: 1086 },
+        { src: 'assets/services/serious-games/ecofuture-board-game.webp', alt: 'EcoFuture sustainability board game', width: 1535, height: 1024 },
+        { src: 'assets/services/serious-games/life-saver.webp', alt: 'Life Saver decision-based emergency training serious game', width: 1536, height: 1024 },
+        { src: 'assets/services/serious-games/word-quest.webp', alt: 'Word Quest gamified language-learning interface', width: 1536, height: 1024 },
+        { src: 'assets/services/serious-games/knowledge-challenge.webp', alt: 'Knowledge Challenge quiz-based serious game', width: 1536, height: 1024 },
+        { src: 'assets/services/serious-games/fake-news-detective.webp', alt: 'Fake News Detective media-literacy serious game', width: 1536, height: 1024 }
       ]
     },
     {
-      title: { de: 'KI-Tools & digitale Toolkits', en: 'AI Tools & Digital Toolkits' },
+      title: { de: 'KI-gestützte Werkzeuge', en: 'AI-Supported Tools' },
       description: {
-        de: 'KI-gestützte Werkzeuge und abgestimmte digitale Toolkits für Lernen, Content-Erstellung, Reporting und Projektkommunikation.',
-        en: 'AI-assisted tools and coordinated digital toolkits that support learning, content creation, reporting and project communication.'
+        de: 'KI-gestützte Werkzeuge für Dokumentenanalyse, intelligente Suche, Quiz-Erstellung, Reporting und Wissensmanagement.',
+        en: 'AI-supported tools for document analysis, intelligent search, quiz generation, reporting and knowledge management.'
       },
       images: [
-        { src: 'assets/hero-ecosystem.svg', alt: 'Ökosystem aus KI-Assistent, Webplattform und mobilen digitalen Outputs' },
-        { src: 'assets/portfolio/digital-learning-gallery.webp', alt: 'Galerie digitaler Lernwerkzeuge, Anwendungen und Projektoutputs' }
+        { src: 'assets/services/ai-toolkits/ai-assistant.webp', alt: 'EduAssistant AI workspace for document summaries, quiz generation and project analytics', width: 1448, height: 1086 }
       ]
     }
   ];
@@ -101,8 +103,9 @@
   const closeButton = section.querySelector('.services-lightbox-close');
 
   services.forEach((service, serviceIndex) => {
+    const single = service.images.length === 1;
     const card = document.createElement('article');
-    card.className = 'service-showcase-card reveal is-visible';
+    card.className = `service-showcase-card reveal is-visible${single ? ' is-single-slide' : ''}`;
     card.dataset.serviceIndex = String(serviceIndex);
     card.innerHTML = `
       <div class="service-showcase-copy">
@@ -116,16 +119,16 @@
             ${service.images.map((image, imageIndex) => `
               <figure class="service-slide">
                 <button class="service-slide-button" type="button" data-open-image="${serviceIndex}:${imageIndex}">
-                  <img src="${image.src}" alt="${image.alt}" loading="lazy" decoding="async">
+                  <img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async">
                 </button>
               </figure>`).join('')}
           </div>
         </div>
-        <button class="service-slider-control service-slider-prev" type="button">‹</button>
-        <button class="service-slider-control service-slider-next" type="button">›</button>
+        <button class="service-slider-control service-slider-prev" type="button"${single ? ' hidden' : ''}>‹</button>
+        <button class="service-slider-control service-slider-next" type="button"${single ? ' hidden' : ''}>›</button>
         <div class="service-slider-footer">
           <span class="service-slider-counter" aria-live="polite">1 / ${service.images.length}</span>
-          <div class="service-slider-dots">
+          <div class="service-slider-dots"${single ? ' hidden' : ''}>
             ${service.images.map((_, index) => `<button class="service-slider-dot${index === 0 ? ' is-active' : ''}" type="button" data-slide-dot="${index}"></button>`).join('')}
           </div>
         </div>
@@ -165,6 +168,7 @@
   }
 
   grid.querySelectorAll('.service-showcase-card').forEach((card, serviceIndex) => {
+    if (services[serviceIndex].images.length < 2) return;
     installSwipe(card.querySelector('.service-slider-viewport'), direction => {
       states[serviceIndex] = renderSlider(card, states[serviceIndex] + direction);
     });
@@ -204,6 +208,9 @@
     lightboxImage.src = item.src;
     lightboxImage.alt = item.alt;
     lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxItems.length}`;
+    const multiple = lightboxItems.length > 1;
+    section.querySelector('.services-lightbox-prev').hidden = !multiple;
+    section.querySelector('.services-lightbox-next').hidden = !multiple;
   }
 
   function showLightbox() {
@@ -214,7 +221,7 @@
   }
 
   function moveLightbox(direction) {
-    if (!lightboxItems.length) return;
+    if (lightboxItems.length < 2) return;
     lightboxIndex = (lightboxIndex + direction + lightboxItems.length) % lightboxItems.length;
     updateLightbox();
   }

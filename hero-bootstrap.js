@@ -45,7 +45,7 @@
   });
 
   const loadStyles = () => new Promise(resolve => {
-    const href = "hero-layout.css?v=20260724-hero-artwork-1";
+    const href = "hero-layout.css?v=20260725-hq-1";
     let stylesheet = document.querySelector('link[href*="hero-layout.css"]');
 
     if (stylesheet?.sheet) {
@@ -72,14 +72,14 @@
     }
 
     image.classList.add("hero-product-photo");
-    image.width = 384;
-    image.height = 384;
+    image.width = 1000;
+    image.height = 1000;
     image.alt = language === "en"
       ? "NARLI DIGITAL presentation of digital solutions for education and innovation"
       : "NARLI DIGITAL Präsentation digitaler Lösungen für Bildung und Innovation";
     image.addEventListener("load", resolve, { once: true });
     image.addEventListener("error", resolve, { once: true });
-    image.src = "assets/hero-narli-banner.webp?v=20260724-1";
+    image.src = "assets/hero-narli-showcase-hq.webp?v=20260725-1";
 
     if (image.complete) resolve();
   });

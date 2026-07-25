@@ -60,13 +60,23 @@
       kicker: 'Unsere Leistungen',
       title: 'Digitale Lösungen, abgestimmt auf die Anforderungen europäischer Projekte.',
       intro: 'Entdecken Sie Konzeptbeispiele für Projektwebsites, Anwendungen, Serious Games und KI-gestützte Werkzeuge.',
-      concept: 'Konzeptbeispiele', previous: 'Vorheriges Bild', next: 'Nächstes Bild', open: 'Bild vergrößern', close: 'Bild schließen', dialog: 'Vergrößerte Projektansicht'
+      concept: 'Konzeptbeispiele',
+      previous: 'Vorheriges Bild',
+      next: 'Nächstes Bild',
+      open: 'Bild vergrößern',
+      close: 'Bild schließen',
+      dialog: 'Vergrößerte Projektansicht'
     },
     en: {
       kicker: 'Our Services',
       title: 'Digital solutions designed around the needs of European projects.',
       intro: 'Explore concept examples across project websites, applications, serious games and AI-supported tools.',
-      concept: 'Concept examples', previous: 'Previous image', next: 'Next image', open: 'Open larger image', close: 'Close image', dialog: 'Enlarged project preview'
+      concept: 'Concept examples',
+      previous: 'Previous image',
+      next: 'Next image',
+      open: 'Open larger image',
+      close: 'Close image',
+      dialog: 'Enlarged project preview'
     }
   };
 
@@ -101,6 +111,8 @@
   const lightboxImage = section.querySelector('.services-lightbox-image');
   const lightboxCounter = section.querySelector('.services-lightbox-counter');
   const closeButton = section.querySelector('.services-lightbox-close');
+  const lightboxPrev = section.querySelector('.services-lightbox-prev');
+  const lightboxNext = section.querySelector('.services-lightbox-next');
 
   services.forEach((service, serviceIndex) => {
     const single = service.images.length === 1;
@@ -137,14 +149,17 @@
   });
 
   function renderSlider(card, requestedIndex) {
-    const count = card.querySelectorAll('.service-slide').length;
+    const slides = card.querySelectorAll('.service-slide');
+    const count = slides.length;
+    if (!count) return 0;
     const index = (requestedIndex + count) % count;
     card.querySelector('.service-slider').dataset.sliderIndex = String(index);
     card.querySelector('.service-slider-track').style.transform = `translateX(-${index * 100}%)`;
     card.querySelector('.service-slider-counter').textContent = `${index + 1} / ${count}`;
     card.querySelectorAll('.service-slider-dot').forEach((dot, dotIndex) => {
-      dot.classList.toggle('is-active', dotIndex === index);
-      dot.setAttribute('aria-current', dotIndex === index ? 'true' : 'false');
+      const active = dotIndex === index;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-current', active ? 'true' : 'false');
     });
     return index;
   }
@@ -164,7 +179,10 @@
       y = null;
       if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) callback(dx < 0 ? 1 : -1);
     });
-    element.addEventListener('pointercancel', () => { x = null; y = null; });
+    element.addEventListener('pointercancel', () => {
+      x = null;
+      y = null;
+    });
   }
 
   grid.querySelectorAll('.service-showcase-card').forEach((card, serviceIndex) => {
@@ -205,12 +223,13 @@
 
   function updateLightbox() {
     const item = lightboxItems[lightboxIndex];
+    if (!item) return;
     lightboxImage.src = item.src;
     lightboxImage.alt = item.alt;
     lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxItems.length}`;
     const multiple = lightboxItems.length > 1;
-    section.querySelector('.services-lightbox-prev').hidden = !multiple;
-    section.querySelector('.services-lightbox-next').hidden = !multiple;
+    lightboxPrev.hidden = !multiple;
+    lightboxNext.hidden = !multiple;
   }
 
   function showLightbox() {
@@ -239,6 +258,7 @@
     else if (event.target.closest('.services-lightbox-next')) moveLightbox(1);
   });
   installSwipe(lightbox, moveLightbox);
+
   document.addEventListener('keydown', event => {
     if (lightbox.hidden) return;
     if (event.key === 'Escape') hideLightbox();
@@ -254,8 +274,9 @@
     section.querySelector('[data-showcase="intro"]').textContent = text.intro;
     lightbox.setAttribute('aria-label', text.dialog);
     closeButton.setAttribute('aria-label', text.close);
-    section.querySelector('.services-lightbox-prev').setAttribute('aria-label', text.previous);
-    section.querySelector('.services-lightbox-next').setAttribute('aria-label', text.next);
+    lightboxPrev.setAttribute('aria-label', text.previous);
+    lightboxNext.setAttribute('aria-label', text.next);
+
     section.querySelectorAll('.service-showcase-card').forEach((card, index) => {
       const service = services[index];
       card.querySelector('[data-service-badge]').textContent = text.concept;
@@ -269,5 +290,7 @@
   }
 
   translate();
-  document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => setTimeout(translate, 0)));
+  document.querySelectorAll('[data-lang]').forEach(button => {
+    button.addEventListener('click', () => setTimeout(translate, 0));
+  });
 })();

@@ -50,7 +50,7 @@
         en: 'AI-supported tools for document analysis, intelligent search, quiz generation, reporting and knowledge management.'
       },
       images: [
-        { src: 'assets/portfolio/digital-learning-gallery.webp?v=20260725-visible-1', alt: 'EduAssistant AI workspace for document summaries, quiz generation and project analytics', width: 1448, height: 1086 }
+        { src: 'assets/hero-narli-showcase-hq.webp?v=20260725-guard-1', alt: 'EduAssistant AI workspace for document summaries, quiz generation and project analytics', width: 1448, height: 1086 }
       ]
     }
   ];

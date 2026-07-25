@@ -1,0 +1,38 @@
+name: Refresh showcase loader
+
+on:
+  push:
+    paths:
+      - '.github/workflows/refresh-showcase-loader.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Refresh the homepage showcase loader
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          html = path.read_text(encoding='utf-8')
+          html = html.replace(
+              'site-email.js?v=20260725-stable-1',
+              'site-email.js?v=20260725-gallery-2'
+          )
+          path.write_text(html, encoding='utf-8')
+          PY
+
+      - name: Commit refreshed loader
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git rm .github/workflows/refresh-showcase-loader.yml
+          git commit -m "Refresh categorized portfolio loader [skip ci]"
+          git push

@@ -70,6 +70,12 @@
   font-size: .95rem;
 }
 
+/* Do not paint the superseded three-card portfolio before the new service sliders initialise. */
+#portfolio:not([data-services-showcase-ready="true"]) > .container {
+  min-height: 1180px;
+  visibility: hidden;
+}
+
 /* Final homepage headline size is available in the first render-blocking CSS pass. */
 .hero-copy h1 {
   max-width: 760px;
@@ -103,5 +109,9 @@
   .site-email-cta {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  #portfolio:not([data-services-showcase-ready="true"]) > .container {
+    min-height: 2200px;
   }
 }

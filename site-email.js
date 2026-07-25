@@ -21,6 +21,24 @@
     document.head.appendChild(link);
   }
 
+  function installServicesShowcase() {
+    if (!document.querySelector("#portfolio")) return;
+
+    if (!document.querySelector('link[href*="services-showcase.css"]')) {
+      const style = document.createElement("link");
+      style.rel = "stylesheet";
+      style.href = "services-showcase.css?v=20260725-1";
+      document.head.appendChild(style);
+    }
+
+    if (!document.querySelector('script[src*="services-showcase.js"]')) {
+      const script = document.createElement("script");
+      script.src = "services-showcase.js?v=20260725-1";
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  }
+
   function replaceExistingMailLinks() {
     document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
       const isOutputsPage = document.body.classList.contains("outputs-page");
@@ -176,6 +194,7 @@
   }
 
   function install() {
+    installServicesShowcase();
     replaceExistingMailLinks();
     installHomepageEmail();
     installOutputsEmail();

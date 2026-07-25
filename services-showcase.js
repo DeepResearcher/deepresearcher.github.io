@@ -10,10 +10,10 @@
         en: 'Multilingual project websites and digital platforms that clearly present objectives, partners, activities, results and resources.'
       },
       images: [
-        { src: 'assets/services/project-websites/futureskills.webp', alt: 'FutureSkills concept for a European education project website', width: 1536, height: 1024 },
-        { src: 'assets/services/project-websites/ai4cities-dark.webp?v=20260725-visible-1', alt: 'Light AI4Cities concept for a European project website', width: 1536, height: 1024 },
-        { src: 'assets/services/project-websites/ai4cities-dark.webp', alt: 'Dark AI4Cities concept for a European project website', width: 1536, height: 1024 },
-        { src: 'assets/services/project-websites/futureskills.webp?v=20260725-visible-1', alt: 'GreenEd project website, communication materials and responsive digital presence', width: 1448, height: 1086 }
+        { src: 'assets/services/project-websites/futureskills.webp?v=20260725-photo-1', alt: 'FutureSkills concept for a European education project website', width: 1536, height: 1024 },
+        { src: 'assets/services/project-websites/ai4cities-light.webp?v=20260725-photo-1', alt: 'Light AI4Cities concept for a European project website', width: 1536, height: 1024 },
+        { src: 'assets/services/project-websites/ai4cities-dark.webp?v=20260725-photo-1', alt: 'Dark AI4Cities concept for a European project website', width: 1536, height: 1024 },
+        { src: 'assets/services/project-websites/greened.webp?v=20260725-photo-1', alt: 'GreenEd project website, communication materials and responsive digital presence', width: 1448, height: 1086 }
       ]
     },
     {
@@ -23,9 +23,9 @@
         en: 'Responsive web and mobile applications that make learning, participation and project services available across devices.'
       },
       images: [
-        { src: 'assets/hero-narli-showcase-hq.webp?v=20260725-visible-1', alt: 'European education learning application presented on mobile and desktop devices', width: 1448, height: 1086 },
-        { src: 'assets/hero-narli-showcase-hq.webp?v=20260725-visible-2', alt: 'GreenMind website, mobile application and connected project ecosystem', width: 1536, height: 1024 },
-        { src: 'assets/hero-narli-showcase-hq.webp', alt: 'EduInnovate event website and mobile schedule application', width: 1536, height: 1024 }
+        { src: 'assets/services/web-mobile-apps/learning-dashboard.webp?v=20260725-photo-1', alt: 'European education learning application presented on mobile and desktop devices', width: 1448, height: 1086 },
+        { src: 'assets/services/web-mobile-apps/greenmind-ecosystem.webp?v=20260725-photo-1', alt: 'GreenMind website, mobile application and connected project ecosystem', width: 1536, height: 1024 },
+        { src: 'assets/services/web-mobile-apps/eduinnovate-hackathon.webp?v=20260725-photo-1', alt: 'EduInnovate event website and mobile schedule application', width: 1448, height: 1086 }
       ]
     },
     {
@@ -35,12 +35,12 @@
         en: 'Digital and physical game-based formats that transform complex project topics into engaging and measurable learning experiences.'
       },
       images: [
-        { src: 'assets/portfolio/optimized/portfolio-04.webp?v=20260725-visible-1', alt: 'Truth Detectives physical media-literacy board game', width: 1448, height: 1086 },
-        { src: 'assets/portfolio/optimized/portfolio-05.webp?v=20260725-visible-1', alt: 'EcoFuture sustainability board game', width: 1535, height: 1024 },
-        { src: 'assets/portfolio/optimized/portfolio-02.webp?v=20260725-visible-1', alt: 'Life Saver decision-based emergency training serious game', width: 1536, height: 1024 },
-        { src: 'assets/portfolio/optimized/portfolio-01.webp?v=20260725-visible-1', alt: 'Word Quest gamified language-learning interface', width: 1536, height: 1024 },
-        { src: 'assets/portfolio/optimized/portfolio-09.webp?v=20260725-visible-1', alt: 'Knowledge Challenge quiz-based serious game', width: 1536, height: 1024 },
-        { src: 'assets/portfolio/optimized/portfolio-08.webp?v=20260725-visible-1', alt: 'Fake News Detective media-literacy serious game', width: 1536, height: 1024 }
+        { src: 'assets/services/serious-games/truth-detectives.webp?v=20260725-photo-1', alt: 'Truth Detectives physical media-literacy board game', width: 1448, height: 1086 },
+        { src: 'assets/services/serious-games/ecofuture.webp?v=20260725-photo-1', alt: 'EcoFuture sustainability board game', width: 1535, height: 1024 },
+        { src: 'assets/services/serious-games/life-saver.webp?v=20260725-photo-1', alt: 'Life Saver decision-based emergency training serious game', width: 1536, height: 1024 },
+        { src: 'assets/services/serious-games/word-quest.webp?v=20260725-photo-1', alt: 'Word Quest gamified language-learning interface', width: 1536, height: 1024 },
+        { src: 'assets/services/serious-games/knowledge-challenge.webp?v=20260725-photo-1', alt: 'Knowledge Challenge quiz-based serious game', width: 1536, height: 1024 },
+        { src: 'assets/services/serious-games/fake-news-detective.webp?v=20260725-photo-1', alt: 'Fake News Detective media-literacy serious game', width: 1536, height: 1024 }
       ]
     },
     {
@@ -50,7 +50,7 @@
         en: 'AI-supported tools for document analysis, intelligent search, quiz generation, reporting and knowledge management.'
       },
       images: [
-        { src: 'assets/hero-narli-showcase-hq.webp?v=20260725-guard-1', alt: 'EduAssistant AI workspace for document summaries, quiz generation and project analytics', width: 1448, height: 1086 }
+        { src: 'assets/services/ai-toolkits/ai-assistant.webp?v=20260725-photo-1', alt: 'EduAssistant AI workspace for document summaries, quiz generation and project analytics', width: 1448, height: 1086 }
       ]
     }
   ];

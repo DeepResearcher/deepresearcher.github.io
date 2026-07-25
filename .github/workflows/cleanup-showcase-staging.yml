@@ -1,0 +1,24 @@
+name: Cleanup showcase staging
+
+on:
+  push:
+    paths:
+      - '.github/workflows/cleanup-showcase-staging.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove temporary repair files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf .showcase-b64 .showcase-repair
+          git rm .github/workflows/cleanup-showcase-staging.yml
+          git add -A
+          git commit -m "Remove temporary showcase repair files [skip ci]"
+          git push

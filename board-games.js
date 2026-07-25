@@ -1,13 +1,7 @@
 (() => {
-  const files = {
-    ecofuture: [
-      "assets/portfolio/boardgames/ecofuture-1.txt",
-      "assets/portfolio/boardgames/ecofuture-2.txt"
-    ],
-    ecomission: [
-      "assets/portfolio/boardgames/ecomission-1.txt",
-      "assets/portfolio/boardgames/ecomission-2.txt"
-    ]
+  const images = {
+    ecofuture: "assets/portfolio/boardgames/ecofuture.webp",
+    ecomission: "assets/portfolio/boardgames/ecomission.webp"
   };
 
   const copy = {
@@ -42,24 +36,9 @@
     }
   }
 
-  async function readImage(parts) {
-    const chunks = await Promise.all(parts.map(async path => {
-      const response = await fetch(`${path}?v=20260723-2`, { cache: "no-store" });
-      if (!response.ok) throw new Error(`Image data could not be loaded: ${path}`);
-      return (await response.text()).replace(/\s+/g, "");
-    }));
-
-    const binary = atob(chunks.join(""));
-    const bytes = new Uint8Array(binary.length);
-    for (let index = 0; index < binary.length; index += 1) {
-      bytes[index] = binary.charCodeAt(index);
-    }
-    return URL.createObjectURL(new Blob([bytes], { type: "image/webp" }));
-  }
-
   function cardMarkup(title, key, image, tags, fallback) {
     return `
-      <img src="${image}" data-fallback="${fallback}" alt="${title} board game concept" loading="lazy" decoding="async" style="object-fit:cover;background:#dfe8e3">
+      <img src="${image}" data-fallback="${fallback}" alt="${title} board game concept" loading="lazy" decoding="async">
       <div class="output-card-body">
         <span class="output-status" data-board-status></span>
         <h3>${title}</h3>
@@ -98,17 +77,8 @@
     const grid = document.querySelector(".output-grid");
     if (!grid) return;
 
-    const [ecofutureResult, ecomissionResult] = await Promise.allSettled([
-      readImage(files.ecofuture),
-      readImage(files.ecomission)
-    ]);
-
-    const ecofutureImage = ecofutureResult.status === "fulfilled"
-      ? ecofutureResult.value
-      : "assets/portfolio/examples/collaborative-board-game.svg";
-    const ecomissionImage = ecomissionResult.status === "fulfilled"
-      ? ecomissionResult.value
-      : "assets/portfolio/examples/ethical-choices-workshop.svg";
+    const ecofutureImage = images.ecofuture;
+    const ecomissionImage = images.ecomission;
 
     let ecofuture = grid.querySelector('[data-board-game="ecofuture"]');
     if (!ecofuture) {

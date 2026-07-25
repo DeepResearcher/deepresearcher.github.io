@@ -27,13 +27,13 @@
     if (!document.querySelector('link[href*="services-showcase.css"]')) {
       const style = document.createElement("link");
       style.rel = "stylesheet";
-      style.href = "services-showcase.css?v=20260725-hq-2";
+      style.href = "services-showcase.css?v=20260725-stable-1";
       document.head.appendChild(style);
     }
 
     if (!document.querySelector('script[src*="services-showcase.js"]')) {
       const script = document.createElement("script");
-      script.src = "services-showcase.js?v=20260725-hq-2";
+      script.src = "services-showcase.js?v=20260725-stable-1";
       script.defer = true;
       document.head.appendChild(script);
     }

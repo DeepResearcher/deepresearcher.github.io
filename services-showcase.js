@@ -108,11 +108,15 @@
 
   const grid = section.querySelector('.services-showcase-grid');
   const lightbox = section.querySelector('.services-lightbox');
-  const lightboxImage = section.querySelector('.services-lightbox-image');
-  const lightboxCounter = section.querySelector('.services-lightbox-counter');
-  const closeButton = section.querySelector('.services-lightbox-close');
-  const lightboxPrev = section.querySelector('.services-lightbox-prev');
-  const lightboxNext = section.querySelector('.services-lightbox-next');
+  // #portfolio uses content-visibility: auto, which makes it a containing block for
+  // position: fixed descendants. Move the lightbox out to <body> so it stays pinned
+  // to the actual viewport instead of being clipped to the section's own box.
+  document.body.appendChild(lightbox);
+  const lightboxImage = lightbox.querySelector('.services-lightbox-image');
+  const lightboxCounter = lightbox.querySelector('.services-lightbox-counter');
+  const closeButton = lightbox.querySelector('.services-lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.services-lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.services-lightbox-next');
 
   services.forEach((service, serviceIndex) => {
     const single = service.images.length === 1;

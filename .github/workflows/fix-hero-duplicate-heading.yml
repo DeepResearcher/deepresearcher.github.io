@@ -1,0 +1,60 @@
+name: Fix hero duplicate heading
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-hero-duplicate-heading.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore clean hero artwork and remove eyebrow dash
+        run: |
+          git show 9aa9704aa36bcbe7232b81d5f555bc709c58b9ed:assets/hero-narli-devices.webp > assets/hero-narli-devices.webp
+
+          cat >> hero-layout.css <<'CSS'
+
+          /* The hero label is already visually distinct; suppress the generic eyebrow dash. */
+          .hero-product-figure .hero-figure-eyebrow::before {
+            content: none;
+            display: none;
+          }
+          CSS
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              'index.html': [
+                  ('hero-narli-devices.webp?v=20260726-photo-1', 'hero-narli-devices.webp?v=20260726-photo-2')
+              ],
+              'hero-bootstrap.js': [
+                  ('hero-layout.css?v=20260725-stable-1', 'hero-layout.css?v=20260726-no-dash-1'),
+                  ('hero-narli-devices.webp?v=20260726-photo-1', 'hero-narli-devices.webp?v=20260726-photo-2')
+              ]
+          }
+
+          for filename, pairs in replacements.items():
+              path = Path(filename)
+              text = path.read_text()
+              for old, new in pairs:
+                  text = text.replace(old, new)
+              path.write_text(text)
+          PY
+
+      - name: Commit fix and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/fix-hero-duplicate-heading.yml
+          git add assets/hero-narli-devices.webp hero-layout.css hero-bootstrap.js index.html
+          git commit -m "Fix duplicate hero heading and remove dash [skip ci]"
+          git push

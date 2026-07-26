@@ -72,14 +72,14 @@
     }
 
     image.classList.add("hero-product-photo");
-    image.width = 384;
-    image.height = 384;
+    image.width = 1041;
+    image.height = 858;
     image.alt = language === "en"
       ? "NARLI DIGITAL presentation of digital solutions for education and innovation"
       : "NARLI DIGITAL Präsentation digitaler Lösungen für Bildung und Innovation";
     image.addEventListener("load", resolve, { once: true });
     image.addEventListener("error", resolve, { once: true });
-    image.src = "assets/hero-narli-banner.webp?v=20260725-stable-1";
+    image.src = "assets/hero-narli-devices.webp?v=20260726-photo-1";
 
     if (image.complete) resolve();
   });

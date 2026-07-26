@@ -17,13 +17,13 @@
 .hero-product-figure .hero-product-photo {
   position: relative;
   z-index: 1;
-  width: min(100%, 560px);
+  width: min(100%, 640px);
   height: auto;
-  aspect-ratio: 1 / 1;
-  border-radius: 24px;
-  object-fit: cover;
-  filter: none;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+  aspect-ratio: 1041 / 858;
+  border-radius: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 26px 55px rgba(0, 0, 0, 0.45));
+  box-shadow: none;
 }
 
 /* Defensive fallbacks: these elements are also removed by hero-bootstrap.js. */
@@ -53,6 +53,5 @@
 
   .hero-product-figure .hero-product-photo {
     width: 100%;
-    border-radius: 18px;
   }
 }

@@ -1,4 +1,56 @@
 /* Final hero composition requested for the homepage. */
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 22px;
+  transform-origin: top left;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.hero-brand-mark {
+  width: 96px;
+  height: 68px;
+  flex: 0 0 auto;
+}
+
+.hero-brand-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(22, 145, 127, 0.25));
+}
+
+.hero-brand-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.hero-brand-text span {
+  display: block;
+  margin-top: 6px;
+  color: #66d2bd;
+  font-size: 0.72em;
+  letter-spacing: 0.22em;
+}
+
+@media (max-width: 620px) {
+  .hero-brand-mark {
+    width: 72px;
+    height: 51px;
+  }
+
+  .hero-brand-text {
+    font-size: 1.25rem;
+  }
+}
+
 .hero-product-figure {
   display: flex;
   flex-direction: column;

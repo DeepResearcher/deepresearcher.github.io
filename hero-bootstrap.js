@@ -91,4 +91,57 @@
 
   if (heroGrid) heroGrid.hidden = false;
   document.documentElement.classList.add("hero-ready");
+
+  requestAnimationFrame(() => initHeroBrandMorph());
+
+  function initHeroBrandMorph() {
+    const heroBrand = document.querySelector(".hero-brand");
+    const headerBrand = document.querySelector(".site-header .brand");
+    if (!heroBrand || !headerBrand) return;
+
+    let startRect, endRect, scaleX, scaleY, deltaX, distance;
+
+    function measure() {
+      heroBrand.style.transform = "none";
+      startRect = heroBrand.getBoundingClientRect();
+      endRect = headerBrand.getBoundingClientRect();
+
+      scaleX = endRect.width / startRect.width;
+      scaleY = endRect.height / startRect.height;
+      deltaX = endRect.left - startRect.left;
+      // Natural scrolling already carries the element's own top edge up the
+      // page; sizing the animation distance to that exact gap means no
+      // vertical transform is needed - it arrives at the header's Y position
+      // by scroll alone, right as the horizontal/scale interpolation ends.
+      distance = Math.max(startRect.top - endRect.top, 80);
+      update();
+    }
+
+    function update() {
+      const progress = Math.min(Math.max(window.scrollY / distance, 0), 1);
+      const eased = progress * progress * (3 - 2 * progress);
+      const scaleXNow = 1 + (scaleX - 1) * eased;
+      const scaleYNow = 1 + (scaleY - 1) * eased;
+      heroBrand.style.transform = `translateX(${deltaX * eased}px) scale(${scaleXNow}, ${scaleYNow})`;
+      heroBrand.style.opacity = String(1 - eased);
+    }
+
+    measure();
+
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    }, { passive: true });
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(measure, 150);
+    });
+  }
 })();

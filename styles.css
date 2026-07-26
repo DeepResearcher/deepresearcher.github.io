@@ -283,13 +283,6 @@ svg {
   text-transform: uppercase;
 }
 
-.eyebrow::before {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: currentColor;
-}
-
 h1,
 h2,
 h3,

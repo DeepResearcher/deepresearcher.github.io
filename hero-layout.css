@@ -107,3 +107,8 @@
     width: 100%;
   }
 }
+/* The hero label is already visually distinct; suppress the generic eyebrow dash. */
+.hero-product-figure .hero-figure-eyebrow::before {
+  content: none;
+  display: none;
+}

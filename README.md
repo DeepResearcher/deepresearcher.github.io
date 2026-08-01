@@ -1,6 +1,6 @@
 # NARLI DIGITAL
 
-Responsive bilingual landing page for **NARLI DIGITAL — Digital Solutions for European Projects**.
+Responsive bilingual landing page for **NARLI DIGITAL: Digital Solutions for European Projects**.
 
 ## Current status
 

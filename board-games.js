@@ -90,7 +90,7 @@
       ecofuture.dataset.category = "workshop";
       ecofuture.dataset.boardGame = "ecofuture";
       ecofuture.innerHTML = cardMarkup(
-        "EcoFuture – The Board Game",
+        "EcoFuture: The Board Game",
         "ecofuture",
         ecofutureImage,
         ["Board Game", "Sustainability", "Group Learning"],

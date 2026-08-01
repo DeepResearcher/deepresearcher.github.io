@@ -24,11 +24,11 @@ const commonTranslations = {
 const pageTranslations = {
   websites: {
     de: {
-      "meta.title": "NARLI DIGITAL — Websites für EU-Projekte",
+      "meta.title": "NARLI DIGITAL: Websites für EU-Projekte",
       "meta.description": "Mehrsprachige, barrierearme und nachhaltig betreibbare Websites, Ergebnisplattformen und Ressourcenbibliotheken für Erasmus+ und europäische Projekte.",
       "hero.kicker": "EU Project Websites",
       "hero.title": "Projektwebsites, die mehr leisten als reine Sichtbarkeit.",
-      "hero.text": "Wir entwickeln mehrsprachige Websites, Ergebnisplattformen und digitale Ressourcenbereiche für europäische Projekte – von der technischen Planung bis zur Veröffentlichung, Übergabe und Weiterentwicklung.",
+      "hero.text": "Wir entwickeln mehrsprachige Websites, Ergebnisplattformen und digitale Ressourcenbereiche für europäische Projekte: von der technischen Planung bis zur Veröffentlichung, Übergabe und Weiterentwicklung.",
       "hero.ctaPrimary": "Website-Projekt besprechen",
       "hero.ctaSecondary": "Leistungsumfang ansehen",
       "hero.cardLabel": "Typische Bestandteile",
@@ -93,7 +93,7 @@ const pageTranslations = {
       "cta.button": "Website-Projekt anfragen"
     },
     en: {
-      "meta.title": "NARLI DIGITAL — Websites for EU Projects",
+      "meta.title": "NARLI DIGITAL: Websites for EU Projects",
       "meta.description": "Multilingual, accessibility-oriented and maintainable websites, results platforms and resource libraries for Erasmus+ and European projects.",
       "hero.kicker": "EU Project Websites",
       "hero.title": "Project websites designed for more than visibility.",
@@ -164,7 +164,7 @@ const pageTranslations = {
   },
   games: {
     de: {
-      "meta.title": "NARLI DIGITAL — Serious Games & Digital Outputs",
+      "meta.title": "NARLI DIGITAL: Serious Games & Digital Outputs",
       "meta.description": "Serious Games, interaktive Lernmodule, Simulationen, Quizformate und weitere digitale Outputs für europäische Bildungs- und Forschungsprojekte.",
       "hero.kicker": "Serious Games & Digital Outputs",
       "hero.title": "Interaktive Outputs, die Inhalte erlebbar und nutzbar machen.",
@@ -233,7 +233,7 @@ const pageTranslations = {
       "cta.button": "Digitalen Output anfragen"
     },
     en: {
-      "meta.title": "NARLI DIGITAL — Serious Games & Digital Outputs",
+      "meta.title": "NARLI DIGITAL: Serious Games & Digital Outputs",
       "meta.description": "Serious games, interactive learning modules, simulations, quizzes and other digital outputs for European education and research projects.",
       "hero.kicker": "Serious Games & Digital Outputs",
       "hero.title": "Interactive outputs that make content usable and engaging.",

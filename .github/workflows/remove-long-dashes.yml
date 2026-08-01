@@ -1,0 +1,100 @@
+name: Remove long dashes from site
+
+on:
+  push:
+    paths:
+      - '.github/workflows/remove-long-dashes.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Replace long dashes in user-facing site files
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          root = Path('.')
+          allowed_suffixes = {'.html', '.js', '.css', '.svg', '.json', '.md', '.txt'}
+          skip_parts = {'.git', 'node_modules'}
+
+          exact_replacements = {
+              'NARLI DIGITAL — Digitale Outputs für europäische Projekte':
+                  'NARLI DIGITAL | Digitale Outputs für europäische Projekte',
+              'NARLI DIGITAL — Digital Outputs for European Projects':
+                  'NARLI DIGITAL | Digital Outputs for European Projects',
+              'Wir entwickeln konkrete digitale Outputs – von einzelnen Anwendungen bis zu zusammenhängenden Produktlösungen.':
+                  'Wir entwickeln konkrete digitale Outputs, von einzelnen Anwendungen bis zu zusammenhängenden Produktlösungen.',
+              'Vorschau – rechtliche Angaben folgen vor dem öffentlichen Launch.':
+                  'Vorschau: Rechtliche Angaben folgen vor dem öffentlichen Launch.',
+              'Preview — legal details will be added before the public launch.':
+                  'Preview: Legal details will be added before the public launch.',
+          }
+
+          changed = []
+          for path in root.rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in allowed_suffixes:
+                  continue
+              if any(part in skip_parts for part in path.parts):
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+
+              updated = text
+              for old, new in exact_replacements.items():
+                  updated = updated.replace(old, new)
+
+              # The site should not use Unicode em/en dashes anywhere.
+              updated = updated.replace(' — ', ': ')
+              updated = updated.replace(' – ', ': ')
+              updated = updated.replace('—', '-')
+              updated = updated.replace('–', '-')
+
+              if path.name == 'index.html':
+                  updated = updated.replace(
+                      'script.js?v=20260724-no-flash-2',
+                      'script.js?v=20260801-no-long-dashes-1'
+                  )
+
+              if updated != text:
+                  path.write_text(updated, encoding='utf-8')
+                  changed.append(str(path))
+
+          remaining = []
+          for path in root.rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in allowed_suffixes:
+                  continue
+              if any(part in skip_parts for part in path.parts):
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              if '—' in text or '–' in text:
+                  remaining.append(str(path))
+
+          if remaining:
+              raise SystemExit('Long dashes remain in: ' + ', '.join(remaining))
+
+          print('Updated files:')
+          for filename in changed:
+              print(filename)
+          PY
+
+      - name: Commit cleanup and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/remove-long-dashes.yml
+          git add -A
+          git commit -m "Clean up long dashes across site [skip ci]"
+          git push

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <!-- Fallback for hosts that ignore _headers (e.g. a GitHub Pages mirror); meta CSP can't cover frame-ancestors/report-*. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com; frame-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com 'sha256-hjT7D8tawvYb3dL2qXgkCUgAuQ/jyFfFFUrkXio6cVQ='; style-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com; frame-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="NARLI DIGITAL entwickelt Websites, Apps, Serious Games, KI-Lösungen und digitale Outputs für europäische Projekte.">
@@ -29,7 +29,13 @@
   <script src="site-email.js?v=20260725-guard-1" defer></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TMB9MX889"></script>
-  <script src="/google-tag.js"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1TMB9MX889');
+</script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="access.skip">Zum Inhalt springen</a>

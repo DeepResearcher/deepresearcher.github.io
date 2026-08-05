@@ -11,7 +11,13 @@
   <script>window.location.replace('https://studio.narli-digital.de/');</script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TMB9MX889"></script>
-  <script src="/google-tag.js"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1TMB9MX889');
+</script>
 </head>
 <body>
   <p>Weiterleitung zum <a href="https://studio.narli-digital.de/">NARLI DIGITAL Studio</a>…</p>

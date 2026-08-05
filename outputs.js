@@ -1,7 +1,7 @@
 (() => {
   const copy = {
     de: {
-      "access.skip":"Zum Inhalt springen","access.menu":"Menü öffnen","nav.services":"Leistungen","nav.portfolio":"Portfolio","nav.outputs":"Digital Outputs","nav.contact":"Kontakt","nav.why":"Warum wir","nav.team":"Team",
+      "access.skip":"Zum Inhalt springen","access.menu":"Menü öffnen","nav.services":"Leistungen","nav.portfolio":"Portfolio","nav.examples":"Beispiele","nav.outputs":"Digital Outputs","nav.contact":"Kontakt","nav.why":"Warum wir","nav.team":"Team",
       "hero.kicker":"Digital Output Library","hero.title":"Digitale Konzepte für Lernen, Zusammenarbeit und Projektwirkung.","hero.text":"Diese Seite bündelt unsere eigenen Konzeptbeispiele, mögliche interaktive Lernformate und eine klare Übersicht darüber, wie digitale Outputs in europäischen Projekten eingesetzt werden können.","hero.ctaPrimary":"Konzeptbeispiele ansehen","hero.ctaSecondary":"Projekt besprechen","hero.metric1":"eigene Konzeptbeispiele","hero.metric2":"interaktive Lernformate","hero.metric3":"technische Kernbereiche",
       "concepts.kicker":"Unsere Konzeptbeispiele","concepts.title":"So können digitale Projektoutputs aussehen.","concepts.text":"Alle folgenden Arbeiten sind als Konzeptbeispiele gekennzeichnet. Sie zeigen mögliche Funktionen, visuelle Richtungen und Einsatzformen, werden jedoch nicht als abgeschlossene Kundenprojekte dargestellt.",
       "filter.all":"Alle","filter.games":"Serious Games","filter.learning":"Interactive Learning","filter.platforms":"Plattformen","filter.workshops":"Workshop-Formate","status.concept":"Konzeptbeispiel",
@@ -17,7 +17,7 @@
       "cta.kicker":"Projektspezifische Umsetzung","cta.title":"Ein vergleichbarer digitaler Output kann für Ihr Projekt entwickelt werden.","cta.text":"Thema, Zielgruppe, Sprache, visuelle Identität, technische Funktionen und Lieferformat werden projektspezifisch angepasst.","cta.button":"Projekt besprechen","footer.preview":"Vorschau: Rechtliche Angaben folgen vor dem öffentlichen Launch."
     },
     en: {
-      "access.skip":"Skip to content","access.menu":"Open menu","nav.services":"Services","nav.portfolio":"Portfolio","nav.outputs":"Digital Outputs","nav.contact":"Contact","nav.why":"Why Us","nav.team":"Team",
+      "access.skip":"Skip to content","access.menu":"Open menu","nav.services":"Services","nav.portfolio":"Portfolio","nav.examples":"Examples","nav.outputs":"Digital Outputs","nav.contact":"Contact","nav.why":"Why Us","nav.team":"Team",
       "hero.kicker":"Digital Output Library","hero.title":"Digital concepts for learning, collaboration and project impact.","hero.text":"This page brings together our own concept examples, possible interactive learning formats and a clear overview of how digital outputs can be used in European projects.","hero.ctaPrimary":"Explore concept examples","hero.ctaSecondary":"Discuss a project","hero.metric1":"original concept examples","hero.metric2":"interactive learning formats","hero.metric3":"core technical areas",
       "concepts.kicker":"Our concept examples","concepts.title":"What digital project outputs can look like.","concepts.text":"All works below are clearly marked as concept examples. They illustrate possible functions, visual directions and use cases, but are not presented as completed client projects.",
       "filter.all":"All","filter.games":"Serious Games","filter.learning":"Interactive Learning","filter.platforms":"Platforms","filter.workshops":"Workshop Formats","status.concept":"Concept Example",
@@ -62,10 +62,18 @@
 
     if (!container.querySelector('[data-i18n="nav.portfolio"]')) {
       const portfolioLink = document.createElement('a');
-      portfolioLink.href = '/#portfolio';
+      portfolioLink.href = '/portfolio';
       portfolioLink.dataset.i18n = 'nav.portfolio';
       portfolioLink.textContent = 'Portfolio';
       outputsLink ? container.insertBefore(portfolioLink, outputsLink) : container.appendChild(portfolioLink);
+    }
+
+    if (!container.querySelector('[data-i18n="nav.examples"]')) {
+      const examplesLink = document.createElement('a');
+      examplesLink.href = '/#portfolio';
+      examplesLink.dataset.i18n = 'nav.examples';
+      examplesLink.textContent = 'Beispiele';
+      outputsLink ? container.insertBefore(examplesLink, outputsLink) : container.appendChild(examplesLink);
     }
 
     if (!container.querySelector('[data-i18n="nav.why"]')) {

@@ -1,0 +1,118 @@
+name: Replace Google tag with exact snippet
+
+on:
+  push:
+    paths:
+      - '.github/workflows/replace-google-tag.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install exact Google tag snippet and CSP hash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64
+          import hashlib
+
+          measurement_id = "G-1TMB9MX889"
+          root = Path(".")
+
+          inline_code = (
+              "\n"
+              "  window.dataLayer = window.dataLayer || [];\n"
+              "  function gtag(){dataLayer.push(arguments);}\n"
+              "  gtag('js', new Date());\n"
+              "\n"
+              f"  gtag('config', '{measurement_id}');\n"
+          )
+          inline_hash = base64.b64encode(
+              hashlib.sha256(inline_code.encode("utf-8")).digest()
+          ).decode("ascii")
+          hash_source = f"'sha256-{inline_hash}'"
+
+          exact_block = (
+              "  <!-- Google tag (gtag.js) -->\n"
+              f"  <script async src=\"https://www.googletagmanager.com/gtag/js?id={measurement_id}\"></script>\n"
+              f"  <script>{inline_code}</script>\n"
+          )
+
+          old_block = (
+              "  <!-- Google tag (gtag.js) -->\n"
+              f"  <script async src=\"https://www.googletagmanager.com/gtag/js?id={measurement_id}\"></script>\n"
+              "  <script src=\"/google-tag.js\"></script>\n"
+          )
+
+          changed = []
+          html_files = sorted(root.rglob("*.html"))
+          if not html_files:
+              raise SystemExit("No HTML files found")
+
+          for path in html_files:
+              text = path.read_text(encoding="utf-8")
+              updated = text
+
+              if old_block in updated:
+                  updated = updated.replace(old_block, exact_block, 1)
+              elif f"gtag('config', '{measurement_id}')" not in updated:
+                  if "</head>" not in updated:
+                      raise SystemExit(f"Missing </head> in {path}")
+                  updated = updated.replace("</head>", exact_block + "</head>", 1)
+
+              marker = "script-src 'self' https://www.googletagmanager.com"
+              if marker in updated and hash_source not in updated:
+                  updated = updated.replace(marker, marker + " " + hash_source)
+
+              if updated != text:
+                  path.write_text(updated, encoding="utf-8")
+                  changed.append(str(path))
+
+          headers = root / "_headers"
+          if headers.exists():
+              text = headers.read_text(encoding="utf-8")
+              updated = text
+              marker = "script-src 'self' https://www.googletagmanager.com"
+              if marker in updated and hash_source not in updated:
+                  updated = updated.replace(marker, marker + " " + hash_source)
+              if updated != text:
+                  headers.write_text(updated, encoding="utf-8")
+                  changed.append(str(headers))
+
+          loader = root / "google-tag.js"
+          if loader.exists():
+              loader.unlink()
+              changed.append(str(loader))
+
+          missing = []
+          for path in html_files:
+              text = path.read_text(encoding="utf-8")
+              if (
+                  f"https://www.googletagmanager.com/gtag/js?id={measurement_id}" not in text
+                  or f"gtag('config', '{measurement_id}')" not in text
+              ):
+                  missing.append(str(path))
+          if missing:
+              raise SystemExit("Exact Google tag missing from: " + ", ".join(missing))
+
+          print("CSP hash:", hash_source)
+          print("Updated files:")
+          for filename in changed:
+              print(filename)
+          PY
+
+      - name: Commit changes and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/replace-google-tag.yml
+          git add -A
+          git commit -m "Use exact Google Analytics snippet G-1TMB9MX889 [skip ci]"
+          git push

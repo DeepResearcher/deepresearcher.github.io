@@ -1,0 +1,107 @@
+name: Install Google tag
+
+on:
+  push:
+    paths:
+      - '.github/workflows/install-google-tag.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add Google Analytics tag and CSP permissions
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          measurement_id = "G-1TMB9MX889"
+          root = Path(".")
+
+          loader = root / "google-tag.js"
+          loader.write_text(
+              "window.dataLayer = window.dataLayer || [];\n"
+              "function gtag(){window.dataLayer.push(arguments);}\n"
+              "window.gtag = window.gtag || gtag;\n"
+              "window.gtag('js', new Date());\n"
+              f"window.gtag('config', '{measurement_id}');\n",
+              encoding="utf-8",
+          )
+
+          tag_block = (
+              "  <!-- Google tag (gtag.js) -->\n"
+              f"  <script async src=\"https://www.googletagmanager.com/gtag/js?id={measurement_id}\"></script>\n"
+              "  <script src=\"/google-tag.js\"></script>\n"
+          )
+
+          html_files = sorted(root.rglob("*.html"))
+          if not html_files:
+              raise SystemExit("No HTML files found")
+
+          changed = []
+          for path in html_files:
+              text = path.read_text(encoding="utf-8")
+              updated = text
+
+              if measurement_id not in updated:
+                  if "</head>" not in updated:
+                      raise SystemExit(f"Missing </head> in {path}")
+                  updated = updated.replace("</head>", tag_block + "</head>", 1)
+
+              updated = updated.replace(
+                  "script-src 'self';",
+                  "script-src 'self' https://www.googletagmanager.com;",
+              )
+              updated = updated.replace(
+                  "img-src 'self' data:;",
+                  "img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com;",
+              )
+              updated = updated.replace(
+                  "connect-src 'self';",
+                  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com;",
+              )
+
+              if updated != text:
+                  path.write_text(updated, encoding="utf-8")
+                  changed.append(str(path))
+
+          headers = root / "_headers"
+          if headers.exists():
+              text = headers.read_text(encoding="utf-8")
+              updated = text.replace(
+                  "script-src 'self';",
+                  "script-src 'self' https://www.googletagmanager.com;",
+              ).replace(
+                  "img-src 'self' data:;",
+                  "img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com;",
+              ).replace(
+                  "connect-src 'self';",
+                  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com;",
+              )
+              if updated != text:
+                  headers.write_text(updated, encoding="utf-8")
+                  changed.append(str(headers))
+
+          missing = [str(path) for path in html_files if measurement_id not in path.read_text(encoding="utf-8")]
+          if missing:
+              raise SystemExit("Google tag missing from: " + ", ".join(missing))
+
+          print("Updated files:")
+          for filename in changed:
+              print(filename)
+          PY
+
+      - name: Commit tag installation and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/install-google-tag.yml
+          git add -A
+          git commit -m "Install Google Analytics tag G-1TMB9MX889 [skip ci]"
+          git push

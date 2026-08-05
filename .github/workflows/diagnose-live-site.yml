@@ -1,0 +1,78 @@
+name: Diagnose live NARLI DIGITAL site
+
+on:
+  push:
+    paths:
+      - '.github/workflows/diagnose-live-site.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Inspect DNS, redirects, headers and live HTML
+        run: |
+          set -u
+          OUT=live-site-diagnostic.txt
+          : > "$OUT"
+          echo "Generated UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "$OUT"
+          echo >> "$OUT"
+
+          for host in narli-digital.de www.narli-digital.de; do
+            echo "===== HOST: $host =====" >> "$OUT"
+            echo "--- DNS ---" >> "$OUT"
+            getent ahosts "$host" >> "$OUT" 2>&1 || true
+            echo >> "$OUT"
+
+            echo "--- HEADERS / REDIRECT CHAIN ---" >> "$OUT"
+            curl -sSIL --max-time 30 "https://$host/" >> "$OUT" 2>&1 || true
+            echo >> "$OUT"
+
+            BODY="body-${host}.html"
+            META="meta-${host}.txt"
+            curl -sSL --max-time 30 \
+              -D "headers-${host}.txt" \
+              -o "$BODY" \
+              -w 'http_code=%{http_code}\nurl_effective=%{url_effective}\nremote_ip=%{remote_ip}\ncontent_type=%{content_type}\nsize_download=%{size_download}\n' \
+              "https://$host/" > "$META" 2>&1 || true
+
+            echo "--- CURL META ---" >> "$OUT"
+            cat "$META" >> "$OUT" 2>/dev/null || true
+            echo >> "$OUT"
+
+            echo "--- LIVE HTML GOOGLE TAG MATCHES ---" >> "$OUT"
+            grep -n -E 'G-1TMB9MX889|googletagmanager|google-analytics|gtag\(' "$BODY" >> "$OUT" 2>&1 || echo "NO GOOGLE TAG MATCH" >> "$OUT"
+            echo >> "$OUT"
+
+            echo "--- LIVE HTML IDENTIFIERS ---" >> "$OUT"
+            grep -n -E '<title>|canonical|NARLI DIGITAL|script\.js\?v=' "$BODY" | head -30 >> "$OUT" 2>&1 || true
+            echo >> "$OUT"
+
+            echo "--- BODY SHA256 ---" >> "$OUT"
+            sha256sum "$BODY" >> "$OUT" 2>&1 || true
+            echo >> "$OUT"
+          done
+
+          echo "===== GITHUB MAIN INDEX =====" >> "$OUT"
+          echo "--- REPOSITORY GOOGLE TAG MATCHES ---" >> "$OUT"
+          grep -n -E 'G-1TMB9MX889|googletagmanager|google-analytics|gtag\(' index.html >> "$OUT" 2>&1 || true
+          echo >> "$OUT"
+          echo "--- REPOSITORY INDEX SHA256 ---" >> "$OUT"
+          sha256sum index.html >> "$OUT" 2>&1 || true
+
+          rm -f body-*.html headers-*.txt meta-*.txt
+
+      - name: Commit diagnostic and remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/diagnose-live-site.yml
+          git add live-site-diagnostic.txt
+          git commit -m "Diagnose live NARLI DIGITAL deployment [skip ci]"
+          git push

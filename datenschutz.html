@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <!-- Fallback for hosts that ignore _headers (e.g. a GitHub Pages mirror); meta CSP can't cover frame-ancestors/report-*. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com 'sha256-hjT7D8tawvYb3dL2qXgkCUgAuQ/jyFfFFUrkXio6cVQ='; style-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.google.de; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://stats.g.doubleclick.net; frame-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.google.de; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://stats.g.doubleclick.net; frame-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Datenschutzerklärung von NARLI DIGITAL.">
@@ -14,15 +14,8 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="legal.css?v=20260723-1">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TMB9MX889"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-1TMB9MX889');
-</script>
+  <link rel="stylesheet" href="cookie-consent.css">
+  <script src="cookie-consent.js" defer></script>
 </head>
 <body class="legal-page">
   <header class="site-header">
@@ -84,8 +77,13 @@
 
         <section>
           <h2>5. Cookies, Analyse und lokale Speicherung</h2>
-          <p>Diese Website verwendet derzeit keine Analyse-, Marketing- oder Tracking-Dienste und setzt keine entsprechenden Cookies ein.</p>
           <p>Bei der Auswahl einer Sprache kann die gewählte Sprache lokal im Browser gespeichert werden. Diese Speicherung dient ausschließlich dazu, die ausdrücklich gewählte Sprache bei einem späteren Seitenaufruf wiederherzustellen. Die Information wird nicht für Werbung oder Profilbildung verwendet und nicht von uns an einen Server übertragen. Die lokale Speicherung erfolgt zur Bereitstellung der gewünschten Funktion gemäß § 25 Abs. 2 Nr. 2 TDDDG.</p>
+          <p>Beim ersten Besuch dieser Website wird zudem Ihre Entscheidung zu optionalen Cookies (angenommen oder abgelehnt) lokal im Browser gespeichert, damit der Hinweis nicht bei jedem Seitenaufruf erneut erscheint. Diese Speicherung ist technisch notwendig und erfolgt unabhängig von Ihrer Entscheidung.</p>
+          <h3>Google Analytics</h3>
+          <p>Sofern Sie im Cookie-Hinweis ausdrücklich zugestimmt haben, setzen wir Google Analytics ein, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland ("Google"). Google Analytics verwendet Cookies bzw. vergleichbare Technologien, die eine Analyse der Benutzung der Website durch Sie ermöglichen.</p>
+          <p>Die dabei erzeugten Informationen werden in der Regel an einen Server von Google übertragen und dort verarbeitet. Dabei kann es zu einer Übermittlung personenbezogener Daten in die USA kommen; Google ist nach eigenen Angaben nach dem EU-U.S. Data Privacy Framework zertifiziert.</p>
+          <p>Rechtsgrundlage ist ausschließlich Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO i. V. m. § 25 Abs. 1 TDDDG. Google Analytics wird erst geladen, nachdem Sie im Cookie-Hinweis auf "Alle akzeptieren" geklickt haben. Ohne Ihre Einwilligung findet keine Übertragung an Google statt.</p>
+          <p>Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie über den Link "Cookie-Einstellungen" im Seitenfooter erneut "Nur erforderliche" auswählen. Weitere Informationen zu Google Analytics und zum Datenschutz bei Google finden Sie unter <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
         </section>
 
         <section>
@@ -108,7 +106,7 @@
         <section>
           <h2>9. Aktualisierung dieser Datenschutzerklärung</h2>
           <p>Diese Datenschutzerklärung wird angepasst, wenn sich die technische Ausgestaltung der Website, die eingesetzten Dienstleister oder die rechtlichen Anforderungen ändern.</p>
-          <p><strong>Stand: 23. Juli 2026</strong></p>
+          <p><strong>Stand: 31. August 2026</strong></p>
         </section>
 
         <a class="legal-back" href="/">← Zurück zur Startseite</a>
@@ -120,7 +118,7 @@
     <div class="container footer-grid">
       <div><a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true"><img src="assets/brand-mark.svg" alt=""></span><span class="brand-text"><strong>NARLI</strong><span>DIGITAL</span></span></a><p>Digital Outputs for European Projects</p></div>
       <div class="footer-links"><a href="/">Startseite</a><a href="/digital-outputs">Digital Outputs</a><a href="/impressum">Impressum</a><a href="/datenschutz" aria-current="page">Datenschutz</a></div>
-      <div class="footer-meta"><span>Berlin / Brandenburg · Europe</span><span><a href="mailto:info@narli-digital.de">info@narli-digital.de</a></span><span>© 2026 NARLI DIGITAL</span></div>
+      <div class="footer-meta"><span>Berlin / Brandenburg · Europe</span><span><a href="mailto:info@narli-digital.de">info@narli-digital.de</a></span><span>© 2026 NARLI DIGITAL</span><span><button type="button" class="cookie-settings-link" data-cookie-settings>Cookie-Einstellungen</button></span></div>
     </div>
   </footer>
 </body>

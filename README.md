@@ -11,6 +11,11 @@ Responsive bilingual landing page for **NARLI DIGITAL: Digital Solutions for Eur
 - Search indexing intentionally disabled during preview
 - Existing `app-ads.txt` preserved
 
+## Versions
+
+- `v1-original` (branch and tag): the site as it was live until October 2026, preserved unchanged. Preview: https://v1-original.deepresearcher-github-io.pages.dev
+- v2 (current): lighter content sections plus new homepage sections, all in `v2.css` / `v2.js` and scoped to `<html class="v2">`. Removing that class restores the v1 styling of the existing sections.
+
 ## Cloudflare Pages deployment
 
 Connect this repository to Cloudflare Pages with the following settings:

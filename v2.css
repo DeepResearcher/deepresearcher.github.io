@@ -500,9 +500,11 @@
   box-shadow: var(--v2-shadow-hover);
 }
 
-.v2 .team-photo {
-  height: 260px;
-  border-bottom-color: var(--v2-border);
+/* Name-and-role cards: the homepage shows no team photos. */
+.v2 .team-card-content {
+  min-height: 0;
+  padding: 26px 22px;
+  border-top: 3px solid var(--accent-strong);
 }
 
 .v2 .team-card h3 {

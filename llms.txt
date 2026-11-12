@@ -7,10 +7,17 @@ NARLI DIGITAL develops websites, web and mobile applications, serious games, int
 - [Homepage](https://www.narli-digital.de/)
 - [EU Project Websites](https://www.narli-digital.de/eu-project-websites)
 - [Serious Games and Digital Outputs](https://www.narli-digital.de/serious-games-digital-outputs)
-- [Digital Outputs Library](https://www.narli-digital.de/digital-outputs)
+- [Portfolio](https://www.narli-digital.de/portfolio)
+- [Spielraum: white-label game platform](https://studio.narli-digital.de/)
 - [Contact](https://www.narli-digital.de/#collaborate)
 - [Impressum](https://www.narli-digital.de/impressum)
 - [Datenschutzerklärung](https://www.narli-digital.de/datenschutz)
+
+## English pages
+
+- [Homepage (English)](https://www.narli-digital.de/en/)
+- [EU Project Websites (English)](https://www.narli-digital.de/en/eu-project-websites)
+- [Serious Games and Digital Outputs (English)](https://www.narli-digital.de/en/serious-games-digital-outputs)
 
 ## Contact
 

@@ -1,7 +1,7 @@
 (() => {
   const images = {
-    ecofuture: "assets/portfolio/boardgames/ecofuture.webp",
-    ecomission: "assets/portfolio/boardgames/ecomission.webp"
+    ecofuture: "/assets/portfolio/boardgames/ecofuture.webp",
+    ecomission: "/assets/portfolio/boardgames/ecomission.webp"
   };
 
   const copy = {
@@ -94,7 +94,7 @@
         "ecofuture",
         ecofutureImage,
         ["Board Game", "Sustainability", "Group Learning"],
-        "assets/portfolio/examples/collaborative-board-game.svg"
+        "/assets/portfolio/examples/collaborative-board-game.svg"
       );
       if (!generic) grid.appendChild(ecofuture);
     } else {
@@ -114,7 +114,7 @@
         "ecomission",
         ecomissionImage,
         ["Board Game", "Environmental Education", "Team Activity"],
-        "assets/portfolio/examples/ethical-choices-workshop.svg"
+        "/assets/portfolio/examples/ethical-choices-workshop.svg"
       );
       ecofuture.insertAdjacentElement("afterend", ecomission);
     } else {

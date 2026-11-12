@@ -4,7 +4,7 @@
 
   let language = "de";
   try {
-    language = localStorage.getItem("narli-language") === "en" ? "en" : "de";
+    language = window.NARLI_PAGE_LANG || (localStorage.getItem("narli-language") === "en" ? "en" : "de");
   } catch (_) {}
 
   document.documentElement.lang = language;
@@ -79,7 +79,7 @@
       : "NARLI DIGITAL Präsentation digitaler Lösungen für Bildung und Innovation";
     image.addEventListener("load", resolve, { once: true });
     image.addEventListener("error", resolve, { once: true });
-    image.src = "assets/hero-narli-devices.webp?v=20260726-photo-2";
+    image.src = "/assets/hero-narli-devices.webp?v=20260726-photo-2";
 
     if (image.complete) resolve();
   });

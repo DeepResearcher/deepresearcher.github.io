@@ -1,0 +1,27 @@
+name: Check English pages
+
+# The /en/ pages and the SEO tags are generated from the German pages. This fails when a German
+# page changed without re-running the generator, so the two languages never drift apart.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generated pages are up to date
+        run: node tools/build-en-pages.mjs --check

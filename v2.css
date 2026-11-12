@@ -178,6 +178,17 @@
   content: " →";
 }
 
+.service-card-link {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+}
+
+.service-card-link:hover,
+.service-card-link:focus-visible {
+  text-decoration: underline;
+}
+
 /* ---------- Kompetenzen ---------- */
 
 .v2-core-grid {

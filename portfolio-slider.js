@@ -75,7 +75,7 @@
   }
 
   function installStylesheet() {
-    const href = "portfolio-gallery.css?v=20260724-performance-1";
+    const href = "/portfolio-gallery.css?v=20260724-performance-1";
     let link = document.querySelector('link[href*="portfolio-gallery.css"]');
     if (!link) {
       link = document.createElement("link");
@@ -88,7 +88,7 @@
   function loadContactDetails() {
     if (document.querySelector('script[src*="contact-details.js"]')) return;
     const script = document.createElement("script");
-    script.src = "contact-details.js?v=20260724-performance-1";
+    script.src = "/contact-details.js?v=20260724-performance-1";
     document.head.appendChild(script);
   }
 

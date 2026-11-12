@@ -8,7 +8,7 @@
       link.rel = "stylesheet";
       document.head.appendChild(link);
     }
-    link.href = `brand-update.css?v=${version}`;
+    link.href = `/brand-update.css?v=${version}`;
   }
 
   function applyBrand() {

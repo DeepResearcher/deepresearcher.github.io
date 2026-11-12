@@ -24,7 +24,7 @@
   function loadSiteEmail() {
     if (document.querySelector('script[src*="site-email.js"]')) return;
     const script = document.createElement("script");
-    script.src = "site-email.js?v=20260723-1";
+    script.src = "/site-email.js?v=20260723-1";
     document.head.appendChild(script);
   }
 

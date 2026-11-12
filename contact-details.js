@@ -11,14 +11,14 @@
   function loadBrand() {
     if (document.querySelector('script[src*="brand.js"]')) return;
     const script = document.createElement("script");
-    script.src = "brand.js?v=20260724-2";
+    script.src = "/brand.js?v=20260724-2";
     document.head.appendChild(script);
   }
 
   function loadSiteEmail() {
     if (document.querySelector('script[src*="site-email.js"]')) return;
     const script = document.createElement("script");
-    script.src = "site-email.js?v=20260723-2";
+    script.src = "/site-email.js?v=20260723-2";
     document.head.appendChild(script);
   }
 
@@ -33,7 +33,7 @@
   }
 
   function installStylesheet() {
-    const href = "contact-details.css?v=20260724-performance-1";
+    const href = "/contact-details.css?v=20260724-performance-1";
     let link = document.querySelector('link[href*="contact-details.css"]');
     if (!link) {
       link = document.createElement("link");

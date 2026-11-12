@@ -42,14 +42,14 @@
   function loadBrand() {
     if (document.querySelector('script[src*="brand.js"]')) return;
     const script = document.createElement('script');
-    script.src = 'brand.js?v=20260721-2';
+    script.src = '/brand.js?v=20260721-2';
     document.head.appendChild(script);
   }
 
   function loadBoardGames() {
     if (document.querySelector('script[src*="board-games.js"]')) return;
     const script = document.createElement('script');
-    script.src = 'board-games.js?v=20260723-2';
+    script.src = '/board-games.js?v=20260723-2';
     document.head.appendChild(script);
   }
 

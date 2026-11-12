@@ -26,7 +26,8 @@
       try {
         localStorage.setItem("narli-language", target);
       } catch (error) {}
-      const url = new URL(alternates[target]);
+      // Same host as now (www, bare domain or a preview); only the path changes.
+      const url = new URL(new URL(alternates[target]).pathname, location.origin);
       url.hash = location.hash;
       location.assign(url.href);
     },

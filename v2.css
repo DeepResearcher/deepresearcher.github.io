@@ -180,56 +180,123 @@
 
 /* ---------- Website-Service band under the hero ---------- */
 
-.v2-webservice-band {
-  padding: 28px 0;
+/* Offers: the four services right after the hero */
+.v2-offers {
+  padding: 36px 0 44px;
   background: var(--bg, #08111f);
-}
-
-.v2-webservice-band-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  padding: 28px 32px;
-  border: 1px solid rgba(76, 215, 195, 0.45);
-  border-radius: var(--radius-md, 22px);
-  background: linear-gradient(120deg, rgba(76, 215, 195, 0.16), rgba(76, 215, 195, 0.04) 60%), var(--panel, #11223a);
   color: var(--text, #f5f8fc);
 }
 
-.v2-webservice-badge {
-  display: inline-block;
-  margin-bottom: 10px;
-  padding: 4px 12px;
+.v2-offers-head {
+  margin-bottom: 20px;
+}
+
+.v2-offers-head h2 {
+  margin: 6px 0 0;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.15;
+  color: var(--text, #f5f8fc);
+}
+
+.v2-offers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.v2-offer-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 22px 20px;
+  border: 1px solid rgba(76, 215, 195, 0.28);
+  border-radius: var(--radius-md, 22px);
+  background: linear-gradient(150deg, rgba(76, 215, 195, 0.10), rgba(76, 215, 195, 0.02) 60%), var(--panel, #11223a);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.v2-offer-card:hover,
+.v2-offer-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent, #4cd7c3);
+}
+
+.v2-offer-card:focus-visible {
+  outline: 3px solid var(--accent, #4cd7c3);
+  outline-offset: 3px;
+}
+
+.v2-offer-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: rgba(76, 215, 195, 0.14);
+  color: var(--accent, #4cd7c3);
+}
+
+.v2-offer-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.v2-offer-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 3px 11px;
   border-radius: 999px;
   background: var(--accent, #4cd7c3);
   color: #08111f;
-  font-size: .78rem;
+  font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
 }
 
-.v2-webservice-band h2 {
-  margin: 0 0 6px;
-  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
-  line-height: 1.2;
+.v2-offer-card h3 {
+  margin: 6px 0 0;
+  font-size: 1.12rem;
+  line-height: 1.25;
   color: var(--text, #f5f8fc);
 }
 
-.v2-webservice-band p {
+.v2-offer-card p {
   margin: 0;
   color: var(--muted, #aab8cb);
+  font-size: 0.93rem;
+  line-height: 1.5;
 }
 
-.v2-webservice-band .button {
-  flex: 0 0 auto;
+.v2-offer-link {
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--accent, #4cd7c3);
+  font-size: 0.9rem;
+  font-weight: 750;
 }
 
-@media (max-width: 720px) {
-  .v2-webservice-band-inner {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 22px 20px;
+.v2-offer-link::after {
+  content: " →";
+}
+
+@media (max-width: 1080px) {
+  .v2-offers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .v2-offers-grid {
+    grid-template-columns: 1fr;
   }
 }
 

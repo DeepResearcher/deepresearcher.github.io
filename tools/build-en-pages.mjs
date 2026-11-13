@@ -74,8 +74,8 @@ const organization = {
 };
 
 const images = {
-  de: { url: `${SITE}/assets/og/narli-digital-de.png`, alt: "NARLI DIGITAL: Digitale Outputs für europäische Projekte" },
-  en: { url: `${SITE}/assets/og/narli-digital-en.png`, alt: "NARLI DIGITAL: Digital outputs for European projects" },
+  de: { url: `${SITE}/assets/og/narli-digital-de.png`, alt: "NARLI DIGITAL: Websites, Apps, KI-Produkte und Serious Games" },
+  en: { url: `${SITE}/assets/og/narli-digital-en.png`, alt: "NARLI DIGITAL: Websites, apps, AI products and serious games" },
 };
 
 const webserviceImages = {
@@ -95,12 +95,12 @@ const bilingualPages = [
     url: { de: `${SITE}/`, en: `${SITE}/en/` },
     meta: {
       de: {
-        title: "NARLI DIGITAL | Digitale Outputs für europäische Projekte",
-        description: "NARLI DIGITAL entwickelt Websites, Apps, Serious Games, KI-Lösungen und digitale Outputs für europäische Projekte.",
+        title: "NARLI DIGITAL | Websites, KI-Produkte & digitale Lösungen",
+        description: "NARLI DIGITAL entwickelt Websites in 3 Tagen, KI-Produkte, Apps, Serious Games und digitale Outputs für Unternehmen, Forschung und europäische Projekte.",
       },
       en: {
-        title: "NARLI DIGITAL | Digital Outputs for European Projects",
-        description: "NARLI DIGITAL develops websites, apps, serious games, AI solutions and digital outputs for European projects.",
+        title: "NARLI DIGITAL | Websites, AI products & digital solutions",
+        description: "NARLI DIGITAL builds websites in 3 days, AI products, apps, serious games and digital outputs for businesses, research and European projects.",
       },
     },
     dictionaries: homeDictionaries,

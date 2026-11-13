@@ -15,8 +15,8 @@
 
   if (language === "en") {
     const englishHero = {
-      "hero.eyebrow": "Digital Outputs for European Projects",
-      "hero.title": "We design and deliver websites, apps, serious games, AI tools and other digital solutions for European projects.",
+      "hero.eyebrow": "Websites · AI products · Digital outputs",
+      "hero.title": "Websites, apps, AI products and serious games for businesses, research and EU projects.",
       "hero.ctaPrimary": "Discuss Your Project",
       "hero.trust1": "Focused on digital outputs",
       "hero.trust2": "Concept, development & handover",

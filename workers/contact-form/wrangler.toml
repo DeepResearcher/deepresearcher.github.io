@@ -26,3 +26,6 @@ name = "MAIL"
 name = "LIMITER"
 namespace_id = "1001"
 simple = { limit = 5, period = 60 }
+
+# Workers KV "narli-mail-undelivered" (binding UNDELIVERED) keeps mail for info@ that the inbox
+# refused. The deploy workflow creates it if needed and adds the binding here at deploy time.

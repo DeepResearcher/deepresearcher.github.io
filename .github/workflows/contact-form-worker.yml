@@ -1,7 +1,8 @@
 name: Contact form worker
 
-# Tests the Cloudflare Worker behind https://www.narli-digital.de/api/contact on pull requests and
-# deploys it when it changes on main (or when started by hand).
+# Tests the Cloudflare Worker behind https://www.narli-digital.de/api/contact (request forms) and
+# info@narli-digital.de (incoming mail) on pull requests and deploys it when it changes on main
+# (or when started by hand).
 # Deploying needs three repository secrets:
 #   CLOUDFLARE_API_TOKEN   API token from the "Edit Cloudflare Workers" template
 #   CLOUDFLARE_ACCOUNT_ID  the Cloudflare account ID
@@ -82,8 +83,30 @@ jobs:
             exit 1
           fi
 
+      # Mail that the inbox refuses is kept here for 90 days (see src/inbox.js). The namespace is
+      # created on the first run; its id is added to wrangler.toml only for this deploy.
+      - name: Storage for undelivered mail (Workers KV)
+        run: |
+          title="narli-mail-undelivered"
+          find_id() {
+            npx -y "$WRANGLER" kv namespace list | sed -n '/^\[/,$p' \
+              | jq -r --arg t "$title" '.[] | select(.title == $t or (.title | endswith("-" + $t))) | .id' | head -n 1
+          }
+          id="$(find_id)"
+          if [ -z "$id" ]; then
+            npx -y "$WRANGLER" kv namespace create "$title"
+            id="$(find_id)"
+          fi
+          if [ -z "$id" ]; then
+            echo "::error::Could not find or create the KV namespace $title"
+            exit 1
+          fi
+          printf '\n[[kv_namespaces]]\nbinding = "UNDELIVERED"\nid = "%s"\n' "$id" >> wrangler.toml
+
+      # The very first deploy of a new Worker can fail with "does not exist" while Cloudflare
+      # catches up, so try once more after a short pause.
       - name: Deploy worker
-        run: npx -y "$WRANGLER" deploy
+        run: npx -y "$WRANGLER" deploy || { sleep 15; npx -y "$WRANGLER" deploy; }
 
       - name: Set inbox address
         run: printf '%s' "$CONTACT_TO" | npx -y "$WRANGLER" secret put CONTACT_TO

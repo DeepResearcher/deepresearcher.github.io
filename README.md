@@ -18,7 +18,7 @@ Responsive bilingual landing page for **NARLI DIGITAL: Digital Solutions for Eur
 
 ## English pages and SEO tags
 
-The homepage and the two service pages exist in German (`/`) and English (`/en/`). The German
+The homepage and the service pages (website service, EU project websites, serious games) exist in German (`/`) and English (`/en/`). The German
 files are the source; `en/*.html`, plus the block between `<!-- seo:start -->` and
 `<!-- seo:end -->` in each page (title, description, canonical, hreflang, Open Graph, Twitter card,
 JSON-LD), are generated:

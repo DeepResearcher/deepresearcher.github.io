@@ -5,6 +5,7 @@ NARLI DIGITAL develops websites, web and mobile applications, serious games, int
 ## Main pages
 
 - [Homepage](https://www.narli-digital.de/)
+- [Website-Service: Website in 3 Tagen, komplett erstellt](https://www.narli-digital.de/website-erstellen-lassen)
 - [EU Project Websites](https://www.narli-digital.de/eu-project-websites)
 - [Serious Games and Digital Outputs](https://www.narli-digital.de/serious-games-digital-outputs)
 - [Portfolio](https://www.narli-digital.de/portfolio)
@@ -16,6 +17,7 @@ NARLI DIGITAL develops websites, web and mobile applications, serious games, int
 ## English pages
 
 - [Homepage (English)](https://www.narli-digital.de/en/)
+- [Website service (English)](https://www.narli-digital.de/en/website-service)
 - [EU Project Websites (English)](https://www.narli-digital.de/en/eu-project-websites)
 - [Serious Games and Digital Outputs (English)](https://www.narli-digital.de/en/serious-games-digital-outputs)
 

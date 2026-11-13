@@ -1,11 +1,24 @@
-// Validation and e-mail building for the request forms (website service page and homepage).
-// No Cloudflare APIs in here, so the same code runs in the Worker and in the Node tests
-// (test/message.test.mjs).
+// Validation and e-mail building for the request forms (website service page, AI products page
+// and homepage). No Cloudflare APIs in here, so the same code runs in the Worker and in the Node
+// tests (test/message.test.mjs).
 
 export const LIMITS = { name: 120, email: 200, phone: 60, company: 160, message: 4000, page: 200 };
 
-// Two forms: "website" (website service page) and "project" (homepage, general requests).
+// Three forms: "website" (website service page), "ai" (AI products page) and "project"
+// (homepage, general requests).
 export const KINDS = {
+  ai: {
+    subject: "KI-Anfrage",
+    heading: "Neue KI-Anfrage über narli-digital.de",
+    typeLabel: "Vorhaben",
+    fallbackType: "unsure",
+    types: {
+      app: "App mit KI",
+      automation: "Automation",
+      assistant: "KI-Assistent",
+      unsure: "Weiß ich noch nicht",
+    },
+  },
   website: {
     subject: "Website-Anfrage",
     heading: "Neue Website-Anfrage über narli-digital.de",
@@ -46,7 +59,7 @@ function clean(value, max, singleLine) {
 
 export function validate(input) {
   const data = input && typeof input === "object" ? input : {};
-  const kind = data.kind === "project" ? "project" : "website";
+  const kind = data.kind === "project" || data.kind === "ai" ? data.kind : "website";
   const { types, fallbackType } = KINDS[kind];
   const form = {
     kind,

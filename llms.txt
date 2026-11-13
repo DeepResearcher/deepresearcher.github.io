@@ -6,6 +6,7 @@ NARLI DIGITAL develops websites, web and mobile applications, serious games, int
 
 - [Homepage](https://www.narli-digital.de/)
 - [Website-Service: Website in 3 Tagen, komplett erstellt](https://www.narli-digital.de/website-erstellen-lassen)
+- [KI-Produkte entwickeln lassen: Apps, Automationen und KI-Assistenten](https://www.narli-digital.de/ki-produkte-entwickeln-lassen)
 - [EU Project Websites](https://www.narli-digital.de/eu-project-websites)
 - [Serious Games and Digital Outputs](https://www.narli-digital.de/serious-games-digital-outputs)
 - [Portfolio](https://www.narli-digital.de/portfolio)
@@ -18,6 +19,7 @@ NARLI DIGITAL develops websites, web and mobile applications, serious games, int
 
 - [Homepage (English)](https://www.narli-digital.de/en/)
 - [Website service (English)](https://www.narli-digital.de/en/website-service)
+- [AI product development (English)](https://www.narli-digital.de/en/ai-product-development)
 - [EU Project Websites (English)](https://www.narli-digital.de/en/eu-project-websites)
 - [Serious Games and Digital Outputs (English)](https://www.narli-digital.de/en/serious-games-digital-outputs)
 

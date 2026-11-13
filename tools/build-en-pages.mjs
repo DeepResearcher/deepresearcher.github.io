@@ -145,6 +145,7 @@ const attributeTranslations = {
   "Im Website-Service enthalten": "Included in the website service",
   "Video: Ihre Website in 3 Tagen, komplett von NARLI DIGITAL erstellt":
     "Video: your website in 3 days, built entirely by NARLI DIGITAL",
+  Schließen: "Close",
 };
 
 // German media files that have an English version.

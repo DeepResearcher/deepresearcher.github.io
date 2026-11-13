@@ -39,9 +39,11 @@
   <link rel="stylesheet" href="/site-email.css?v=20260724-landing-1">
   <link rel="stylesheet" href="/landing-pages.css?v=20260724-1">
   <link rel="stylesheet" href="/webservice.css?v=20261113-2">
+  <link rel="stylesheet" href="/contact-form.css?v=20261113-1">
   <script src="/lang.js" defer></script>
-  <script src="/landing-pages.js?v=20261113-1" defer></script>
+  <script src="/landing-pages.js?v=20261113-2" defer></script>
   <script src="/webservice.js?v=20261113-2" defer></script>
+  <script src="/contact-form.js?v=20261113-1" defer></script>
   <link rel="stylesheet" href="/cookie-consent.css?v=20261112-1">
   <script src="/cookie-consent.js" defer></script>
 </head>
@@ -82,7 +84,7 @@
           <h1 data-i18n="hero.title">Your website in 3 days. We build everything for you.</h1>
           <p data-i18n="hero.text">A professional website is simpler than you think. You tell us what you need. We take care of design, technology, domain, email and payments, and hand you a finished website.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="mailto:info@narli-digital.de?subject=Website-Anfrage" data-i18n="hero.ctaPrimary">Request a website</a>
+            <a class="button button-primary" href="mailto:info@narli-digital.de?subject=Website-Anfrage" data-contact-open data-i18n="hero.ctaPrimary">Request a website</a>
             <a class="button button-secondary" href="#ablauf" data-i18n="hero.ctaSecondary">How it works</a>
           </div>
         </div>
@@ -213,7 +215,7 @@
           <h2 data-i18n="cta.title">Tell us what you need.</h2>
           <p data-i18n="cta.text">A short message is enough: what do you offer, what should the website do, do you already have a domain? We get back to you with a proposal and a clear offer.</p>
         </div>
-        <a class="button button-primary" href="mailto:info@narli-digital.de?subject=Website-Anfrage" data-i18n="cta.button">Request a website</a>
+        <a class="button button-primary" href="mailto:info@narli-digital.de?subject=Website-Anfrage" data-contact-open data-i18n="cta.button">Request a website</a>
       </div>
     </section>
   </main>
@@ -238,5 +240,46 @@
       </div>
     </div>
   </footer>
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+    <form class="contact-form" action="/api/contact" method="post" novalidate>
+      <button class="contact-close" type="button" data-contact-close aria-label="Close">&times;</button>
+      <div class="contact-form-body">
+        <span class="contact-kicker" data-i18n="form.kicker">Request a website</span>
+        <h2 id="contact-dialog-title" data-i18n="form.title">Tell us about your website.</h2>
+        <p class="contact-intro" data-i18n="form.intro">A few details are enough. We'll get back to you with a proposal and a clear offer.</p>
+        <div class="contact-grid">
+          <label class="contact-field"><span data-i18n="form.name">Name</span><input name="name" type="text" autocomplete="name" required maxlength="120"></label>
+          <label class="contact-field"><span data-i18n="form.email">Email</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+          <label class="contact-field"><span data-i18n="form.phone">Phone (optional)</span><input name="phone" type="tel" autocomplete="tel" maxlength="60"></label>
+          <label class="contact-field"><span data-i18n="form.company">Company (optional)</span><input name="company" type="text" autocomplete="organization" maxlength="160"></label>
+        </div>
+        <fieldset class="contact-types">
+          <legend data-i18n="form.type">What kind of website?</legend>
+          <div class="contact-type-options">
+            <label><input type="radio" name="type" value="static"><span data-i18n="form.type.static">Business card or landing page</span></label>
+            <label><input type="radio" name="type" value="dynamic"><span data-i18n="form.type.dynamic">Shop or bookings</span></label>
+            <label><input type="radio" name="type" value="automation"><span data-i18n="form.type.automation">With automation</span></label>
+            <label><input type="radio" name="type" value="unsure" checked><span data-i18n="form.type.unsure">Not sure yet</span></label>
+          </div>
+        </fieldset>
+        <label class="contact-field contact-field-wide"><span data-i18n="form.message">Your message</span><textarea name="message" rows="5" required minlength="10" maxlength="4000" aria-describedby="contact-message-hint"></textarea><small id="contact-message-hint" data-i18n="form.messageHint">What do you offer, what should the website do, do you already have a domain?</small></label>
+        <div class="contact-hp" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <p class="contact-privacy"><span data-i18n="form.privacy">We only use your details to answer your request. More in our</span> <a href="/datenschutz#kontakt" data-i18n="form.privacyLink">privacy policy</a>.</p>
+        <div aria-live="polite">
+          <p class="contact-msg" data-msg="sending" hidden data-i18n="form.sending">Sending …</p>
+          <p class="contact-msg" data-msg="invalid" hidden data-i18n="form.invalid">Please fill in your name, email address and message.</p>
+          <p class="contact-msg" data-msg="rate" hidden data-i18n="form.rate">Too many requests in a short time. Please try again in a minute.</p>
+          <p class="contact-msg" data-msg="error" hidden><span data-i18n="form.error">Sorry, that didn't work. Please email us directly at</span> <a href="mailto:info@narli-digital.de?subject=Website-Anfrage">info@narli-digital.de</a>.</p>
+        </div>
+        <div class="contact-actions"><button class="button button-primary" type="submit" data-i18n="form.submit">Send request</button></div>
+      </div>
+      <div class="contact-success" hidden>
+        <div class="contact-success-icon" aria-hidden="true">✓</div>
+        <h2 data-i18n="form.successTitle">Thank you!</h2>
+        <p data-i18n="form.successText">Your request has arrived. We'll get back to you by email shortly.</p>
+        <button class="button button-primary" type="button" data-contact-close data-i18n="form.close">Close</button>
+      </div>
+    </form>
+  </dialog>
 </body>
 </html>

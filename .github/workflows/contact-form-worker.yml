@@ -1,0 +1,89 @@
+name: Contact form worker
+
+# Tests the Cloudflare Worker behind https://www.narli-digital.de/api/contact on pull requests and
+# deploys it when it changes on main (or when started by hand).
+# Deploying needs three repository secrets:
+#   CLOUDFLARE_API_TOKEN   API token from the "Edit Cloudflare Workers" template
+#   CLOUDFLARE_ACCOUNT_ID  the Cloudflare account ID
+#   CONTACT_TO             the inbox for form messages (a verified Email Routing destination)
+
+on:
+  pull_request:
+    paths:
+      - "workers/contact-form/**"
+      - ".github/workflows/contact-form-worker.yml"
+  push:
+    branches: [main]
+    paths:
+      - "workers/contact-form/**"
+      - ".github/workflows/contact-form-worker.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: contact-form-worker-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: workers/contact-form
+
+env:
+  WRANGLER: wrangler@4.152.0
+  WRANGLER_SEND_METRICS: "false"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Unit tests
+        run: node --test test/*.test.mjs
+
+      - name: Bundle and config check (nothing is deployed)
+        run: npx -y "$WRANGLER" deploy --dry-run --outdir "$RUNNER_TEMP/dist"
+
+  deploy:
+    needs: test
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CONTACT_TO: ${{ secrets.CONTACT_TO }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Required secrets are set
+        run: |
+          missing=""
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID CONTACT_TO; do
+            [ -n "${!name}" ] || missing="$missing $name"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secrets:$missing"
+            exit 1
+          fi
+
+      - name: Deploy worker
+        run: npx -y "$WRANGLER" deploy
+
+      - name: Set inbox address
+        run: printf '%s' "$CONTACT_TO" | npx -y "$WRANGLER" secret put CONTACT_TO

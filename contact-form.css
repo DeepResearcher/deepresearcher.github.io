@@ -287,3 +287,60 @@ html:has(.contact-dialog[open]) {
     grid-template-columns: 1fr;
   }
 }
+
+/* Inline variant: homepage contact section, form always open in a card. */
+.collaboration-shell-form {
+  align-items: start;
+}
+
+.contact-form-card {
+  position: relative;
+  padding: 36px;
+  border: 1px solid var(--v2-border, rgba(76, 215, 195, 0.32));
+  border-radius: 28px;
+  background: var(--v2-surface, #ffffff);
+  color: #0b1a2e;
+  box-shadow: var(--v2-shadow-hover, 0 25px 70px rgba(4, 10, 20, 0.18));
+}
+
+.contact-form-card h3 {
+  margin: 0 0 10px;
+  color: #08111f;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.contact-form-card > p {
+  margin: 0 0 24px;
+  color: #4c5b70;
+}
+
+.contact-form-inline {
+  padding: 0;
+  /* Jump links land with the card heading still visible below the fixed header. */
+  scroll-margin-top: 230px;
+}
+
+.contact-form-inline .contact-success {
+  padding: 12px 0 0;
+}
+
+/* The contact details (chips, e-mail, phone, location) sit under the intro text. */
+.contact-info-card {
+  margin-top: 30px;
+  padding: 24px;
+}
+
+.contact-info-card .offer-list {
+  margin: 0 0 18px;
+}
+
+@media (max-width: 560px) {
+  .contact-form-card {
+    padding: 26px 20px;
+    border-radius: 22px;
+  }
+
+  .contact-info-card {
+    padding: 20px;
+  }
+}

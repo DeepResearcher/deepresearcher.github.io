@@ -50,9 +50,9 @@
   <link rel="stylesheet" href="cookie-consent.css?v=20261112-1">
   <script src="cookie-consent.js" defer></script>
   <link rel="stylesheet" href="v2.css?v=20261113-1">
-  <script src="v2.js?v=20261113-2" defer></script>
-  <link rel="stylesheet" href="contact-form.css?v=20261113-2">
-  <script src="contact-form.js?v=20261113-2" defer></script>
+  <script src="v2.js?v=20261113-3" defer></script>
+  <link rel="stylesheet" href="contact-form.css?v=20261113-3">
+  <script src="contact-form.js?v=20261113-3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="access.skip">Zum Inhalt springen</a>
@@ -361,28 +361,65 @@
     </section>
 
     <section class="section collaboration-section" id="collaborate">
-      <div class="container collaboration-shell">
+      <div class="container collaboration-shell collaboration-shell-form">
         <div class="collaboration-copy reveal">
           <span class="section-kicker" data-i18n="collaborate.kicker">How We Collaborate</span>
           <h2 data-i18n="collaborate.title">Der erste Schritt ist ein kurzes Gespräch.</h2>
           <p data-i18n="collaborate.text">Beschreiben Sie uns kurz Ihr Projekt, die benötigten digitalen Outputs, den gewünschten Zeitrahmen und den aktuellen Stand. Auf dieser Grundlage klären wir, welche Lösung sinnvoll ist und wie eine Zusammenarbeit aussehen kann.</p>
+          <div class="contact-step-card contact-info-card">
+            <ul class="offer-list">
+              <li data-i18n="collaborate.offer1">Erste Einschätzung</li>
+              <li data-i18n="collaborate.offer2">Leistungsumfang</li>
+              <li data-i18n="collaborate.offer3">Zeit- und Kostenrahmen</li>
+              <li data-i18n="collaborate.offer4">Umsetzungsvorschlag</li>
+            </ul>
+            <div class="site-email-card">
+              <span class="site-email-label">E-Mail</span>
+              <a class="site-email-link" href="mailto:info@narli-digital.de?subject=Anfrage%20an%20NARLI%20DIGITAL">info@narli-digital.de</a>
+            </div>
+          </div>
         </div>
 
-        <article class="contact-step-card reveal">
+        <article class="contact-form-card reveal">
           <span class="contact-step-number">01</span>
           <h3 data-i18n="collaborate.step.title">Kontakt aufnehmen</h3>
           <p data-i18n="collaborate.step.text">Sie erhalten eine erste Einschätzung zu Umfang, technischer Machbarkeit, möglicher Umsetzung und den nächsten Schritten.</p>
-          <ul class="offer-list">
-            <li data-i18n="collaborate.offer1">Erste Einschätzung</li>
-            <li data-i18n="collaborate.offer2">Leistungsumfang</li>
-            <li data-i18n="collaborate.offer3">Zeit- und Kostenrahmen</li>
-            <li data-i18n="collaborate.offer4">Umsetzungsvorschlag</li>
-          </ul>
-          <div class="site-email-card">
-            <span class="site-email-label">E-Mail</span>
-            <a class="site-email-link" href="mailto:info@narli-digital.de?subject=Anfrage%20an%20NARLI%20DIGITAL">info@narli-digital.de</a>
-          </div>
-          <a class="button button-primary" href="mailto:info@narli-digital.de?subject=Anfrage%20an%20NARLI%20DIGITAL" data-contact-open data-i18n="collaborate.cta">Contact Us</a>
+          <form class="contact-form contact-form-inline" id="kontakt-formular" action="/api/contact" method="post" data-kind="project" novalidate>
+            <div class="contact-form-body">
+              <div class="contact-grid">
+                <label class="contact-field"><span data-i18n="v2.form.name">Name</span><input name="name" type="text" autocomplete="name" required maxlength="120"></label>
+                <label class="contact-field"><span data-i18n="v2.form.email">E-Mail</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+                <label class="contact-field"><span data-i18n="v2.form.phone">Telefon (optional)</span><input name="phone" type="tel" autocomplete="tel" maxlength="60"></label>
+                <label class="contact-field"><span data-i18n="v2.form.company">Organisation (optional)</span><input name="company" type="text" autocomplete="organization" maxlength="160"></label>
+              </div>
+              <fieldset class="contact-types">
+                <legend data-i18n="v2.form.type">Worum geht es?</legend>
+                <div class="contact-type-options">
+                  <label><input type="radio" name="type" value="web"><span data-i18n="v2.form.type.web">Website oder Webanwendung</span></label>
+                  <label><input type="radio" name="type" value="eu"><span data-i18n="v2.form.type.eu">EU-Projekt</span></label>
+                  <label><input type="radio" name="type" value="game"><span data-i18n="v2.form.type.game">Serious Game oder App</span></label>
+                  <label><input type="radio" name="type" value="ai"><span data-i18n="v2.form.type.ai">KI oder Datenanalyse</span></label>
+                  <label><input type="radio" name="type" value="other" checked><span data-i18n="v2.form.type.other">Etwas anderes</span></label>
+                </div>
+              </fieldset>
+              <label class="contact-field contact-field-wide"><span data-i18n="v2.form.message">Ihre Nachricht</span><textarea name="message" rows="5" required minlength="10" maxlength="4000" aria-describedby="kontakt-message-hint"></textarea><small id="kontakt-message-hint" data-i18n="v2.form.messageHint">Worum geht es, welchen Zeitrahmen gibt es und wie ist der aktuelle Stand?</small></label>
+              <div class="contact-hp" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+              <p class="contact-privacy"><span data-i18n="v2.form.privacy">Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu beantworten. Mehr dazu in der</span> <a href="/datenschutz#kontakt" data-i18n="v2.form.privacyLink">Datenschutzerklärung</a>.</p>
+              <div aria-live="polite">
+                <p class="contact-msg" data-msg="sending" hidden data-i18n="v2.form.sending">Wird gesendet …</p>
+                <p class="contact-msg" data-msg="invalid" hidden data-i18n="v2.form.invalid">Bitte füllen Sie Name, E-Mail-Adresse und Nachricht aus.</p>
+                <p class="contact-msg" data-msg="rate" hidden data-i18n="v2.form.rate">Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es in einer Minute noch einmal.</p>
+                <p class="contact-msg" data-msg="error" hidden><span data-i18n="v2.form.error">Das hat leider nicht geklappt. Bitte schreiben Sie uns direkt an</span> <a href="mailto:info@narli-digital.de?subject=Anfrage%20an%20NARLI%20DIGITAL">info@narli-digital.de</a>.</p>
+              </div>
+              <div class="contact-actions"><button class="button button-primary" type="submit" data-i18n="v2.form.submit">Anfrage senden</button></div>
+            </div>
+            <div class="contact-success" hidden>
+              <div class="contact-success-icon" aria-hidden="true">✓</div>
+              <h2 data-i18n="v2.form.successTitle">Vielen Dank!</h2>
+              <p data-i18n="v2.form.successText">Ihre Anfrage ist bei uns angekommen. Wir melden uns in Kürze per E-Mail bei Ihnen.</p>
+              <button class="button button-primary" type="button" data-contact-reset data-i18n="v2.form.again">Weitere Nachricht senden</button>
+            </div>
+          </form>
         </article>
       </div>
     </section>
@@ -455,7 +492,7 @@
             <p data-i18n="v2.cta.text">Ob Webanwendung, KI-Lösung, Datenanalyse oder digitales EU-Projekt: Wir freuen uns auf Ihre Anfrage.</p>
           </div>
           <div class="v2-cta-actions">
-            <a class="button button-primary" href="mailto:info@narli-digital.de?subject=Projektanfrage" data-contact-open data-i18n="v2.cta.button">Projekt anfragen</a>
+            <a class="button button-primary" href="#kontakt-formular" data-contact-focus data-i18n="v2.cta.button">Projekt anfragen</a>
             <a class="v2-cta-email" href="mailto:info@narli-digital.de?subject=Projektanfrage">info@narli-digital.de</a>
           </div>
         </div>
@@ -489,47 +526,5 @@
       </div>
     </div>
   </footer>
-  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
-    <form class="contact-form" action="/api/contact" method="post" data-kind="project" novalidate>
-      <button class="contact-close" type="button" data-contact-close aria-label="Schließen">&times;</button>
-      <div class="contact-form-body">
-        <span class="contact-kicker" data-i18n="v2.form.kicker">Projekt anfragen</span>
-        <h2 id="contact-dialog-title" data-i18n="v2.form.title">Erzählen Sie uns von Ihrem Projekt.</h2>
-        <p class="contact-intro" data-i18n="v2.form.intro">Ein paar Angaben genügen. Wir melden uns mit einer ersten Einschätzung und den nächsten Schritten.</p>
-        <div class="contact-grid">
-          <label class="contact-field"><span data-i18n="v2.form.name">Name</span><input name="name" type="text" autocomplete="name" required maxlength="120"></label>
-          <label class="contact-field"><span data-i18n="v2.form.email">E-Mail</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label>
-          <label class="contact-field"><span data-i18n="v2.form.phone">Telefon (optional)</span><input name="phone" type="tel" autocomplete="tel" maxlength="60"></label>
-          <label class="contact-field"><span data-i18n="v2.form.company">Organisation (optional)</span><input name="company" type="text" autocomplete="organization" maxlength="160"></label>
-        </div>
-        <fieldset class="contact-types">
-          <legend data-i18n="v2.form.type">Worum geht es?</legend>
-          <div class="contact-type-options">
-            <label><input type="radio" name="type" value="web"><span data-i18n="v2.form.type.web">Website oder Webanwendung</span></label>
-            <label><input type="radio" name="type" value="eu"><span data-i18n="v2.form.type.eu">EU-Projekt</span></label>
-            <label><input type="radio" name="type" value="game"><span data-i18n="v2.form.type.game">Serious Game oder App</span></label>
-            <label><input type="radio" name="type" value="ai"><span data-i18n="v2.form.type.ai">KI oder Datenanalyse</span></label>
-            <label><input type="radio" name="type" value="other" checked><span data-i18n="v2.form.type.other">Etwas anderes</span></label>
-          </div>
-        </fieldset>
-        <label class="contact-field contact-field-wide"><span data-i18n="v2.form.message">Ihre Nachricht</span><textarea name="message" rows="5" required minlength="10" maxlength="4000" aria-describedby="contact-message-hint"></textarea><small id="contact-message-hint" data-i18n="v2.form.messageHint">Worum geht es, welchen Zeitrahmen gibt es und wie ist der aktuelle Stand?</small></label>
-        <div class="contact-hp" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
-        <p class="contact-privacy"><span data-i18n="v2.form.privacy">Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu beantworten. Mehr dazu in der</span> <a href="/datenschutz#kontakt" data-i18n="v2.form.privacyLink">Datenschutzerklärung</a>.</p>
-        <div aria-live="polite">
-          <p class="contact-msg" data-msg="sending" hidden data-i18n="v2.form.sending">Wird gesendet …</p>
-          <p class="contact-msg" data-msg="invalid" hidden data-i18n="v2.form.invalid">Bitte füllen Sie Name, E-Mail-Adresse und Nachricht aus.</p>
-          <p class="contact-msg" data-msg="rate" hidden data-i18n="v2.form.rate">Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es in einer Minute noch einmal.</p>
-          <p class="contact-msg" data-msg="error" hidden><span data-i18n="v2.form.error">Das hat leider nicht geklappt. Bitte schreiben Sie uns direkt an</span> <a href="mailto:info@narli-digital.de?subject=Projektanfrage">info@narli-digital.de</a>.</p>
-        </div>
-        <div class="contact-actions"><button class="button button-primary" type="submit" data-i18n="v2.form.submit">Anfrage senden</button></div>
-      </div>
-      <div class="contact-success" hidden>
-        <div class="contact-success-icon" aria-hidden="true">✓</div>
-        <h2 data-i18n="v2.form.successTitle">Vielen Dank!</h2>
-        <p data-i18n="v2.form.successText">Ihre Anfrage ist bei uns angekommen. Wir melden uns in Kürze per E-Mail bei Ihnen.</p>
-        <button class="button button-primary" type="button" data-contact-close data-i18n="v2.form.close">Schließen</button>
-      </div>
-    </form>
-  </dialog>
 </body>
 </html>

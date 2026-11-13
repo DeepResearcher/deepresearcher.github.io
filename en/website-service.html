@@ -38,10 +38,10 @@
   <link rel="stylesheet" href="/redesign.css">
   <link rel="stylesheet" href="/site-email.css?v=20260724-landing-1">
   <link rel="stylesheet" href="/landing-pages.css?v=20260724-1">
-  <link rel="stylesheet" href="/webservice.css?v=20261113-1">
+  <link rel="stylesheet" href="/webservice.css?v=20261113-2">
   <script src="/lang.js" defer></script>
   <script src="/landing-pages.js?v=20261113-1" defer></script>
-  <script src="/webservice.js?v=20261113-1" defer></script>
+  <script src="/webservice.js?v=20261113-2" defer></script>
   <link rel="stylesheet" href="/cookie-consent.css?v=20261112-1">
   <script src="/cookie-consent.js" defer></script>
 </head>
@@ -112,9 +112,13 @@
           </ol>
         </div>
         <figure class="webservice-video-frame">
-          <video class="webservice-video" width="360" height="640" autoplay muted loop playsinline preload="metadata" poster="/assets/video/website-in-3-tagen-en-poster.jpg" aria-label="Video: your website in 3 days, built entirely by NARLI DIGITAL">
-            <source src="/assets/video/website-in-3-tagen-en.mp4" type="video/mp4">
+          <video class="webservice-video" width="360" height="640" autoplay muted loop playsinline preload="metadata" poster="/assets/video/website-in-3-tagen-en-poster.jpg?v=2" aria-label="Video: your website in 3 days, built entirely by NARLI DIGITAL">
+            <source src="/assets/video/website-in-3-tagen-en.mp4?v=2" type="video/mp4">
           </video>
+          <button class="webservice-sound" type="button" aria-pressed="false" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="sound-waves" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="sound-off" d="m16 9 6 6m0-6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>Mit Ton abspielen</span>
+          </button>
         </figure>
       </div>
     </section>

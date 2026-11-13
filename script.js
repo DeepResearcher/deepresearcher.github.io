@@ -6,4 +6,4 @@ primaryNav?.querySelectorAll("a").forEach(link=>link.addEventListener("click",()
 window.addEventListener("scroll",()=>header?.classList.toggle("is-scrolled",window.scrollY>12),{passive:true});
 const observer="IntersectionObserver" in window?new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target);}}),{threshold:.12}):null;
 document.querySelectorAll(".reveal").forEach(element=>observer?observer.observe(element):element.classList.add("is-visible"));
-const yearElement=document.getElementById("year");if(yearElement)yearElement.textContent=new Date().getFullYear();let initialLanguage="de";try{initialLanguage=localStorage.getItem("narli-language")||"de";}catch(e){}setLanguage(initialLanguage);
+const yearElement=document.getElementById("year");if(yearElement)yearElement.textContent=new Date().getFullYear();let initialLanguage="de";try{initialLanguage=window.NARLI_PAGE_LANG||localStorage.getItem("narli-language")||"de";}catch(e){}setLanguage(initialLanguage);

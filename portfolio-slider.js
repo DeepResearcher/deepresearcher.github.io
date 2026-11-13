@@ -7,10 +7,10 @@
         en: "Mobile and browser-based learning games for knowledge transfer, awareness and gamification."
       },
       items: [
-        { title: "EcoSort Challenge", image: "assets/portfolio/optimized/portfolio-08.webp" },
-        { title: "CyberWise Mission", image: "assets/portfolio/optimized/portfolio-09.webp" },
-        { title: "Sustainable Millionaire", image: "assets/portfolio/optimized/portfolio-01.webp" },
-        { title: "GreenFuture Academy", image: "assets/portfolio/optimized/portfolio-10.webp" }
+        { title: "EcoSort Challenge", image: "/assets/portfolio/optimized/portfolio-08.webp" },
+        { title: "CyberWise Mission", image: "/assets/portfolio/optimized/portfolio-09.webp" },
+        { title: "Sustainable Millionaire", image: "/assets/portfolio/optimized/portfolio-01.webp" },
+        { title: "GreenFuture Academy", image: "/assets/portfolio/optimized/portfolio-10.webp" }
       ]
     },
     {
@@ -20,10 +20,10 @@
         en: "Decision-based formats with roles, resources, consequences and measurable progress."
       },
       items: [
-        { title: "Chrono-Cogs", image: "assets/portfolio/optimized/portfolio-02.webp" },
-        { title: "Scenario Lab", image: "assets/portfolio/optimized/portfolio-07.webp" },
-        { title: "Project Nexus", image: "assets/portfolio/optimized/portfolio-06.webp" },
-        { title: "Project Aegis", image: "assets/portfolio/optimized/portfolio-03.webp" }
+        { title: "Chrono-Cogs", image: "/assets/portfolio/optimized/portfolio-02.webp" },
+        { title: "Scenario Lab", image: "/assets/portfolio/optimized/portfolio-07.webp" },
+        { title: "Project Nexus", image: "/assets/portfolio/optimized/portfolio-06.webp" },
+        { title: "Project Aegis", image: "/assets/portfolio/optimized/portfolio-03.webp" }
       ]
     },
     {
@@ -33,8 +33,8 @@
         en: "Analogue and hybrid learning formats for facilitated discussion, teamwork and reflection."
       },
       items: [
-        { title: "Ethical Choices Workshop", image: "assets/portfolio/optimized/portfolio-05.webp" },
-        { title: "Collaborative Board Game", image: "assets/portfolio/optimized/portfolio-04.webp" }
+        { title: "Ethical Choices Workshop", image: "/assets/portfolio/optimized/portfolio-05.webp" },
+        { title: "Collaborative Board Game", image: "/assets/portfolio/optimized/portfolio-04.webp" }
       ]
     }
   ];
@@ -75,7 +75,7 @@
   }
 
   function installStylesheet() {
-    const href = "portfolio-gallery.css?v=20260724-performance-1";
+    const href = "/portfolio-gallery.css?v=20260724-performance-1";
     let link = document.querySelector('link[href*="portfolio-gallery.css"]');
     if (!link) {
       link = document.createElement("link");
@@ -88,7 +88,7 @@
   function loadContactDetails() {
     if (document.querySelector('script[src*="contact-details.js"]')) return;
     const script = document.createElement("script");
-    script.src = "contact-details.js?v=20260724-performance-1";
+    script.src = "/contact-details.js?v=20260724-performance-1";
     document.head.appendChild(script);
   }
 

@@ -16,6 +16,22 @@ Responsive bilingual landing page for **NARLI DIGITAL: Digital Solutions for Eur
 - `v1-original` (branch and tag): the site as it was live until October 2026, preserved unchanged. Preview: https://v1-original.deepresearcher-github-io.pages.dev
 - v2 (current): lighter content sections plus new homepage sections, all in `v2.css` / `v2.js` and scoped to `<html class="v2">`. Removing that class restores the v1 styling of the existing sections.
 
+## English pages and SEO tags
+
+The homepage and the two service pages exist in German (`/`) and English (`/en/`). The German
+files are the source; `en/*.html`, plus the block between `<!-- seo:start -->` and
+`<!-- seo:end -->` in each page (title, description, canonical, hreflang, Open Graph, Twitter card,
+JSON-LD), are generated:
+
+```bash
+node tools/build-en-pages.mjs
+```
+
+Run it after changing a German page or a dictionary in `script.js`, `v2.js` or `landing-pages.js`,
+and commit the result. CI (`check-english-pages.yml`) fails if the generated files are out of date.
+`lang.js` makes the address decide the language and turns the DE/EN buttons into links between
+the two addresses. Share images live in `assets/og/` (1200×630).
+
 ## Cloudflare Pages deployment
 
 Connect this repository to Cloudflare Pages with the following settings:

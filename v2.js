@@ -66,7 +66,9 @@
       "v2.cta.title": "Sie haben eine Projektidee?",
       "v2.cta.text": "Ob Webanwendung, KI-Lösung, Datenanalyse oder digitales EU-Projekt: Wir freuen uns auf Ihre Anfrage.",
       "v2.cta.button": "Projekt anfragen",
-      "v2.footer.privacy": "Datenschutz"
+      "v2.footer.privacy": "Datenschutz",
+      "v2.services.web.link": "Websites für EU-Projekte",
+      "v2.services.game.link": "Serious Games & Digital Outputs"
     },
     en: {
       "v2.audience.kicker": "For businesses, research and EU projects",
@@ -128,7 +130,9 @@
       "v2.cta.title": "Have a project idea?",
       "v2.cta.text": "Whether it is a web application, an AI solution, data analysis or a digital EU project: we look forward to hearing from you.",
       "v2.cta.button": "Request a project",
-      "v2.footer.privacy": "Privacy"
+      "v2.footer.privacy": "Privacy",
+      "v2.services.web.link": "Websites for EU projects",
+      "v2.services.game.link": "Serious games & digital outputs"
     }
   };
 

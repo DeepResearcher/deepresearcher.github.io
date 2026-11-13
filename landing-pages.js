@@ -357,6 +357,6 @@ if (year) year.textContent = new Date().getFullYear();
 
 let initialLanguage = "de";
 try {
-  initialLanguage = localStorage.getItem("narli-language") || "de";
+  initialLanguage = window.NARLI_PAGE_LANG || localStorage.getItem("narli-language") || "de";
 } catch (error) {}
 setLanguage(initialLanguage);

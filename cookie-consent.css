@@ -90,11 +90,24 @@
 
 @media (max-width: 620px) {
   .cookie-banner {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
   }
 
-  .cookie-banner-actions {
-    justify-content: flex-end;
+  /* In a column the 320px flex-basis above becomes a 320px height; size to the text instead. */
+  .cookie-banner p {
+    flex: 0 0 auto;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .cookie-banner-actions button {
+    flex: 1 1 0;
+    padding: 0.55rem 0.8rem;
   }
 }

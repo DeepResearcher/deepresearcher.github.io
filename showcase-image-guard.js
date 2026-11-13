@@ -1,5 +1,5 @@
 (() => {
-  const fallback = 'assets/hero-narli-showcase-hq.webp';
+  const fallback = '/assets/hero-narli-showcase-hq.webp';
 
   function useFallback(image) {
     if (!(image instanceof HTMLImageElement) || !image.closest('#portfolio')) return;

@@ -2,9 +2,13 @@
   const heroGrid = document.querySelector(".hero-grid");
   if (heroGrid) heroGrid.hidden = true;
 
+  // This script runs from <body> before the deferred lang.js, so it reads the same signal itself:
+  // on pages with a German and an English address, the address (<html lang>) decides.
   let language = "de";
   try {
-    language = localStorage.getItem("narli-language") === "en" ? "en" : "de";
+    language = document.querySelector('link[rel="alternate"][hreflang="en"]')
+      ? (document.documentElement.lang === "en" ? "en" : "de")
+      : (localStorage.getItem("narli-language") === "en" ? "en" : "de");
   } catch (_) {}
 
   document.documentElement.lang = language;
@@ -45,7 +49,7 @@
   });
 
   const loadStyles = () => new Promise(resolve => {
-    const href = "hero-layout.css?v=20260726-no-dash-1";
+    const href = "/hero-layout.css?v=20260726-no-dash-1";
     let stylesheet = document.querySelector('link[href*="hero-layout.css"]');
 
     if (stylesheet?.sheet) {
@@ -79,7 +83,7 @@
       : "NARLI DIGITAL Präsentation digitaler Lösungen für Bildung und Innovation";
     image.addEventListener("load", resolve, { once: true });
     image.addEventListener("error", resolve, { once: true });
-    image.src = "assets/hero-narli-devices.webp?v=20260726-photo-2";
+    image.src = "/assets/hero-narli-devices.webp?v=20260726-photo-2";
 
     if (image.complete) resolve();
   });

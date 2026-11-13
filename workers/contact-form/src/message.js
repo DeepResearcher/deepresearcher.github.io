@@ -71,12 +71,18 @@ export function looksLikeBot(input) {
   return Boolean(input?.website) || !(Number(input?.elapsed) >= 3000);
 }
 
+export const isEmail = (value) => typeof value === "string" && EMAIL.test(value);
+
 const encoder = new TextEncoder();
-function base64(text) {
+
+// Base64 in 32 KiB chunks: fast enough for attachments within the Workers CPU limit.
+export function base64Bytes(bytes) {
   let binary = "";
-  for (const byte of encoder.encode(text)) binary += String.fromCharCode(byte);
+  for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
   return btoa(binary);
 }
+
+export const base64 = (text) => base64Bytes(encoder.encode(text));
 
 // RFC 2047 encoded words (at most 45 bytes of text each), so names and subjects with umlauts,
 // quotes or commas are always safe in a header.

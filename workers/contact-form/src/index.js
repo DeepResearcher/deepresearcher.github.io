@@ -1,7 +1,10 @@
-// Cloudflare Worker for the website request form: POST https://www.narli-digital.de/api/contact
-// Checks the request, filters bots, limits requests per IP and sends the message as an e-mail via
-// Cloudflare Email Routing to our inbox. Nothing is stored. Personal data is never logged.
+// Cloudflare Worker for NARLI DIGITAL mail:
+// - fetch: the request forms, POST https://www.narli-digital.de/api/contact. Checks the request,
+//   filters bots, limits requests per IP and sends the message as an e-mail via Cloudflare Email
+//   Routing to our inbox. Form messages are not stored. Personal data is never logged.
+// - email: incoming mail for info@ (forward; keep what the inbox refuses, see inbox.js).
 import { EmailMessage } from "cloudflare:email";
+import { handleIncoming } from "./inbox.js";
 import { buildEmail, looksLikeBot, validate } from "./message.js";
 
 const ALLOWED_ORIGINS = new Set(["https://www.narli-digital.de", "https://narli-digital.de"]);
@@ -51,5 +54,9 @@ export default {
       return json({ ok: false, error: "send" }, 502);
     }
     return json({ ok: true });
+  },
+
+  async email(message, env) {
+    await handleIncoming(message, env, { EmailMessage });
   },
 };

@@ -1,4 +1,4 @@
-// Website request form: the "Website anfragen" buttons open a dialog instead of the mail program.
+// Request form: the "Website anfragen" / "Projekt anfragen" buttons open a dialog instead of the mail program.
 // Without JavaScript (or without <dialog> support) the buttons stay plain mailto links.
 // Messages go to /api/contact, a Cloudflare Worker that forwards them to our inbox
 // (see workers/contact-form). All texts live in the page, so both languages work.
@@ -47,6 +47,7 @@
     data.elapsed = Date.now() - openedAt;
     data.lang = document.documentElement.lang === "en" ? "en" : "de";
     data.page = location.pathname;
+    data.kind = form.dataset.kind === "project" ? "project" : "website";
 
     submit.disabled = true;
     form.setAttribute("aria-busy", "true");
@@ -65,7 +66,7 @@
         success.hidden = false;
         success.querySelector("button").focus();
         // Counted only when the visitor allowed analytics (gtag is not loaded otherwise).
-        if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { form_name: "website_request" });
+        if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { form_name: `${data.kind}_request` });
       } else {
         show(response.status === 429 ? "rate" : response.status === 422 ? "invalid" : "error");
       }

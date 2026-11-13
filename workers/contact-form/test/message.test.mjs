@@ -32,9 +32,25 @@ test("blocks header injection through the e-mail address or the name", () => {
 
 test("unknown website types fall back to 'unsure' and long text is cut", () => {
   const { form } = validate({ name: "x".repeat(500), email: "a@b.de", message: "m".repeat(9000), type: "__proto__" });
+  assert.equal(form.kind, "website");
   assert.equal(form.type, "unsure");
   assert.equal(form.name.length, 120);
   assert.equal(form.message.length, 4000);
+});
+
+test("homepage requests are 'project' requests with their own topics", () => {
+  assert.equal(validate({ kind: "project", type: "eu" }).form.type, "eu");
+  assert.equal(validate({ kind: "project", type: "dynamic" }).form.type, "other");
+  assert.equal(validate({ kind: "website", type: "eu" }).form.type, "unsure");
+  assert.equal(validate({ kind: "admin" }).form.kind, "website");
+  const { form } = validate({ kind: "project", name: "Prof. Lea Roth", email: "lea@uni.example", message: "Wir planen ein Erasmus+ Projekt.", type: "eu", company: "Uni Example" });
+  const mail = buildEmail({ form, from: "website@narli-digital.de", to: "inbox@example.com", id: "p1" });
+  const [head, body] = mail.split("\r\n\r\n");
+  assert.equal(decodeWords(head.match(/^Subject: ([\s\S]*?)\r\n(?=\S)/m)[1]), "Projektanfrage: Prof. Lea Roth");
+  const text = Buffer.from(body.replace(/\r\n/g, ""), "base64").toString("utf8");
+  assert.match(text, /^Neue Projektanfrage über narli-digital\.de/);
+  assert.match(text, /Thema: EU-Projekt/);
+  assert.match(text, /Unternehmen\/Organisation: Uni Example/);
 });
 
 test("spots bots by the hidden field or a too fast submission", () => {

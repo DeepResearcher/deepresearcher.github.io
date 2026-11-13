@@ -1,13 +1,36 @@
-// Validation and e-mail building for the website request form. No Cloudflare APIs in here, so the
-// same code runs in the Worker and in the Node tests (test/message.test.mjs).
+// Validation and e-mail building for the request forms (website service page and homepage).
+// No Cloudflare APIs in here, so the same code runs in the Worker and in the Node tests
+// (test/message.test.mjs).
 
 export const LIMITS = { name: 120, email: 200, phone: 60, company: 160, message: 4000, page: 200 };
 
-export const TYPES = {
-  static: "Visitenkarte oder Landingpage",
-  dynamic: "Shop oder Buchungen",
-  automation: "Mit Automationen",
-  unsure: "Weiß ich noch nicht",
+// Two forms: "website" (website service page) and "project" (homepage, general requests).
+export const KINDS = {
+  website: {
+    subject: "Website-Anfrage",
+    heading: "Neue Website-Anfrage über narli-digital.de",
+    typeLabel: "Art der Website",
+    fallbackType: "unsure",
+    types: {
+      static: "Visitenkarte oder Landingpage",
+      dynamic: "Shop oder Buchungen",
+      automation: "Mit Automationen",
+      unsure: "Weiß ich noch nicht",
+    },
+  },
+  project: {
+    subject: "Projektanfrage",
+    heading: "Neue Projektanfrage über narli-digital.de",
+    typeLabel: "Thema",
+    fallbackType: "other",
+    types: {
+      web: "Website oder Webanwendung",
+      eu: "EU-Projekt",
+      game: "Serious Game oder App",
+      ai: "KI oder Datenanalyse",
+      other: "Etwas anderes",
+    },
+  },
 };
 
 // Deliberately strict: no spaces, quotes, angle brackets, commas or line breaks, so the address
@@ -23,12 +46,15 @@ function clean(value, max, singleLine) {
 
 export function validate(input) {
   const data = input && typeof input === "object" ? input : {};
+  const kind = data.kind === "project" ? "project" : "website";
+  const { types, fallbackType } = KINDS[kind];
   const form = {
+    kind,
     name: clean(data.name, LIMITS.name, true),
     email: clean(data.email, LIMITS.email, true),
     phone: clean(data.phone, LIMITS.phone, true),
     company: clean(data.company, LIMITS.company, true),
-    type: Object.hasOwn(TYPES, data.type) ? data.type : "unsure",
+    type: Object.hasOwn(types, data.type) ? data.type : fallbackType,
     message: clean(data.message, LIMITS.message, false),
     lang: data.lang === "en" ? "en" : "de",
     page: clean(data.page, LIMITS.page, true),
@@ -69,15 +95,16 @@ export function encodeHeader(value) {
 }
 
 export function buildEmail({ form, from, to, date = new Date(), id = crypto.randomUUID() }) {
+  const kind = KINDS[form.kind] || KINDS.website;
   const sent = new Intl.DateTimeFormat("de-DE", { dateStyle: "medium", timeStyle: "short", timeZone: "Europe/Berlin" }).format(date);
   const body = [
-    "Neue Website-Anfrage über narli-digital.de",
+    kind.heading,
     "",
     `Name: ${form.name}`,
     `E-Mail: ${form.email}`,
     `Telefon: ${form.phone || "-"}`,
-    `Unternehmen: ${form.company || "-"}`,
-    `Art der Website: ${TYPES[form.type]}`,
+    `Unternehmen/Organisation: ${form.company || "-"}`,
+    `${kind.typeLabel}: ${kind.types[form.type] || "-"}`,
     `Seite: ${form.lang === "en" ? "Englisch" : "Deutsch"}${form.page ? ` (${form.page})` : ""}`,
     `Gesendet: ${sent} Uhr`,
     "",
@@ -92,7 +119,7 @@ export function buildEmail({ form, from, to, date = new Date(), id = crypto.rand
     `From: ${encodeHeader("NARLI DIGITAL Website")} <${from}>`,
     `To: <${to}>`,
     `Reply-To: ${encodeHeader(form.name)} <${form.email}>`,
-    `Subject: ${encodeHeader(`Website-Anfrage: ${form.name}`)}`,
+    `Subject: ${encodeHeader(`${kind.subject}: ${form.name}`)}`,
     `Date: ${date.toUTCString()}`,
     `Message-ID: <${id}@narli-digital.de>`,
     "MIME-Version: 1.0",

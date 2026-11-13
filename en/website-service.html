@@ -39,11 +39,11 @@
   <link rel="stylesheet" href="/site-email.css?v=20260724-landing-1">
   <link rel="stylesheet" href="/landing-pages.css?v=20260724-1">
   <link rel="stylesheet" href="/webservice.css?v=20261113-2">
-  <link rel="stylesheet" href="/contact-form.css?v=20261113-1">
+  <link rel="stylesheet" href="/contact-form.css?v=20261113-2">
   <script src="/lang.js" defer></script>
   <script src="/landing-pages.js?v=20261113-2" defer></script>
   <script src="/webservice.js?v=20261113-2" defer></script>
-  <script src="/contact-form.js?v=20261113-1" defer></script>
+  <script src="/contact-form.js?v=20261113-2" defer></script>
   <link rel="stylesheet" href="/cookie-consent.css?v=20261112-1">
   <script src="/cookie-consent.js" defer></script>
 </head>
@@ -241,7 +241,7 @@
     </div>
   </footer>
   <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
-    <form class="contact-form" action="/api/contact" method="post" novalidate>
+    <form class="contact-form" action="/api/contact" method="post" data-kind="website" novalidate>
       <button class="contact-close" type="button" data-contact-close aria-label="Close">&times;</button>
       <div class="contact-form-body">
         <span class="contact-kicker" data-i18n="form.kicker">Request a website</span>

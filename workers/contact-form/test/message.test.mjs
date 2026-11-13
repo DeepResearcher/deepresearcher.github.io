@@ -53,6 +53,18 @@ test("homepage requests are 'project' requests with their own topics", () => {
   assert.match(text, /Unternehmen\/Organisation: Uni Example/);
 });
 
+test("AI page requests are 'ai' requests with their own subject and topics", () => {
+  assert.equal(validate({ kind: "ai", type: "assistant" }).form.type, "assistant");
+  assert.equal(validate({ kind: "ai", type: "eu" }).form.type, "unsure");
+  const { form } = validate({ kind: "ai", name: "Jonas Weber", email: "jonas@start.example", message: "Wir möchten eine App mit Bilderkennung.", type: "app" });
+  const mail = buildEmail({ form, from: "website@narli-digital.de", to: "inbox@example.com", id: "a1" });
+  const [head, body] = mail.split("\r\n\r\n");
+  assert.equal(decodeWords(head.match(/^Subject: ([\s\S]*?)\r\n(?=\S)/m)[1]), "KI-Anfrage: Jonas Weber");
+  const text = Buffer.from(body.replace(/\r\n/g, ""), "base64").toString("utf8");
+  assert.match(text, /^Neue KI-Anfrage über narli-digital\.de/);
+  assert.match(text, /Vorhaben: App mit KI/);
+});
+
 test("spots bots by the hidden field or a too fast submission", () => {
   assert.equal(looksLikeBot({ website: "http://spam.example", elapsed: 9000 }), true);
   assert.equal(looksLikeBot({ elapsed: 1200 }), true);

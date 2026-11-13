@@ -65,7 +65,7 @@
       data.elapsed = Date.now() - startedAt;
       data.lang = document.documentElement.lang === "en" ? "en" : "de";
       data.page = location.pathname;
-      data.kind = form.dataset.kind === "project" ? "project" : "website";
+      data.kind = ["project", "ai"].includes(form.dataset.kind) ? form.dataset.kind : "website";
 
       submit.disabled = true;
       form.setAttribute("aria-busy", "true");

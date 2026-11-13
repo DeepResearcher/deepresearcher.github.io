@@ -83,6 +83,11 @@ const webserviceImages = {
   en: { url: `${SITE}/assets/og/website-service-en.png`, alt: "NARLI DIGITAL: Your website in 3 days, built for you" },
 };
 
+const aiProductImages = {
+  de: { url: `${SITE}/assets/og/ki-produkte-de.png`, alt: "NARLI DIGITAL: Ihre KI-Idee als fertiges Produkt" },
+  en: { url: `${SITE}/assets/og/ki-produkte-en.png`, alt: "NARLI DIGITAL: Your AI idea as a finished product" },
+};
+
 const bilingualPages = [
   {
     source: "index.html",
@@ -120,6 +125,13 @@ const bilingualPages = [
     dictionaries: () => landingDictionaries("webservice"),
     images: webserviceImages,
   },
+  {
+    source: "ki-produkte-entwickeln-lassen.html",
+    target: "en/ai-product-development.html",
+    url: { de: `${SITE}/ki-produkte-entwickeln-lassen`, en: `${SITE}/en/ai-product-development` },
+    dictionaries: () => landingDictionaries("aiproducts"),
+    images: aiProductImages,
+  },
 ];
 
 // English-only pages: get sharing tags, no language alternates.
@@ -146,11 +158,15 @@ const attributeTranslations = {
   "Video: Ihre Website in 3 Tagen, komplett von NARLI DIGITAL erstellt":
     "Video: your website in 3 days, built entirely by NARLI DIGITAL",
   Schließen: "Close",
+  "Was wir bauen": "What we build",
+  "Video: Ihre KI-Idee als fertiges Produkt, entwickelt von NARLI DIGITAL":
+    "Video: your AI idea as a finished product, built by NARLI DIGITAL",
 };
 
 // German media files that have an English version.
 const assetTranslations = {
   "website-in-3-tagen-de": "website-in-3-tagen-en",
+  "ki-produkte-de": "ki-produkte-en",
 };
 
 // Internal links that have an English counterpart.
@@ -159,6 +175,7 @@ const englishLinks = {
   "/eu-project-websites": "/en/eu-project-websites",
   "/serious-games-digital-outputs": "/en/serious-games-digital-outputs",
   "/website-erstellen-lassen": "/en/website-service",
+  "/ki-produkte-entwickeln-lassen": "/en/ai-product-development",
 };
 
 // ---------- HTML helpers ----------

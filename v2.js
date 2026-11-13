@@ -68,7 +68,12 @@
       "v2.cta.button": "Projekt anfragen",
       "v2.footer.privacy": "Datenschutz",
       "v2.services.web.link": "Websites für EU-Projekte",
-      "v2.services.game.link": "Serious Games & Digital Outputs"
+      "v2.services.game.link": "Serious Games & Digital Outputs",
+      "v2.nav.webservice": "Website-Service",
+      "v2.webservice.badge": "Neu: Website-Service",
+      "v2.webservice.title": "Ihre Website in 3 Tagen. Komplett von uns erstellt.",
+      "v2.webservice.text": "Sie sagen uns, was Sie brauchen. Design, Domain, E-Mail, Zahlungen und Technik übernehmen wir.",
+      "v2.webservice.button": "Website-Service ansehen"
     },
     en: {
       "v2.audience.kicker": "For businesses, research and EU projects",
@@ -132,7 +137,12 @@
       "v2.cta.button": "Request a project",
       "v2.footer.privacy": "Privacy",
       "v2.services.web.link": "Websites for EU projects",
-      "v2.services.game.link": "Serious games & digital outputs"
+      "v2.services.game.link": "Serious games & digital outputs",
+      "v2.nav.webservice": "Website service",
+      "v2.webservice.badge": "New: website service",
+      "v2.webservice.title": "Your website in 3 days. Built entirely by us.",
+      "v2.webservice.text": "You tell us what you need. We take care of design, domain, email, payments and technology.",
+      "v2.webservice.button": "See the website service"
     }
   };
 

@@ -178,6 +178,61 @@
   content: " →";
 }
 
+/* ---------- Website-Service band under the hero ---------- */
+
+.v2-webservice-band {
+  padding: 28px 0;
+  background: var(--bg, #08111f);
+}
+
+.v2-webservice-band-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 28px 32px;
+  border: 1px solid rgba(76, 215, 195, 0.45);
+  border-radius: var(--radius-md, 22px);
+  background: linear-gradient(120deg, rgba(76, 215, 195, 0.16), rgba(76, 215, 195, 0.04) 60%), var(--panel, #11223a);
+  color: var(--text, #f5f8fc);
+}
+
+.v2-webservice-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent, #4cd7c3);
+  color: #08111f;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+.v2-webservice-band h2 {
+  margin: 0 0 6px;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+  color: var(--text, #f5f8fc);
+}
+
+.v2-webservice-band p {
+  margin: 0;
+  color: var(--muted, #aab8cb);
+}
+
+.v2-webservice-band .button {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 720px) {
+  .v2-webservice-band-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 22px 20px;
+  }
+}
+
 .service-card-link {
   display: inline-block;
   margin-top: 12px;

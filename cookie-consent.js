@@ -3,10 +3,9 @@
   // is loaded before the visitor agrees to at least one optional purpose).
   var STORAGE_KEY = 'nd-cookie-consent';
   var GA_ID = 'G-1TMB9MX889';
-  // Google Ads: fill in once the Ads account exists
-  // (Ziele > Conversions > Zusammenfassung > Conversion > Tag einrichten > "Selbst installieren").
-  var ADS_ID = ''; // for example 'AW-123456789'
-  var ADS_LEAD_LABEL = ''; // label of the "Anfrage" conversion, the part after the slash in send_to
+  // Google Ads conversion tracking, used only with "Marketing" consent.
+  var ADS_ID = 'AW-18092711804';
+  var ADS_LEAD_LABEL = 'cELVCP6U6bgdEPy-o7ND'; // "Anfrage" conversion (account 393-666-0446)
 
   var isEnglish = document.documentElement.lang === 'en';
 

@@ -84,8 +84,8 @@
           success.hidden = false;
           success.querySelector("button").focus({ preventScroll: true });
           if (!dialog) success.scrollIntoView({ block: "nearest", behavior: "smooth" });
-          // Counted only when the visitor allowed analytics (gtag is not loaded otherwise).
-          if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { form_name: `${data.kind}_request` });
+          // cookie-consent.js only reports this when the visitor allowed statistics or marketing.
+          if (typeof window.ndTrackLead === "function") window.ndTrackLead(data.kind);
         } else {
           show(response.status === 429 ? "rate" : response.status === 422 ? "invalid" : "error");
         }

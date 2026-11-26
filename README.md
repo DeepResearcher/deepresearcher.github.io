@@ -15,6 +15,7 @@ Responsive bilingual landing page for **NARLI DIGITAL: Digital Solutions for Eur
 
 - `v1-original` (branch and tag): the site as it was live until October 2026, preserved unchanged. Preview: https://v1-original.deepresearcher-github-io.pages.dev
 - v2 (current): lighter content sections plus new homepage sections, all in `v2.css` / `v2.js` and scoped to `<html class="v2">`. Removing that class restores the v1 styling of the existing sections.
+- Light theme (November 2026): `light-theme.css` is linked last on every page and makes the header, hero, offers, the dark bands on the service pages, the call-to-action blocks and the portfolio/legal heroes light. Only the footer stays dark. Removing its `<link>` from a page restores the dark look.
 
 ## English pages and SEO tags
 

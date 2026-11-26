@@ -1,0 +1,372 @@
+/*
+ * Light theme (November 2026).
+ *
+ * The owner asked for fewer dark areas. This file is loaded after every other stylesheet on
+ * every page and turns the dark parts (header, hero, offers, the dark bands on the service
+ * pages, call-to-action blocks, portfolio and legal heroes) light.
+ *
+ * - The dark design tokens from styles.css are switched to light values below, so everything
+ *   that uses var(--bg), var(--text), var(--muted) or var(--line) follows automatically.
+ * - Hard-coded dark colours in the older stylesheets are overridden rule by rule.
+ * - Selectors start with :root so they also beat the same selector in stylesheets that scripts
+ *   inject later (hero-layout.css, brand-update.css, portfolio-gallery.css, ...).
+ * - The footer, the videos, image overlays, the image lightbox and modal backdrops stay dark on
+ *   purpose. The footer gets the dark tokens back locally.
+ *
+ * Removing this stylesheet's <link> from a page restores the previous dark look.
+ */
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f4f7fb;
+  --panel: #ffffff;
+  --panel-2: #f4f7fb;
+  --text: #11213a;
+  --muted: #55657a;
+  --line: #dfe6ef;
+  --shadow: 0 18px 50px rgba(16, 38, 67, 0.1);
+  --accent-ink: #087b6d;
+  --tint-mint: #eef8f6;
+  --card-shadow: 0 1px 2px rgba(16, 38, 67, 0.04), 0 14px 36px rgba(16, 38, 67, 0.07);
+  --hero-light:
+    radial-gradient(circle at 14% 16%, rgba(76, 215, 195, 0.22), transparent 34%),
+    radial-gradient(circle at 86% 72%, rgba(46, 117, 255, 0.11), transparent 36%),
+    linear-gradient(180deg, #f2fbf9 0%, #f7fafd 62%, #ffffff 100%);
+}
+
+/* ---------- Header and navigation ---------- */
+
+:root .site-header,
+:root .service-page .site-header,
+:root .legal-page .site-header {
+  border-bottom: 1px solid rgba(17, 33, 58, 0.07);
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+}
+
+:root .site-header.is-scrolled {
+  border-color: rgba(17, 33, 58, 0.09);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 28px rgba(16, 38, 67, 0.07);
+}
+
+:root .primary-nav a {
+  color: #33445c;
+}
+
+:root .primary-nav a:hover,
+:root .primary-nav a:focus-visible,
+:root .primary-nav a[aria-current="page"] {
+  color: var(--accent-ink);
+}
+
+:root .language-switch,
+:root .menu-toggle {
+  border-color: var(--line);
+  background: #ffffff;
+}
+
+:root .lang-button {
+  color: #55657a;
+}
+
+:root .lang-button.is-active {
+  background: var(--accent);
+  color: #06151b;
+}
+
+:root .site-header .brand-text strong {
+  color: #11213a;
+}
+
+:root .site-header .brand-text span {
+  color: var(--accent-ink);
+}
+
+@media (max-width: 980px) {
+  :root .primary-nav {
+    border-bottom: 1px solid var(--line);
+    background: #ffffff;
+    box-shadow: 0 18px 40px rgba(16, 38, 67, 0.1);
+  }
+}
+
+/* portfolio-gallery.css forces a solid dark header on phones with !important. */
+@media (max-width: 700px) {
+  :root .site-header,
+  :root .site-header.is-scrolled {
+    background: #ffffff !important;
+  }
+}
+
+/* ---------- Shared text accents ---------- */
+
+:root .eyebrow,
+:root .section-kicker {
+  color: var(--accent-ink);
+}
+
+:root .button-secondary {
+  border-color: #cfd9e5;
+  background: #ffffff;
+  color: #11213a;
+}
+
+:root .button-secondary:hover {
+  border-color: rgba(32, 191, 169, 0.6);
+  background: var(--tint-mint);
+}
+
+/* ---------- Homepage hero ---------- */
+
+:root .hero {
+  background: var(--hero-light);
+}
+
+:root .hero::before {
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(17, 33, 58, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 33, 58, 0.05) 1px, transparent 1px);
+}
+
+:root .trust-list {
+  color: #55657a;
+}
+
+:root .trust-list li > span:first-child {
+  color: var(--accent-ink);
+}
+
+:root .hero-brand-text {
+  color: #11213a;
+}
+
+:root .hero-brand-text span {
+  color: var(--accent-ink);
+}
+
+:root .hero-product-figure .hero-product-photo {
+  filter: drop-shadow(0 26px 44px rgba(16, 38, 67, 0.2));
+}
+
+/* ---------- Homepage: the four offers under the hero ---------- */
+
+:root .v2-offers {
+  border-top: 1px solid rgba(17, 33, 58, 0.05);
+  background: #f4f7fb;
+}
+
+:root .v2-offer-card {
+  border-color: #d6e9e5;
+  background: linear-gradient(150deg, rgba(76, 215, 195, 0.12), rgba(76, 215, 195, 0) 58%), #ffffff;
+  box-shadow: var(--card-shadow);
+}
+
+:root .v2-offer-card:hover,
+:root .v2-offer-card:focus-visible {
+  border-color: rgba(32, 191, 169, 0.7);
+}
+
+:root .v2-offer-card:focus-visible {
+  outline-color: var(--accent-ink);
+}
+
+:root .v2-offer-icon {
+  background: #e3f6f2;
+  color: var(--accent-ink);
+}
+
+:root .v2-offer-link {
+  color: var(--accent-ink);
+}
+
+/* ---------- Service pages (website service, AI products, EU websites, serious games) ---------- */
+
+:root .service-page {
+  background: #ffffff;
+}
+
+:root .service-hero {
+  background: var(--hero-light);
+}
+
+:root .service-hero-card {
+  border-color: #d6e9e5;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(16, 38, 67, 0.1);
+}
+
+:root .service-hero-card > span,
+:root .process-list span,
+:root .check-list li::before {
+  color: var(--accent-ink);
+}
+
+:root .check-list li,
+:root .service-hero-card li {
+  color: #33445c;
+}
+
+:root .model-tag {
+  color: var(--accent-ink);
+}
+
+:root .check-list li::before {
+  background: #e3f6f2;
+}
+
+:root .service-page .section-dark {
+  background: var(--tint-mint);
+}
+
+:root .process-list {
+  border-color: #d6e9e5;
+  background: #ffffff;
+  box-shadow: var(--card-shadow);
+}
+
+:root .process-list li {
+  border-right-color: #e3ebf2;
+  background: transparent;
+}
+
+:root .process-list h3 {
+  color: #11213a;
+}
+
+@media (max-width: 1020px) {
+  :root .process-list li,
+  :root .process-list.webservice-process li {
+    border-bottom-color: #e3ebf2;
+  }
+}
+
+:root .scope-panel {
+  border-color: #d6e9e5;
+  background: #ffffff;
+  box-shadow: var(--card-shadow);
+}
+
+:root .webservice-faq summary::after {
+  color: var(--accent-ink);
+}
+
+:root .service-cta-section {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(76, 215, 195, 0.22), transparent 34%),
+    linear-gradient(135deg, #e3f6f1 0%, #e8f0fb 100%);
+}
+
+:root .service-cta-shell {
+  border-color: rgba(32, 191, 169, 0.32);
+  background: #ffffff;
+  box-shadow: 0 22px 56px rgba(16, 38, 67, 0.1);
+}
+
+/* ---------- Portfolio pages ---------- */
+
+:root .portfolio-hero,
+:root .case-hero {
+  background: var(--hero-light);
+  color: #11213a;
+}
+
+:root .portfolio-hero p,
+:root .case-hero-copy p {
+  color: #55657a;
+}
+
+:root .case-hero-media {
+  border-color: var(--line);
+}
+
+:root .case-result-card {
+  border-color: var(--line);
+  background: #ffffff;
+  color: #11213a;
+  box-shadow: var(--card-shadow);
+}
+
+:root .case-result-card strong {
+  color: var(--accent-ink);
+}
+
+:root .case-result-card p {
+  color: #55657a;
+}
+
+:root .case-facts span {
+  color: #5f6f83;
+}
+
+/* ---------- Legal pages ---------- */
+
+:root .legal-hero {
+  background: var(--hero-light);
+  color: #11213a;
+}
+
+:root .legal-hero .section-kicker {
+  color: var(--accent-ink);
+}
+
+:root .legal-hero p {
+  color: #55657a;
+}
+
+/* ---------- Homepage project slider ---------- */
+
+:root .service-slider,
+:root .service-slide img {
+  background: #eef3f8;
+}
+
+:root .service-slider-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+}
+
+:root .service-slider-counter {
+  color: #55657a;
+}
+
+:root .service-slider-control {
+  border-color: rgba(17, 33, 58, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  color: #11213a;
+}
+
+:root .service-slider-control:hover,
+:root .service-slider-control:focus-visible {
+  background: #ffffff;
+  border-color: var(--accent-ink);
+}
+
+:root .service-showcase-badge {
+  color: var(--accent-ink);
+}
+
+/* ---------- Cookie banner ---------- */
+
+:root .cookie-banner {
+  box-shadow: 0 24px 70px rgba(16, 38, 67, 0.18);
+}
+
+/* ---------- Footer: stays dark ---------- */
+
+:root .site-footer {
+  --text: #f5f8fc;
+  --muted: #aab8cb;
+  --line: rgba(255, 255, 255, 0.12);
+  color: #f5f8fc;
+}
+
+:root .site-footer .brand-text strong {
+  color: #ffffff;
+}
+
+:root .site-footer .brand-text span {
+  color: #66d2bd;
+}

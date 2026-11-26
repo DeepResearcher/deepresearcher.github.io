@@ -5,6 +5,10 @@
  * scripts inject later at equal specificity, and so removing the class from
  * <html> restores the v1 look. The header, hero and footer stay dark on
  * purpose: the logo lockup uses white lettering and must not change.
+ *
+ * Since November 2026, light-theme.css (loaded last on every page) makes the
+ * header and hero light as well and switches the header lettering to navy.
+ * Only the footer, with the white full logo, stays dark.
  */
 
 .v2 {
